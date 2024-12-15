@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Game-List brief="roms 文件夹里所有的 CPS3 街机游戏">
+    <Game name="JoJo's Venture">
+        <Rom crc32="7B74BE6D" bytes="46008577"
+            rom="jojo"
+            en="JoJo's Venture (Euro 990128)"
+            zhcn="JOJO的奇妙冒险 (欧版 990128)"
+        />
+    </Game>
+    <Game name="JoJo's Bizarre Adventure - Heritage for the Future">
+        <Rom crc32="9A06A533" bytes="54256886"
+            rom="jojoba"
+            en="JoJo's Bizarre Adventure - Heritage for the Future (Euro 990927)"
+            zhcn="JOJO的奇妙冒险 未来遗产 (欧版 990927)"
+        />
+    </Game>
+    <Game name="Red Earth">
+        <Rom crc32="F357FAC2" bytes="38374386"
+            rom="redearth"
+            en="Red Earth (Euro 961121)"
+            zhcn="赤色大地 (欧版 961121)"
+        />
+    </Game>
+    <Game name="Street Fighter III - New Generation">
+        <Rom crc32="809A9658" bytes="38868497"
+            rom="sfiii"
+            en="Street Fighter III - New Generation (Euro 970204)"
+            zhcn="街头霸王3 (欧版 970204)"
+        />
+    </Game>
+    <Game name="Street Fighter III 2nd Impact - Giant Attack">
+        <Rom crc32="EF7FA548" bytes="43777198"
+            rom="sfiii2"
+            en="Street Fighter III 2nd Impact - Giant Attack (USA 970930)"
+            zhcn="街头霸王3.2 (美版 970930)"
+        />
+    </Game>
+    <Game name="Street Fighter III 3rd Strike - Fight for the Future">
+        <Rom crc32="36056B5E" bytes="70592155"
+            rom="sfiii3"
+            en="Street Fighter III 3rd Strike - Fight for the Future (Euro 990608)"
+            zhcn="街头霸王3.3 (欧版 990608)"
+        />
+    </Game>
+</Game-List>
