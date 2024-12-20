@@ -12,28 +12,35 @@ from rom_info import RomInfo
 from wiiflow_plugins_data import WiiFlowPluginsData
 
 
-class CmdExportRoms(CmdHandler):
+class CmdExportRomsBase(CmdHandler):
     def __init__(
         self,
-        xml_file_name="roms-export.xml",
-        dst_roms_folder_name=ConsoleConfigs.default_core_name(),
+        roms_export_xml_name,
+        dst_roms_folder_name,
+        export_fake_roms,
     ):
-        self.xml_file_name = xml_file_name
+        self.roms_export_xml_name = roms_export_xml_name
         self.dst_roms_folder_name = dst_roms_folder_name
-        super().__init__(
-            f"{ConsoleConfigs.name()} - 导出 ROM 文件到 {dst_roms_folder_name}"
-        )
+        self.export_fake_roms = export_fake_roms
+        if self.export_fake_roms:
+            super().__init__(
+                f"{ConsoleConfigs.name()} - 导出空的 ROM 文件到 {dst_roms_folder_name}"
+            )
+        else:
+            super().__init__(
+                f"{ConsoleConfigs.name()} - 导出 ROM 文件到 {dst_roms_folder_name}"
+            )
 
     def run(self):
         # 本函数执行的操作如下：
-        # 1. 读取 self.xml_file_name，目前只需要根据 <Rom> 中的 crc32 和 title 就可以完成导出
+        # 1. 读取 self.roms_export_xml_file_name，目前只需要根据 <Rom> 中的 crc32 和 title 就可以完成导出
         # 2. 根据 rom_crc32 在 LocalRoms 中查询对应的 rom_info
         # 3. 根据 rom_info 拼接出 src_path 和 dst_path
         # 4. 将 src_path 复制到 dst_path，如果目标文件已经存在会跳过
         local_roms = LocalRoms()
 
         xml_path = os.path.join(
-            LocalConfigs.repository_folder_path(), self.xml_file_name
+            LocalConfigs.repository_folder_path(), self.roms_export_xml_name
         )
 
         if not os.path.exists(xml_path):
@@ -55,7 +62,7 @@ class CmdExportRoms(CmdHandler):
                 print(f"无效的源文件：{src_path}")
                 continue
 
-            # 自定义标题在 self.xml_file_name 文件中配置的
+            # 自定义标题在 self.roms_export_xml_file_name 文件中配置的
             rom_title_custom = rom_elem.get("title")
             rom_name = rom_title_custom + ConsoleConfigs.rom_extension()
             if ConsoleConfigs.rom_support_custom_title() is False:
@@ -73,8 +80,29 @@ class CmdExportRoms(CmdHandler):
             )
 
             if Helper.verify_folder_exist_ex(os.path.dirname(dst_path)):
-                Helper.copy_file_if_not_exist(src_path, dst_path)
+                if self.export_fake_roms:
+                    open(dst_path, "w").close()
+                else:
+                    Helper.copy_file_if_not_exist(src_path, dst_path)
+
+
+class CmdExportRoms(CmdExportRomsBase):
+    def __init__(self):
+        super().__init__(
+            roms_export_xml_name="roms-export.xml",
+            dst_roms_folder_name=ConsoleConfigs.default_core_name(),
+            export_fake_roms=False,
+        )
+
+
+class CmdExportFakeRoms(CmdExportRomsBase):
+    def __init__(self):
+        super().__init__(
+            roms_export_xml_name="roms-export.xml",
+            dst_roms_folder_name=ConsoleConfigs.default_core_name(),
+            export_fake_roms=True,
+        )
 
 
 if __name__ == "__main__":
-    CmdExportRoms().run()
+    CmdExportFakeRoms().run()
