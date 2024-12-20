@@ -67,18 +67,6 @@ class CmdImportRoms(CmdHandler):
             en_title = game_info.en_title
             zhcn_title = game_info.zhcn_title
 
-            attribs = {
-                "crc32": src_rom_crc32,
-                "bytes": src_rom_bytes,
-                "title": src_rom_title,
-                "en": en_title,
-                "zhcn": zhcn_title,
-                "apps-work": "",
-                "apps-not-work": "",
-            }
-            if ConsoleConfigs.rom_auto_rename():
-                attribs["title"] = game_info.rom_title
-            ET.SubElement(game_elem, "Rom", attribs)
             rom_info = RomInfo(
                 game_name=game_info.name,
                 rom_crc32=src_rom_crc32,
@@ -87,13 +75,25 @@ class CmdImportRoms(CmdHandler):
                 en_title=en_title,
                 zhcn_title=zhcn_title,
             )
-            if ConsoleConfigs.rom_auto_rename():
+            if ConsoleConfigs.rom_support_custom_title():
+                # 支持 ROM 文件自定义命名的机种，导入时以 DB 中的命名为准
                 rom_info.rom_title = game_info.rom_title
             local_roms.add_rom_info(src_rom_crc32, rom_info)
 
+            attribs = {
+                "crc32": rom_info.rom_crc32,
+                "bytes": rom_info.rom_bytes,
+                "title": rom_info.rom_title,
+                "en": rom_info.en_title,
+                "zhcn": rom_info.zhcn_title,
+                "apps-work": "",
+                "apps-not-work": "",
+            }
+            ET.SubElement(game_elem, "Rom", attribs)
+
             print(f"新游戏入库 {src_rom_name}，crc32 = {src_rom_crc32}")
             if (
-                ConsoleConfigs.rom_auto_rename()
+                ConsoleConfigs.rom_support_custom_title()
                 and src_rom_title != game_info.rom_title
             ):
                 print(f"新游戏 {src_rom_name} 自动重命名为 {game_info.rom_title}")

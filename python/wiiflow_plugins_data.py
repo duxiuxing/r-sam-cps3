@@ -13,7 +13,6 @@ from local_configs import LocalConfigs
 
 class WiiFlowPluginsData(GameTDB):
     def __init__(self):
-
         # 机种对应的 WiiFlow 插件名称
         self.plugin_name = ConsoleConfigs.name()
 
