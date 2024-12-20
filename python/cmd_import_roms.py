@@ -25,7 +25,6 @@ class CmdImportRoms(CmdHandler):
         wiiflow_plugins_data = WiiFlowPluginsData()
 
         local_roms = LocalRoms()
-        local_roms.reset_rom_crc32_to_path_and_info()
 
         exist_rom_crc32_to_name = {}
         roms_new_xml_root = ET.Element("Game-List")
@@ -44,7 +43,7 @@ class CmdImportRoms(CmdHandler):
 
             src_rom_path = os.path.join(import_folder_path, src_rom_name)
             src_rom_crc32 = Helper.compute_crc32(src_rom_path)
-            if src_rom_crc32 in local_roms.rom_crc32_to_info.keys():
+            if local_roms.rom_exist(src_rom_crc32):
                 exist_rom_crc32_to_name[src_rom_crc32] = src_rom_name
                 continue
 
@@ -90,7 +89,7 @@ class CmdImportRoms(CmdHandler):
             )
             if ConsoleConfigs.rom_auto_rename():
                 rom_info.rom_title = game_info.rom_title
-            local_roms.rom_crc32_to_info[src_rom_crc32] = rom_info
+            local_roms.add_rom_info(src_rom_crc32, rom_info)
 
             print(f"新游戏入库 {src_rom_name}，crc32 = {src_rom_crc32}")
             if (
@@ -115,7 +114,7 @@ class CmdImportRoms(CmdHandler):
         if len(exist_rom_crc32_to_name) > 0:
             roms_exist_xml_root = ET.Element("Game-List")
             for rom_crc32, rom_name in exist_rom_crc32_to_name.items():
-                rom_info = local_roms.rom_crc32_to_info[rom_crc32]
+                rom_info = local_roms.query_rom_info(rom_crc32)
                 game_elem = ET.SubElement(
                     roms_exist_xml_root, "Game", {"name": rom_info.game_name}
                 )

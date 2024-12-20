@@ -5,7 +5,8 @@
             title="jojo"
             en="JoJo's Venture (USA 990128)"
             zhcn="JOJO的奇妙冒险 (美版 990128)"
-            apps-work="RetroArch-Wii (FB Alpha 2012 CPS-3)"
+            apps-work="Kodi-Win (FB Alpha 2012 CPS-3)|RetroArch-Wii (FB Alpha 2012 CPS-3)|RetroArch-Win (FB Alpha 2012 CPS-3)"
+            apps-not-work="RetroArch-Win (FinalBurn Neo)"
         />
         <Rom crc32="7B74BE6D" bytes="46008577"
             title="jojo"
@@ -20,7 +21,8 @@
             title="jojoba"
             en="JoJo's Bizarre Adventure - Heritage for the Future (Japan 990927)"
             zhcn="JOJO的奇妙冒险 未来遗产 (日版 990927)"
-            apps-work="RetroArch-Wii (FB Alpha 2012 CPS-3)"
+            apps-work="Kodi-Win (FB Alpha 2012 CPS-3)|RetroArch-Wii (FB Alpha 2012 CPS-3)|RetroArch-Win (FB Alpha 2012 CPS-3)"
+            apps-not-work="RetroArch-Win (FinalBurn Neo)"
         />
         <Rom crc32="4C96850A" bytes="54516223"
             title="jojobaner1"
@@ -42,6 +44,7 @@
             en="Red Earth (Euro 961121)"
             zhcn="赤色大地 (欧版 961121)"
             apps-work="Kodi-Win (FinalBurn Neo)|RetroArch-Wii (FB Alpha 2012 CPS-3)|RetroArch-Win (FB Alpha 2012 CPS-3)|RetroArch-Win (FinalBurn Neo)"
+            apps-not-work="Kodi-Win (FB Alpha 2012 CPS-3)"
         />
     </Game>
     <Game name="Street Fighter III - New Generation">
@@ -49,7 +52,8 @@
             title="sfiii"
             en="Street Fighter III - New Generation (USA 970204)"
             zhcn="街头霸王3 (美版 970204)"
-            apps-work="RetroArch-Wii (FB Alpha 2012 CPS-3)"
+            apps-work="Kodi-Win (FB Alpha 2012 CPS-3)|RetroArch-Wii (FB Alpha 2012 CPS-3)"
+            apps-not-work="RetroArch-Win (FinalBurn Neo)"
         />
         <Rom crc32="809A9658" bytes="38868497"
             title="sfiii"
@@ -64,7 +68,7 @@
             title="sfiii2"
             en="Street Fighter III 2nd Impact - Giant Attack (USA 970930)"
             zhcn="街头霸王3.2 (美版 970930)"
-            apps-work="Kodi-Win (FinalBurn Neo)|RetroArch-Wii (FB Alpha 2012 CPS-3)|RetroArch-Win (FB Alpha 2012 CPS-3)|RetroArch-Win (FinalBurn Neo)"
+            apps-work="Kodi-Win (FB Alpha 2012 CPS-3)|Kodi-Win (FinalBurn Neo)|RetroArch-Wii (FB Alpha 2012 CPS-3)|RetroArch-Win (FB Alpha 2012 CPS-3)|RetroArch-Win (FinalBurn Neo)"
         />
     </Game>
     <Game name="Street Fighter III 3rd Strike - Fight for the Future">
@@ -72,7 +76,7 @@
             title="sfiii3"
             en="Street Fighter III 3rd Strike - Fight for the Future (Euro 990608)"
             zhcn="街头霸王3.3 (欧版 990608)"
-            apps-work="Kodi-Win (FinalBurn Neo)|RetroArch-Wii (FB Alpha 2012 CPS-3)|RetroArch-Win (FB Alpha 2012 CPS-3)|RetroArch-Win (FinalBurn Neo)"
+            apps-work="Kodi-Win (FB Alpha 2012 CPS-3)|Kodi-Win (FinalBurn Neo)|RetroArch-Wii (FB Alpha 2012 CPS-3)|RetroArch-Win (FB Alpha 2012 CPS-3)|RetroArch-Win (FinalBurn Neo)"
         />
     </Game>
 </Game-List>

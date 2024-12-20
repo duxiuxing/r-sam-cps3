@@ -16,25 +16,10 @@ class CmdCheckLocalRomsCrc32(CmdHandler):
         super().__init__("Console - 检查 roms 文件夹里的 .xml 文件中的 rom_crc32")
 
     def run(self):
-        # 本函数用于检查 .xml 文件中的 rom_crc32 是否与真实的 crc32 的一致
-        local_roms = LocalRoms()
-        local_roms.reset_rom_crc32_to_path_and_info()
-
-        for rom_crc32, rom_path in local_roms.rom_crc32_to_path.items():
-            rom_crc32_compute = Helper.compute_crc32(rom_path)
-            if rom_crc32 != rom_crc32_compute:
-                print(f"crc32 属性不一致 {rom_path}")
-                print(f"\t{rom_crc32} 在 roms 文件夹里的 .xml 文件中")
-                print(f"\t{rom_crc32_compute} 是实际计算出来的 crc32")
-            rom_bytes_compute = str(os.stat(rom_path).st_size)
-            rom_info = local_roms.rom_crc32_to_info.get(rom_crc32)
-            if rom_info.rom_bytes != rom_bytes_compute:
-                print(f"bytes 属性不一致 {rom_path}")
-                print(f"\t{rom_info.rom_bytes} 在 roms 文件夹里的 .xml 文件中")
-                print(f"\t{rom_bytes_compute} 是实际计算出来的文件大小")
+        LocalRoms().CheckRomsCrc32()
 
 
-class CmdCheckLocalRomsTitle(CmdHandler):
+class CmdCheckLocalRomsTitles(CmdHandler):
     def __init__(self):
         super().__init__("Console - 检查 roms 文件夹里的 .xml 文件中的游戏名称")
 
@@ -45,7 +30,6 @@ class CmdCheckLocalRomsTitle(CmdHandler):
         plugin_name = wiiflow_plugins_data.plugin_name
 
         local_roms = LocalRoms()
-        local_roms.reset_rom_crc32_to_path_and_info()
 
         for rom_info in local_roms.rom_crc32_to_info.values():
             game_info = wiiflow_plugins_data.query_game_info(
@@ -73,4 +57,4 @@ class CmdCheckLocalRomsTitle(CmdHandler):
 
 if __name__ == "__main__":
     CmdCheckLocalRomsCrc32().run()
-    CmdCheckLocalRomsTitle().run()
+    CmdCheckLocalRomsTitles().run()

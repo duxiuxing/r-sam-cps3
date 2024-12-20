@@ -188,11 +188,10 @@ class WiiFlowPluginsData(GameTDB):
 
 
 if __name__ == "__main__":
-    plugin_name = ConsoleConfigs.name()
-    plugins_data = WiiFlowPluginsData(plugin_name)
+    plugins_data = WiiFlowPluginsData()
     dst_folder_path = os.path.join(
-        f"{LocalConfigs.repository_folder_path()}-temp",
-        f"roms\\Arcade\\{plugin_name}",
+        LocalConfigs.export_root_folder_path(),
+        f"roms\\{ConsoleConfigs.name()}",
     )
     Helper.verify_folder_exist_ex(dst_folder_path)
     plugins_data.export_all_fake_roms_to(dst_folder_path)
