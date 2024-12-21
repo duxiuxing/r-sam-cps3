@@ -3,6 +3,14 @@
 
 ## 第三方文件说明
 
+### Arcade - CPS3.csv
+
+ROM 名称的中英文对照
+
+- 本地路径：third-party > Arcade - CPS3.csv
+- 项目网址：<https://github.com/duxiuxing/rom-name-cn>
+
+
 ### FinalBurn Neo (ClrMame Pro XML, Arcade only).dat
 
 XML 格式的数据库文件，描述了 FinalBurn Neo 核心支持的街机 ROM 文件。可作为数据源导入到 Romcenter APP 中使用。
