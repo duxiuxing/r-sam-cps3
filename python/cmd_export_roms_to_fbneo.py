@@ -8,7 +8,7 @@ class CmdExportRomsToFBNeo(CmdExportRomsBase):
     def __init__(self):
         super().__init__(
             roms_export_xml_name="roms-export-fbneo.xml",
-            dst_roms_folder_name=f"Arcade (FinalBurn Neo)\\{ConsoleConfigs.name()}",
+            dst_roms_folder_name=f"Arcade (FinalBurn Neo)\\{ConsoleConfigs.short_name()}",
             export_fake_roms=False,
         )
 
@@ -17,7 +17,7 @@ class CmdExportFakeRomsToFBNeo(CmdExportRomsBase):
     def __init__(self):
         super().__init__(
             roms_export_xml_name="roms-export-fbneo.xml",
-            dst_roms_folder_name=f"Arcade (FinalBurn Neo)\\{ConsoleConfigs.name()}",
+            dst_roms_folder_name=f"Arcade (FinalBurn Neo)\\{ConsoleConfigs.short_name()}",
             export_fake_roms=True,
         )
 

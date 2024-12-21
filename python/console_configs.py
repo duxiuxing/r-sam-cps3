@@ -5,7 +5,8 @@ import fnmatch
 
 class ConsoleConfigs:
     @staticmethod
-    def name():
+    def short_name():
+        # 机种简称
         return "CPS3"
 
     @staticmethod
@@ -27,5 +28,11 @@ class ConsoleConfigs:
         return False
 
     @staticmethod
-    def default_core_name():
+    def retroarch_default_core_name():
+        # 默认的 RetroArch 核心名称
         return "Arcade (FB Alpha 2012 CPS-3)"
+    
+    @staticmethod
+    def wiiflow_plugin_name():
+        # WiiFlow 的插件名称
+        return "CPS3"

@@ -24,11 +24,11 @@ class CmdExportRomsBase(CmdHandler):
         self.export_fake_roms = export_fake_roms
         if self.export_fake_roms:
             super().__init__(
-                f"{ConsoleConfigs.name()} - 导出空的 ROM 文件到 {dst_roms_folder_name}"
+                f"{ConsoleConfigs.short_name()} - 导出空的 ROM 文件到 {dst_roms_folder_name}"
             )
         else:
             super().__init__(
-                f"{ConsoleConfigs.name()} - 导出 ROM 文件到 {dst_roms_folder_name}"
+                f"{ConsoleConfigs.short_name()} - 导出 ROM 文件到 {dst_roms_folder_name}"
             )
 
     def run(self):
@@ -90,7 +90,7 @@ class CmdExportRoms(CmdExportRomsBase):
     def __init__(self):
         super().__init__(
             roms_export_xml_name="roms-export.xml",
-            dst_roms_folder_name=ConsoleConfigs.default_core_name(),
+            dst_roms_folder_name=ConsoleConfigs.retroarch_default_core_name(),
             export_fake_roms=False,
         )
 
@@ -99,7 +99,7 @@ class CmdExportFakeRoms(CmdExportRomsBase):
     def __init__(self):
         super().__init__(
             roms_export_xml_name="roms-export.xml",
-            dst_roms_folder_name=ConsoleConfigs.default_core_name(),
+            dst_roms_folder_name=ConsoleConfigs.retroarch_default_core_name(),
             export_fake_roms=True,
         )
 
