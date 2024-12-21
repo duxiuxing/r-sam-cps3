@@ -6,32 +6,34 @@ from cmd_handler import CmdHandler
 from console_configs import ConsoleConfigs
 from game_info import GameInfo
 from helper import Helper
-from local_roms import LocalRoms
+from r_sam_roms import RSamRoms
 from rom_info import RomInfo
 from wiiflow_plugins_data import WiiFlowPluginsData
 
 
-class CmdCheckLocalRomsCrc32(CmdHandler):
+class CmdCheckRSamRomsCrc32(CmdHandler):
     def __init__(self):
-        super().__init__("Console - 检查 roms 文件夹里的 .xml 文件中的 rom_crc32")
+        super().__init__("Console - 检查 roms 文件夹里配置的 CRC32 是否等于实际值")
 
     def run(self):
-        LocalRoms().CheckRomsCrc32()
+        RSamRoms().CheckRomsCrc32()
 
 
-class CmdCheckLocalRomsTitles(CmdHandler):
+class CmdCheckRSamRomsTitles(CmdHandler):
     def __init__(self):
-        super().__init__("Console - 检查 roms 文件夹里的 .xml 文件中的游戏名称")
+        super().__init__(
+            "Console - 检查 roms 文件夹里配置的游戏名称是否与 WiiFlowPluginsData 的一致"
+        )
 
     def run(self):
         # WiiFlowPluginsData 里有当前机种所有游戏的详细信息
-        # 本函数用于检查 .xml 文件中的游戏名称是否与 WiiFlowPluginsData 里的一致
-        wiiflow_plugins_data = WiiFlowPluginsData()
-        plugin_name = wiiflow_plugins_data.plugin_name
+        # 本函数用于检查 roms 文件夹里配置的游戏名称是否与 WiiFlowPluginsData 的一致
+        wiiflow_plugins_data = WiiFlowPluginsData.instance()
+        plugin_name = ConsoleConfigs.wiiflow_plugin_name()
 
-        local_roms = LocalRoms()
+        r_sam_roms = RSamRoms()
 
-        for rom_info in local_roms.rom_crc32_to_info.values():
+        for rom_info in r_sam_roms.rom_crc32_to_info.values():
             game_info = wiiflow_plugins_data.query_game_info(
                 rom_crc32=rom_info.rom_crc32
             )
@@ -56,5 +58,5 @@ class CmdCheckLocalRomsTitles(CmdHandler):
 
 
 if __name__ == "__main__":
-    CmdCheckLocalRomsCrc32().run()
-    CmdCheckLocalRomsTitles().run()
+    CmdCheckRSamRomsCrc32().run()
+    CmdCheckRSamRomsTitles().run()

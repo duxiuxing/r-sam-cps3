@@ -9,7 +9,7 @@ from local_configs import LocalConfigs
 from rom_info import RomInfo
 
 
-class LocalRoms:
+class RSamRoms:
     @staticmethod
     def compute_rom_path(rom_info):
         # 根据 rom_info 拼接 ROM 文件的路径
@@ -28,16 +28,16 @@ class LocalRoms:
             )
 
     def __init__(self):
-        # 字典的内容都来自 roms 文件夹里的各个 .xml
-        # 设置操作在 self.__reset_rom_crc32_to_info() 里
-        self.rom_crc32_to_info = {}  # rom_crc32 : RomInfo
-        self.__reset_rom_crc32_to_info()
+        # rom_crc32 为键，RomInfo 为值的字典
+        # 内容来自 roms 文件夹里的各个 .xml
+        self.rom_crc32_to_info = {}
+        self.__load_rom_xml()
 
-    def __load_roms_xml(self, xml_path):
-        if not os.path.exists(xml_path):
+    def __load_xml_file(self, xml_file_path):
+        if not os.path.exists(xml_file_path):
             return
 
-        tree = ET.parse(xml_path)
+        tree = ET.parse(xml_file_path)
         root = tree.getroot()
         rom_extension = ConsoleConfigs.rom_extension()
 
@@ -54,32 +54,29 @@ class LocalRoms:
                     en_title=rom_elem.get("en"),
                     zhcn_title=rom_elem.get("zhcn"),
                 )
-                rom_path = LocalRoms.compute_rom_path(rom_info)
+                rom_path = RSamRoms.compute_rom_path(rom_info)
                 if not os.path.exists(rom_path):
-                    print(f"Missing ROM : {rom_path}")
+                    print(f"缺失 ROM 文件 {rom_path}")
                     continue
                 else:
                     self.rom_crc32_to_info[rom_crc32] = rom_info
 
-    def __reset_rom_crc32_to_info(self):
+    def __load_rom_xml(self):
         # 本函数执行的操作如下：
-        # 1. 清空 self.rom_crc32_to_info
-        # 2. 读取 roms 文件夹里的各个 .xml
-        # 3. 重新设置 self.rom_crc32_to_info
-        self.rom_crc32_to_info.clear()
-
+        # 1. 读取 roms 文件夹里的各个 .xml
+        # 2. 设置 self.rom_crc32_to_info
         if Helper.files_in_letter_folder():
             for letter in "#ABCDEFGHIJKLMNOPQRSTUVWXYZ":
-                xml_path = os.path.join(
+                xml_file_path = os.path.join(
                     LocalConfigs.repository_folder_path(),
                     "roms\\{letter}\\{letter}.xml",
                 )
-                self.__load_roms_xml(xml_path)
+                self.__load_xml_file(xml_file_path)
         else:
-            xml_path = os.path.join(
+            xml_file_path = os.path.join(
                 LocalConfigs.repository_folder_path(), "roms\\roms.xml"
             )
-            self.__load_roms_xml(xml_path)
+            self.__load_xml_file(xml_file_path)
 
     def rom_exist(self, rom_crc32):
         return rom_crc32 in self.rom_crc32_to_info.keys()
@@ -94,9 +91,9 @@ class LocalRoms:
         self.rom_crc32_to_info[rom_crc32] = rom_info
 
     def CheckRomsCrc32(self):
-        # 本函数用于检查 .xml 文件中的 rom_crc32 是否与真实的 crc32 的一致
+        # 检查 roms 文件夹里配置的 CRC32 是否等于实际值
         for rom_crc32, rom_info in self.rom_crc32_to_info.items():
-            rom_path = LocalRoms.compute_rom_path(rom_info)
+            rom_path = RSamRoms.compute_rom_path(rom_info)
             rom_crc32_compute = Helper.compute_crc32(rom_path)
             if rom_crc32 != rom_crc32_compute:
                 print(f"crc32 属性不一致 {rom_path}")
@@ -110,5 +107,5 @@ class LocalRoms:
 
 
 if __name__ == "__main__":
-    local_roms = LocalRoms()
-    local_roms.query_rom_info("00000000")
+    r_sam_roms = RSamRoms()
+    r_sam_roms.query_rom_info("00000000")

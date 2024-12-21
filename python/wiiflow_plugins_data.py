@@ -11,6 +11,15 @@ from local_configs import LocalConfigs
 
 
 class WiiFlowPluginsData:
+    __instance = None
+
+    @staticmethod
+    def instance():
+        # 获取单例实例
+        if WiiFlowPluginsData.__instance is None:
+            WiiFlowPluginsData()
+        return WiiFlowPluginsData.__instance
+
     @staticmethod
     def ini_file_path():
         plugin_name = ConsoleConfigs.wiiflow_plugin_name()
@@ -27,7 +36,69 @@ class WiiFlowPluginsData:
             f"wii\\wiiflow\\plugins_data\\{plugin_name}\\{plugin_name}.xml",
         )
 
+    @staticmethod
+    def compute_png_cover_file_path(game_info):
+        # 根据 game_info 拼接 .png 格式的封面文件路径
+        plugin_name = ConsoleConfigs.wiiflow_plugin_name()
+
+        if Helper.files_in_letter_folder():
+            letter = game_info.name.upper()[0]
+            if letter not in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
+                letter = "#"
+            return os.path.join(
+                LocalConfigs.repository_folder_path(),
+                f"wii\\wiiflow\\boxcovers\\\{plugin_name}\\{letter}\\{game_info.rom_title}{ConsoleConfigs.rom_extension()}.png",
+            )
+        else:
+            return os.path.join(
+                LocalConfigs.repository_folder_path(),
+                f"wii\\wiiflow\\boxcovers\\\{plugin_name}\\{game_info.rom_title}{ConsoleConfigs.rom_extension()}.png",
+            )
+
+    @staticmethod
+    def compute_wfc_cover_file_path(game_info):
+        # 根据 game_info 拼接 .wfc 格式的封面文件路径
+        plugin_name = ConsoleConfigs.wiiflow_plugin_name()
+
+        if Helper.files_in_letter_folder():
+            letter = game_info.name.upper()[0]
+            if letter not in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
+                letter = "#"
+            return os.path.join(
+                LocalConfigs.repository_folder_path(),
+                f"wii\\wiiflow\\cache\\\{plugin_name}\\{letter}\\{game_info.rom_title}{ConsoleConfigs.rom_extension()}.wfc",
+            )
+        else:
+            return os.path.join(
+                LocalConfigs.repository_folder_path(),
+                f"wii\\wiiflow\\cache\\\{plugin_name}\\{game_info.rom_title}{ConsoleConfigs.rom_extension()}.wfc",
+            )
+
+    @staticmethod
+    def compute_snapshot_file_path(game_info):
+        # 根据 game_info 拼接游戏截图文件路径
+        plugin_name = ConsoleConfigs.wiiflow_plugin_name()
+
+        if Helper.files_in_letter_folder():
+            letter = game_info.name.upper()[0]
+            if letter not in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
+                letter = "#"
+            return os.path.join(
+                LocalConfigs.repository_folder_path(),
+                f"wii\\wiiflow\\snapshots\\\{plugin_name}\\{letter}\\{game_info.rom_title}.png",
+            )
+        else:
+            return os.path.join(
+                LocalConfigs.repository_folder_path(),
+                f"wii\\wiiflow\\snapshots\\\{plugin_name}\\{game_info.rom_title}.png",
+            )
+
     def __init__(self):
+        if WiiFlowPluginsData.__instance is not None:
+            raise Exception("请使用 WiiFlowPluginsData.instance() 获取实例")
+        else:
+            WiiFlowPluginsData.__instance = self
+
         # game_id 为键，GameInfo 为值的字典
         # 内容来自 WiiFlowPluginsData.xml_file_path()
         self.game_id_to_info = {}
@@ -120,7 +191,7 @@ class WiiFlowPluginsData:
     ):
         # 根据 rom_crc32 或 rom_title 查询游戏信息
         # Args:
-        #     rom_crc32 (str): ROM 文件的 CRC32 值，查找优先级高
+        #     rom_crc32 (str): ROM 文件的 CRC32，查找优先级高
         #     rom_title (str): ROM 文件的标题，比如 1941.zip 的标题就是 1941，查找优先级低
         # Returns:
         #     找到则返回 GameInfo 对象，仅以下字段有效：

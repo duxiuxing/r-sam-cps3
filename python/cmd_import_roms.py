@@ -8,7 +8,7 @@ from console_configs import ConsoleConfigs
 from game_info import GameInfo
 from helper import Helper
 from local_configs import LocalConfigs
-from local_roms import LocalRoms
+from python.r_sam_roms import RSamRoms
 from rom_info import RomInfo
 from wiiflow_plugins_data import WiiFlowPluginsData
 
@@ -22,9 +22,9 @@ class CmdImportRoms(CmdHandler):
         # 1. 新的 ROM 文件会被转移到 roms 文件夹，对应的 RomInfo 会
         #    记录在 roms-new.xml，需要进一步手动合入 roms.xml；
         # 2. 重复的 ROM 文件不会被转移，对应的 RomInfo 会记录在 roms-exist.xml
-        wiiflow_plugins_data = WiiFlowPluginsData()
+        wiiflow_plugins_data = WiiFlowPluginsData.instance()
 
-        local_roms = LocalRoms()
+        r_sam_roms = RSamRoms()
 
         exist_rom_crc32_to_name = {}
         roms_new_xml_root = ET.Element("Game-List")
@@ -43,7 +43,7 @@ class CmdImportRoms(CmdHandler):
 
             src_rom_path = os.path.join(import_folder_path, src_rom_name)
             src_rom_crc32 = Helper.compute_crc32(src_rom_path)
-            if local_roms.rom_exist(src_rom_crc32):
+            if r_sam_roms.rom_exist(src_rom_crc32):
                 exist_rom_crc32_to_name[src_rom_crc32] = src_rom_name
                 continue
 
@@ -78,7 +78,7 @@ class CmdImportRoms(CmdHandler):
             if ConsoleConfigs.rom_support_custom_title():
                 # 支持 ROM 文件自定义命名的机种，导入时以 DB 中的命名为准
                 rom_info.rom_title = game_info.rom_title
-            local_roms.add_rom_info(src_rom_crc32, rom_info)
+            r_sam_roms.add_rom_info(src_rom_crc32, rom_info)
 
             attribs = {
                 "crc32": rom_info.rom_crc32,
@@ -98,7 +98,7 @@ class CmdImportRoms(CmdHandler):
             ):
                 print(f"新游戏 {src_rom_name} 自动重命名为 {game_info.rom_title}")
 
-            dst_rom_path = LocalRoms.compute_rom_path(rom_info)
+            dst_rom_path = RSamRoms.compute_rom_path(rom_info)
             if os.path.exists(dst_rom_path):
                 print(f"新游戏 {src_rom_name} 已经存在，但不在 .xml 文件中")
             elif Helper.verify_folder_exist_ex(os.path.dirname(dst_rom_path)):
@@ -114,7 +114,7 @@ class CmdImportRoms(CmdHandler):
         if len(exist_rom_crc32_to_name) > 0:
             roms_exist_xml_root = ET.Element("Game-List")
             for rom_crc32, rom_name in exist_rom_crc32_to_name.items():
-                rom_info = local_roms.query_rom_info(rom_crc32)
+                rom_info = r_sam_roms.query_rom_info(rom_crc32)
                 game_elem = ET.SubElement(
                     roms_exist_xml_root, "Game", {"name": rom_info.game_name}
                 )

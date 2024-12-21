@@ -10,11 +10,11 @@ from local_configs import LocalConfigs
 class Helper:
     @staticmethod
     def compute_crc32(file_path):
-        # 计算指定文件的 CRC32 值
+        # 计算指定文件的 CRC32
         # Args:
         #     file_path (str): 文件路径，通常是游戏的 ROM 文件
         # Returns:
-        #     str: 文件的 CRC32 值，八位大写十六进制字符串
+        #     str: 文件的 CRC32，八位大写十六进制字符串
         with open(file_path, "rb") as file:
             data = file.read()
             crc = zlib.crc32(data)
@@ -158,8 +158,10 @@ class Helper:
     @staticmethod
     def files_in_letter_folder():
         # 如果 roms 文件夹里有 roms.xml，则返回 False，否则返回 True
-        xml_path = os.path.join(LocalConfigs.repository_folder_path(), "roms\\roms.xml")
-        if os.path.exists(xml_path):
+        xml_file_path = os.path.join(
+            LocalConfigs.repository_folder_path(), "roms\\roms.xml"
+        )
+        if os.path.exists(xml_file_path):
             return False
         else:
             return True
