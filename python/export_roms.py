@@ -13,12 +13,12 @@ from rom_info import RomInfo
 class ExportRomsBase:
     def __init__(
         self,
-        roms_export_xml_name,
+        xml_file_name,
         dst_roms_folder_name,
         export_fake_roms,
     ):
         self.rom_crc32_to_dst_rom_path = {}
-        self.roms_export_xml_name = roms_export_xml_name
+        self.xml_file_name = xml_file_name
         self.dst_roms_folder_name = dst_roms_folder_name
         self.export_fake_roms = export_fake_roms
 
@@ -32,7 +32,7 @@ class ExportRomsBase:
 
         xml_file_path = os.path.join(
             LocalConfigs.repository_folder_path(),
-            f"export-config-files\\{self.roms_export_xml_name}",
+            f"export-config\\{self.xml_file_name}",
         )
 
         if not os.path.exists(xml_file_path):
@@ -87,7 +87,7 @@ class ExportRomsBase:
 class ExportRoms(ExportRomsBase):
     def __init__(self):
         super().__init__(
-            roms_export_xml_name="roms-export.xml",
+            xml_file_name="roms-export.xml",
             dst_roms_folder_name=ConsoleConfigs.retroarch_default_core_name(),
             export_fake_roms=False,
         )
@@ -96,7 +96,7 @@ class ExportRoms(ExportRomsBase):
 class ExportFakeRoms(ExportRomsBase):
     def __init__(self):
         super().__init__(
-            roms_export_xml_name="roms-export.xml",
+            xml_file_name="roms-export.xml",
             dst_roms_folder_name=ConsoleConfigs.retroarch_default_core_name(),
             export_fake_roms=True,
         )

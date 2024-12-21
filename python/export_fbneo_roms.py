@@ -7,7 +7,7 @@ from console_configs import ConsoleConfigs
 class ExportFBNeoRoms(ExportRomsBase):
     def __init__(self):
         super().__init__(
-            roms_export_xml_name="fbneo-roms-export.xml",
+            xml_file_name="fbneo-roms-export.xml",
             dst_roms_folder_name=f"Arcade (FinalBurn Neo)\\{ConsoleConfigs.short_name()}",
             export_fake_roms=False,
         )
@@ -16,7 +16,7 @@ class ExportFBNeoRoms(ExportRomsBase):
 class ExportFakeFBNeoRoms(ExportRomsBase):
     def __init__(self):
         super().__init__(
-            roms_export_xml_name="fbneo-roms-export.xml",
+            xml_file_name="fbneo-roms-export.xml",
             dst_roms_folder_name=f"Arcade (FinalBurn Neo)\\{ConsoleConfigs.short_name()}",
             export_fake_roms=True,
         )
