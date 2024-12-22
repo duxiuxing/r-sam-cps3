@@ -29,7 +29,7 @@ class ExportRomsBase:
         # 2. 根据 rom_crc32 在 RSamRoms 中查询对应的 rom_info
         # 3. 根据 rom_info 拼接出 src_path 和 dst_path
         # 4. 将 src_path 复制到 dst_path，如果目标文件已经存在会跳过
-        r_sam_roms = RSamRoms()
+        r_sam_roms = RSamRoms.instance()
 
         xml_file_path = os.path.join(
             LocalConfigs.repository_folder_path(),

@@ -21,7 +21,7 @@ class ImportRoms:
         # 2. 重复的 ROM 文件不会被转移，对应的 RomInfo 会记录在 roms-exist.xml
         wiiflow_plugins_data = WiiFlowPluginsData.instance()
 
-        r_sam_roms = RSamRoms()
+        r_sam_roms = RSamRoms.instance()
 
         exist_rom_crc32_to_name = {}
         roms_new_xml_root = ET.Element("Game-List")

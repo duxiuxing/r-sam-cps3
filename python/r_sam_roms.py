@@ -10,6 +10,15 @@ from common.rom_info import RomInfo
 
 
 class RSamRoms:
+    __instance = None
+
+    @staticmethod
+    def instance():
+        # 获取单例实例
+        if RSamRoms.__instance is None:
+            RSamRoms()
+        return RSamRoms.__instance
+
     @staticmethod
     def compute_rom_path(rom_info):
         # 根据 rom_info 拼接 ROM 文件的路径
@@ -27,7 +36,29 @@ class RSamRoms:
                 f"roms\\{rom_info.game_name}\\{rom_info.rom_crc32}{ConsoleConfigs.rom_extension()}",
             )
 
+    @staticmethod
+    def compute_image_path(rom_info, sub_folder):
+        # 根据 rom_info 和 sub_folder 拼接图片文件的路径
+        if Helper.files_in_letter_folder():
+            letter = rom_info.game_name.upper()[0]
+            if letter not in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
+                letter = "#"
+            return os.path.join(
+                LocalConfigs.repository_folder_path(),
+                f"image\\{sub_folder}\\{letter}\\{rom_info.game_name}.png",
+            )
+        else:
+            return os.path.join(
+                LocalConfigs.repository_folder_path(),
+                f"image\\{sub_folder}\\{rom_info.game_name}.png",
+            )
+
     def __init__(self):
+        if RSamRoms.__instance is not None:
+            raise Exception("请使用 RSamRoms.instance() 获取实例")
+        else:
+            RSamRoms.__instance = self
+
         # rom_crc32 为键，RomInfo 为值的字典
         # 内容来自 roms 文件夹里的各个 .xml
         self.rom_crc32_to_info = {}

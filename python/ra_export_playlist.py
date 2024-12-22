@@ -9,7 +9,6 @@ from common.local_configs import LocalConfigs
 from common.rom_info import RomInfo
 
 from export_roms import ExportFakeRoms
-from r_sam_roms import RSamRoms
 
 
 class RA_ExportPlaylist:
@@ -27,8 +26,8 @@ class RA_ExportPlaylist:
         lpl_file.write('  "default_core_path": "",\n')
         lpl_file.write('  "default_core_name": "",\n')
         lpl_file.write('  "label_display_mode": 0,\n')
-        lpl_file.write('  "right_thumbnail_mode": 0,\n')
-        lpl_file.write('  "left_thumbnail_mode": 0,\n')
+        lpl_file.write('  "right_thumbnail_mode": 4,\n')
+        lpl_file.write('  "left_thumbnail_mode": 2,\n')
         lpl_file.write('  "thumbnail_match_mode": 0,\n')
         lpl_file.write('  "sort_mode": 0,\n')
         lpl_file.write('  "items": [\n')
@@ -37,8 +36,29 @@ class RA_ExportPlaylist:
         lpl_file.write("\n  ]\n")
         lpl_file.write("}")
 
-    def export(self):
-        r_sam_roms = RSamRoms()
+    def export_assets_xmb_monochrome_png(self):
+        src_playlist = os.path.join(
+            LocalConfigs.repository_folder_path(),
+            "image\\playlist\\playlist.png",
+        )
+        dst_playlist = os.path.join(
+            LocalConfigs.export_root_folder_path(),
+            f"RetroArch\\assets\\xmb\\monochrome\\png\\{self.lpl_file_name}.png",
+        )
+        Helper.copy_file(src_playlist, dst_playlist)
+
+        src_playlist_content = os.path.join(
+            LocalConfigs.repository_folder_path(),
+            "image\\playlist\\playlist-content.png",
+        )
+        dst_playlist_content = os.path.join(
+            LocalConfigs.export_root_folder_path(),
+            f"RetroArch\\assets\\xmb\\monochrome\\png\\{self.lpl_file_name}-content.png",
+        )
+        Helper.copy_file(src_playlist_content, dst_playlist_content)
+
+    def run(self):
+        self.export_assets_xmb_monochrome_png()
 
         xml_file_path = os.path.join(
             LocalConfigs.repository_folder_path(),
@@ -76,9 +96,8 @@ class RA_ExportPlaylist:
                     lpl_file.write(",\n    {\n")
 
                 rom_crc32 = rom_elem.get("crc32").rjust(8, "0")
-                lpl_file.write(
-                    f'      "path": "{self.rom_crc32_to_dst_rom_path[rom_crc32]}",\n'
-                )
+                path = self.rom_crc32_to_dst_rom_path[rom_crc32].replace("\\", "\\\\")
+                lpl_file.write(f'      "path": "{path}",\n')
                 label = Helper.remove_region(rom_elem.get(self.label_in_xml))
                 lpl_file.write(f'      "label": "{label}",\n')
                 lpl_file.write('      "core_path": "DETECT",\n')
@@ -100,11 +119,11 @@ if __name__ == "__main__":
         rom_crc32_to_dst_rom_path=export_roms.rom_crc32_to_dst_rom_path,
         xml_file_name=export_roms.xml_file_name,
         label_in_xml="zhcn",
-    ).export()
+    ).run()
 
     RA_ExportPlaylist(
         lpl_file_name=f"R-Sam - {ConsoleConfigs.en_name()} Games",
         rom_crc32_to_dst_rom_path=export_roms.rom_crc32_to_dst_rom_path,
         xml_file_name=export_roms.xml_file_name,
         label_in_xml="en",
-    ).export()
+    ).run()

@@ -17,7 +17,7 @@ class CmdCheckRSamRomsCrc32(CmdHandler):
         super().__init__("Console - 检查 roms 文件夹里配置的 CRC32 是否等于实际值")
 
     def run(self):
-        RSamRoms().CheckRomsCrc32()
+        RSamRoms.instance().CheckRomsCrc32()
 
 
 class CmdCheckRSamRomsTitles(CmdHandler):
@@ -32,7 +32,7 @@ class CmdCheckRSamRomsTitles(CmdHandler):
         wiiflow_plugins_data = WiiFlowPluginsData.instance()
         plugin_name = ConsoleConfigs.wiiflow_plugin_name()
 
-        r_sam_roms = RSamRoms()
+        r_sam_roms = RSamRoms.instance()
 
         for rom_info in r_sam_roms.rom_crc32_to_info.values():
             game_info = wiiflow_plugins_data.query_game_info(
