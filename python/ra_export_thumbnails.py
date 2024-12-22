@@ -9,7 +9,6 @@ from common.local_configs import LocalConfigs
 from common.rom_info import RomInfo
 
 from r_sam_roms import RSamRoms
-from ra_export_roms import RA_ExportFakeRoms
 
 
 class RA_ExportThumbnails:
@@ -76,23 +75,3 @@ class RA_ExportThumbnails:
                 f"RetroArch\\thumbnails\\{self.lpl_file_name}\\Named_Titles\\{label}.png",
             )
             Helper.copy_file(src_title_path, dst_title_path)
-
-
-if __name__ == "__main__":
-    export_roms = RA_ExportFakeRoms()
-    export_roms.run()
-
-    RA_ExportThumbnails(
-        lpl_file_name=f"认真玩 - {ConsoleConfigs.zhcn_name()}游戏",
-        rom_crc32_to_dst_rom_path=export_roms.rom_crc32_to_dst_rom_path,
-        xml_file_name=export_roms.xml_file_name,
-        label_in_xml="zhcn",
-        src_boxart_folder="disc",
-    ).run()
-
-    RA_ExportThumbnails(
-        lpl_file_name=f"R-Sam - {ConsoleConfigs.en_name()} Games",
-        rom_crc32_to_dst_rom_path=export_roms.rom_crc32_to_dst_rom_path,
-        xml_file_name=export_roms.xml_file_name,
-        label_in_xml="en",
-    ).run()

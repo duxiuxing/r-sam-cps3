@@ -8,8 +8,6 @@ from common.helper import Helper
 from common.local_configs import LocalConfigs
 from common.rom_info import RomInfo
 
-from ra_export_roms import RA_ExportFakeRoms
-
 
 class RA_ExportPlaylist:
     def __init__(
@@ -108,22 +106,3 @@ class RA_ExportPlaylist:
 
             self.__write_footer(lpl_file)
             lpl_file.close()
-
-
-if __name__ == "__main__":
-    export_roms = RA_ExportFakeRoms()
-    export_roms.run()
-
-    RA_ExportPlaylist(
-        lpl_file_name=f"认真玩 - {ConsoleConfigs.zhcn_name()}游戏",
-        rom_crc32_to_dst_rom_path=export_roms.rom_crc32_to_dst_rom_path,
-        xml_file_name=export_roms.xml_file_name,
-        label_in_xml="zhcn",
-    ).run()
-
-    RA_ExportPlaylist(
-        lpl_file_name=f"R-Sam - {ConsoleConfigs.en_name()} Games",
-        rom_crc32_to_dst_rom_path=export_roms.rom_crc32_to_dst_rom_path,
-        xml_file_name=export_roms.xml_file_name,
-        label_in_xml="en",
-    ).run()
