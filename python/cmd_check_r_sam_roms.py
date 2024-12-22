@@ -2,12 +2,13 @@
 
 import os
 
-from cmd_handler import CmdHandler
-from console_configs import ConsoleConfigs
-from game_info import GameInfo
-from helper import Helper
+from common.cmd_handler import CmdHandler
+from common.console_configs import ConsoleConfigs
+from common.game_info import GameInfo
+from common.helper import Helper
+from common.rom_info import RomInfo
+
 from r_sam_roms import RSamRoms
-from rom_info import RomInfo
 from wiiflow_plugins_data import WiiFlowPluginsData
 
 

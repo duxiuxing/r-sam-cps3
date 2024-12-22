@@ -3,11 +3,12 @@
 import os
 import xml.etree.ElementTree as ET
 
-from console_configs import ConsoleConfigs
-from helper import Helper
-from local_configs import LocalConfigs
+from common.console_configs import ConsoleConfigs
+from common.helper import Helper
+from common.local_configs import LocalConfigs
+from common.rom_info import RomInfo
+
 from r_sam_roms import RSamRoms
-from rom_info import RomInfo
 
 
 class ExportRomsBase:

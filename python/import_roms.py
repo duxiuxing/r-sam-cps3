@@ -3,20 +3,17 @@
 import os
 import xml.etree.ElementTree as ET
 
-from cmd_handler import CmdHandler
-from console_configs import ConsoleConfigs
-from game_info import GameInfo
-from helper import Helper
-from local_configs import LocalConfigs
-from python.r_sam_roms import RSamRoms
-from rom_info import RomInfo
+from common.console_configs import ConsoleConfigs
+from common.game_info import GameInfo
+from common.helper import Helper
+from common.local_configs import LocalConfigs
+from common.rom_info import RomInfo
+
+from r_sam_roms import RSamRoms
 from wiiflow_plugins_data import WiiFlowPluginsData
 
 
-class CmdImportRoms(CmdHandler):
-    def __init__(self):
-        super().__init__("Console - 导入 roms-import 文件夹里的 ROM 文件")
-
+class ImportRoms:
     def run(self):
         # 本函数用于导入 roms-import 文件夹里的 ROM 文件
         # 1. 新的 ROM 文件会被转移到 roms 文件夹，对应的 RomInfo 会
@@ -149,4 +146,4 @@ class CmdImportRoms(CmdHandler):
 
 
 if __name__ == "__main__":
-    CmdImportRoms().run()
+    ImportRoms().run()

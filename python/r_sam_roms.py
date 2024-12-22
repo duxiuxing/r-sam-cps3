@@ -3,10 +3,10 @@
 import os
 import xml.etree.ElementTree as ET
 
-from helper import Helper
-from console_configs import ConsoleConfigs
-from local_configs import LocalConfigs
-from rom_info import RomInfo
+from common.console_configs import ConsoleConfigs
+from common.helper import Helper
+from common.local_configs import LocalConfigs
+from common.rom_info import RomInfo
 
 
 class RSamRoms:

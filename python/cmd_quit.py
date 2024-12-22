@@ -1,6 +1,6 @@
 # -- coding: UTF-8 --
 
-from cmd_handler import CmdHandler
+from common.cmd_handler import CmdHandler
 
 
 class CmdQuit(CmdHandler):

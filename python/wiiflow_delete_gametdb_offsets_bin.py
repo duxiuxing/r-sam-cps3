@@ -2,11 +2,11 @@
 
 import os
 
-from console_configs import ConsoleConfigs
-from local_configs import LocalConfigs
+from common.console_configs import ConsoleConfigs
+from common.local_configs import LocalConfigs
 
 
-class DeleteGameTdbOffsetBin:
+class WiiFlow_DeleteGameTdbOffsetBin:
     def run(self):
         # gametdb_offsets.bin 是 WiiFlow 生成的缓存文件，删掉才会重新生成
         plugin_name = ConsoleConfigs.wiiflow_plugin_name()

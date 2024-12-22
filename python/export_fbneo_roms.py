@@ -1,7 +1,7 @@
 # -- coding: UTF-8 --
 
+from common.console_configs import ConsoleConfigs
 from export_roms import ExportRomsBase
-from console_configs import ConsoleConfigs
 
 
 class ExportFBNeoRoms(ExportRomsBase):

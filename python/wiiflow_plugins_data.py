@@ -4,10 +4,11 @@ import os
 import xml.etree.ElementTree as ET
 
 from configparser import ConfigParser
-from console_configs import ConsoleConfigs
-from game_info import GameInfo
-from helper import Helper
-from local_configs import LocalConfigs
+
+from common.console_configs import ConsoleConfigs
+from common.game_info import GameInfo
+from common.helper import Helper
+from common.local_configs import LocalConfigs
 
 
 class WiiFlowPluginsData:

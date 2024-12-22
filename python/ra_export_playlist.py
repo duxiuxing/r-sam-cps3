@@ -3,16 +3,20 @@
 import os
 import xml.etree.ElementTree as ET
 
-from console_configs import ConsoleConfigs
+from common.console_configs import ConsoleConfigs
+from common.helper import Helper
+from common.local_configs import LocalConfigs
+from common.rom_info import RomInfo
+
 from export_roms import ExportFakeRoms
-from helper import Helper
-from local_configs import LocalConfigs
 from r_sam_roms import RSamRoms
-from rom_info import RomInfo
 
 
-class RetroArchPlaylist:
-    def __init__(self, rom_crc32_to_dst_rom_path, xml_file_name, label_in_xml):
+class RA_ExportPlaylist:
+    def __init__(
+        self, lpl_file_name, rom_crc32_to_dst_rom_path, xml_file_name, label_in_xml
+    ):
+        self.lpl_file_name = lpl_file_name
         self.rom_crc32_to_dst_rom_path = rom_crc32_to_dst_rom_path
         self.xml_file_name = xml_file_name
         self.label_in_xml = label_in_xml
@@ -33,7 +37,7 @@ class RetroArchPlaylist:
         lpl_file.write("\n  ]\n")
         lpl_file.write("}")
 
-    def export(self, lpl_file_name):
+    def export(self):
         r_sam_roms = RSamRoms()
 
         xml_file_path = os.path.join(
@@ -47,7 +51,7 @@ class RetroArchPlaylist:
 
         lpl_file_path = os.path.join(
             LocalConfigs.export_root_folder_path(),
-            f"RetroArch\\playlists\\{lpl_file_name}.lpl",
+            f"RetroArch\\playlists\\{self.lpl_file_name}.lpl",
         )
 
         if os.path.exists(lpl_file_path):
@@ -80,7 +84,7 @@ class RetroArchPlaylist:
                 lpl_file.write('      "core_path": "DETECT",\n')
                 lpl_file.write('      "core_name": "DETECT",\n')
                 lpl_file.write(f'      "crc32": "{rom_crc32}|crc",\n')
-                lpl_file.write(f'      "db_name": "{lpl_file_name}.lpl"\n')
+                lpl_file.write(f'      "db_name": "{self.lpl_file_name}.lpl"\n')
                 lpl_file.write("    }")
 
             self.__write_footer(lpl_file)
@@ -91,10 +95,16 @@ if __name__ == "__main__":
     export_roms = ExportFakeRoms()
     export_roms.run()
 
-    RetroArchPlaylist(
-        export_roms.rom_crc32_to_dst_rom_path, export_roms.xml_file_name, "zhcn"
-    ).export(f"认真玩 - {ConsoleConfigs.zhcn_name()}游戏")
+    RA_ExportPlaylist(
+        lpl_file_name=f"认真玩 - {ConsoleConfigs.zhcn_name()}游戏",
+        rom_crc32_to_dst_rom_path=export_roms.rom_crc32_to_dst_rom_path,
+        xml_file_name=export_roms.xml_file_name,
+        label_in_xml="zhcn",
+    ).export()
 
-    RetroArchPlaylist(
-        export_roms.rom_crc32_to_dst_rom_path, export_roms.xml_file_name, "en"
-    ).export(f"R-Sam - {ConsoleConfigs.en_name()} Games")
+    RA_ExportPlaylist(
+        lpl_file_name=f"R-Sam - {ConsoleConfigs.en_name()} Games",
+        rom_crc32_to_dst_rom_path=export_roms.rom_crc32_to_dst_rom_path,
+        xml_file_name=export_roms.xml_file_name,
+        label_in_xml="en",
+    ).export()

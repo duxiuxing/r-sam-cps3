@@ -3,8 +3,8 @@
 import os
 import xml.etree.ElementTree as ET
 
-from local_configs import LocalConfigs
-from helper import Helper
+from common.helper import Helper
+from common.local_configs import LocalConfigs
 
 
 class ExportFiles:

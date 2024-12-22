@@ -4,7 +4,7 @@ import os
 import shutil
 import zlib
 
-from local_configs import LocalConfigs
+from common.local_configs import LocalConfigs
 
 
 class Helper:
