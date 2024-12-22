@@ -10,6 +10,14 @@ class ConsoleConfigs:
         return "CPS3"
 
     @staticmethod
+    def en_name():
+        return "CPS3 Arcade"
+
+    @staticmethod
+    def zhcn_name():
+        return "CPS3 街机"
+
+    @staticmethod
     def rom_extension():
         return ".zip"
 
@@ -31,7 +39,7 @@ class ConsoleConfigs:
     def retroarch_default_core_name():
         # 默认的 RetroArch 核心名称
         return "Arcade (FB Alpha 2012 CPS-3)"
-    
+
     @staticmethod
     def wiiflow_plugin_name():
         # WiiFlow 的插件名称
