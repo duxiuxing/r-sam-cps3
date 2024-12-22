@@ -83,25 +83,3 @@ class ExportRomsBase:
             print(f"导出空的 ROM 文件到 {self.dst_roms_folder_name}")
         else:
             print(f"导出 ROM 文件到 {self.dst_roms_folder_name}")
-
-
-class ExportRoms(ExportRomsBase):
-    def __init__(self):
-        super().__init__(
-            xml_file_name="roms-export.xml",
-            dst_roms_folder_name=ConsoleConfigs.retroarch_default_core_name(),
-            export_fake_roms=False,
-        )
-
-
-class ExportFakeRoms(ExportRomsBase):
-    def __init__(self):
-        super().__init__(
-            xml_file_name="roms-export.xml",
-            dst_roms_folder_name=ConsoleConfigs.retroarch_default_core_name(),
-            export_fake_roms=True,
-        )
-
-
-if __name__ == "__main__":
-    ExportFakeRoms().run()

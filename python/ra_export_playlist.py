@@ -8,7 +8,7 @@ from common.helper import Helper
 from common.local_configs import LocalConfigs
 from common.rom_info import RomInfo
 
-from export_roms import ExportFakeRoms
+from ra_export_roms import RA_ExportFakeRoms
 
 
 class RA_ExportPlaylist:
@@ -111,7 +111,7 @@ class RA_ExportPlaylist:
 
 
 if __name__ == "__main__":
-    export_roms = ExportFakeRoms()
+    export_roms = RA_ExportFakeRoms()
     export_roms.run()
 
     RA_ExportPlaylist(

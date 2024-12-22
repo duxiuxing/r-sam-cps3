@@ -8,8 +8,8 @@ from common.helper import Helper
 from common.local_configs import LocalConfigs
 from common.rom_info import RomInfo
 
-from export_roms import ExportFakeRoms
 from r_sam_roms import RSamRoms
+from ra_export_roms import RA_ExportFakeRoms
 
 
 class RA_ExportThumbnails:
@@ -79,7 +79,7 @@ class RA_ExportThumbnails:
 
 
 if __name__ == "__main__":
-    export_roms = ExportFakeRoms()
+    export_roms = RA_ExportFakeRoms()
     export_roms.run()
 
     RA_ExportThumbnails(

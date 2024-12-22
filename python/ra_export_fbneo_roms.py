@@ -1,10 +1,10 @@
 # -- coding: UTF-8 --
 
 from common.console_configs import ConsoleConfigs
-from export_roms import ExportRomsBase
+from export_roms_base import ExportRomsBase
 
 
-class ExportFBNeoRoms(ExportRomsBase):
+class RA_ExportFBNeoRoms(ExportRomsBase):
     def __init__(self):
         super().__init__(
             xml_file_name="fbneo-roms-export.xml",
@@ -13,7 +13,7 @@ class ExportFBNeoRoms(ExportRomsBase):
         )
 
 
-class ExportFakeFBNeoRoms(ExportRomsBase):
+class RA_ExportFakeFBNeoRoms(ExportRomsBase):
     def __init__(self):
         super().__init__(
             xml_file_name="fbneo-roms-export.xml",
@@ -23,4 +23,4 @@ class ExportFakeFBNeoRoms(ExportRomsBase):
 
 
 if __name__ == "__main__":
-    ExportFakeFBNeoRoms().run()
+    RA_ExportFakeFBNeoRoms().run()

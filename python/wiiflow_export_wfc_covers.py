@@ -7,7 +7,7 @@ from common.game_info import GameInfo
 from common.helper import Helper
 from common.local_configs import LocalConfigs
 
-from export_roms import ExportFakeRoms
+from ra_export_roms import RA_ExportFakeRoms
 from wiiflow_plugins_data import WiiFlowPluginsData
 
 
@@ -42,7 +42,7 @@ class WiiFlow_ExportWfcCovers:
 
 
 if __name__ == "__main__":
-    export_roms = ExportFakeRoms()
+    export_roms = RA_ExportFakeRoms()
     export_roms.run()
 
     WiiFlow_ExportWfcCovers(export_roms.rom_crc32_to_dst_rom_path).run()
