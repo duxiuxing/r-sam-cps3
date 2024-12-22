@@ -10,7 +10,7 @@ from local_configs import LocalConfigs
 from wiiflow_plugins_data import WiiFlowPluginsData
 
 
-class ExportWfcCoverFiles:
+class ExportWiiFlowWfcCovers:
     def __init__(self, rom_crc32_to_dst_rom_path):
         self.rom_crc32_to_dst_rom_path = rom_crc32_to_dst_rom_path
 
@@ -44,4 +44,4 @@ if __name__ == "__main__":
     export_roms = ExportFakeRoms()
     export_roms.run()
 
-    ExportWfcCoverFiles(export_roms.rom_crc32_to_dst_rom_path).run()
+    ExportWiiFlowWfcCovers(export_roms.rom_crc32_to_dst_rom_path).run()
