@@ -5,6 +5,7 @@ import xml.etree.ElementTree as ET
 
 from common.console_configs import ConsoleConfigs
 from common.helper import Helper
+from common.label_value_en import LabelValueEn
 from common.local_configs import LocalConfigs
 from common.rom_info import RomInfo
 
@@ -12,32 +13,38 @@ from r_sam_roms import RSamRoms
 
 
 class RA_ExportThumbnails:
-    def __init__(
-        self,
-        lpl_file_name,
-        rom_crc32_to_dst_rom_path,
-        xml_file_name,
-        label_in_xml,
-        src_boxart_folder="boxart",
-        src_snap_folder="snap",
-        src_title_folder="title",
-    ):
-        self.lpl_file_name = lpl_file_name
-        self.rom_crc32_to_dst_rom_path = rom_crc32_to_dst_rom_path
-        self.xml_file_name = xml_file_name
-        self.label_in_xml = label_in_xml
-        self.src_boxart_folder = src_boxart_folder
-        self.src_snap_folder = src_snap_folder
-        self.src_title_folder = src_title_folder
+    @staticmethod
+    def default_src_boxart_folder():
+        return "boxart"
+
+    @staticmethod
+    def default_src_snap_folder():
+        return "snap"
+
+    @staticmethod
+    def default_src_title_folder():
+        return "title"
+
+    def __init__(self):
+        self.playlist_name = None
+        self.export_roms = None
+        self.label_value = LabelValueEn()
+        self.src_boxart_folder = RA_ExportThumbnails.default_src_boxart_folder()
+        self.src_snap_folder = RA_ExportThumbnails.default_src_snap_folder()
+        self.src_title_folder = RA_ExportThumbnails.default_src_title_folder()
 
     def run(self):
+        if self.playlist_name is None:
+            print("RA_ExportThumbnails 实例未指定 .playlist_name")
+            return
+
+        if self.export_roms is None:
+            print("RA_ExportThumbnails 实例未指定 .export_roms")
+            return
+
         r_sam_roms = RSamRoms.instance()
 
-        xml_file_path = os.path.join(
-            LocalConfigs.repository_folder_path(),
-            f"export-config\\{self.xml_file_name}",
-        )
-
+        xml_file_path = self.export_roms.xml_file_path()
         if not os.path.exists(xml_file_path):
             print(f"无效的文件：{xml_file_path}")
             return
@@ -49,21 +56,21 @@ class RA_ExportThumbnails:
             rom_crc32 = rom_elem.get("crc32").rjust(8, "0")
             rom_info = r_sam_roms.query_rom_info(rom_crc32)
 
-            label = Helper.remove_region(rom_elem.get(self.label_in_xml))
+            image_name = self.label_value.parse(rom_elem)
 
             src_boxart_path = RSamRoms.compute_image_path(
                 rom_info, self.src_boxart_folder
             )
             dst_boxart_path = os.path.join(
                 LocalConfigs.export_root_folder_path(),
-                f"RetroArch\\thumbnails\\{self.lpl_file_name}\\Named_Boxarts\\{label}.png",
+                f"RetroArch\\thumbnails\\{self.playlist_name}\\Named_Boxarts\\{image_name}.png",
             )
             Helper.copy_file(src_boxart_path, dst_boxart_path)
 
             src_snap_path = RSamRoms.compute_image_path(rom_info, self.src_snap_folder)
             dst_snap_path = os.path.join(
                 LocalConfigs.export_root_folder_path(),
-                f"RetroArch\\thumbnails\\{self.lpl_file_name}\\Named_Snaps\\{label}.png",
+                f"RetroArch\\thumbnails\\{self.playlist_name}\\Named_Snaps\\{image_name}.png",
             )
             Helper.copy_file(src_snap_path, dst_snap_path)
 
@@ -72,6 +79,6 @@ class RA_ExportThumbnails:
             )
             dst_title_path = os.path.join(
                 LocalConfigs.export_root_folder_path(),
-                f"RetroArch\\thumbnails\\{self.lpl_file_name}\\Named_Titles\\{label}.png",
+                f"RetroArch\\thumbnails\\{self.playlist_name}\\Named_Titles\\{image_name}.png",
             )
             Helper.copy_file(src_title_path, dst_title_path)

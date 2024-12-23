@@ -5,20 +5,21 @@ import xml.etree.ElementTree as ET
 
 from common.console_configs import ConsoleConfigs
 from common.helper import Helper
+from common.label_value_en import LabelValueEn
 from common.local_configs import LocalConfigs
 from common.rom_info import RomInfo
+from common.rom_path_value_win import WinRomPathValue
 
 
 class RA_ExportPlaylist:
-    def __init__(
-        self, lpl_file_name, rom_crc32_to_dst_rom_path, xml_file_name, label_in_xml
-    ):
-        self.lpl_file_name = lpl_file_name
-        self.rom_crc32_to_dst_rom_path = rom_crc32_to_dst_rom_path
-        self.xml_file_name = xml_file_name
-        self.label_in_xml = label_in_xml
+    def __init__(self):
+        self.playlist_name = None
+        self.export_roms = None
+        self.label_value = LabelValueEn()
+        self.rom_path_value = WinRomPathValue()
 
-    def __write_header(self, lpl_file):
+    @staticmethod
+    def __write_header(lpl_file):
         lpl_file.write("{\n")
         lpl_file.write('  "version": "1.5",\n')
         lpl_file.write('  "default_core_path": "",\n')
@@ -30,18 +31,20 @@ class RA_ExportPlaylist:
         lpl_file.write('  "sort_mode": 0,\n')
         lpl_file.write('  "items": [\n')
 
-    def __write_footer(self, lpl_file):
+    @staticmethod
+    def __write_footer(lpl_file):
         lpl_file.write("\n  ]\n")
         lpl_file.write("}")
 
-    def export_assets_xmb_monochrome_png(self):
+    @staticmethod
+    def __export_assets_xmb_monochrome_png(playlist_name):
         src_playlist = os.path.join(
             LocalConfigs.repository_folder_path(),
             "image\\playlist\\playlist.png",
         )
         dst_playlist = os.path.join(
             LocalConfigs.export_root_folder_path(),
-            f"RetroArch\\assets\\xmb\\monochrome\\png\\{self.lpl_file_name}.png",
+            f"RetroArch\\assets\\xmb\\monochrome\\png\\{playlist_name}.png",
         )
         Helper.copy_file(src_playlist, dst_playlist)
 
@@ -51,27 +54,30 @@ class RA_ExportPlaylist:
         )
         dst_playlist_content = os.path.join(
             LocalConfigs.export_root_folder_path(),
-            f"RetroArch\\assets\\xmb\\monochrome\\png\\{self.lpl_file_name}-content.png",
+            f"RetroArch\\assets\\xmb\\monochrome\\png\\{playlist_name}-content.png",
         )
         Helper.copy_file(src_playlist_content, dst_playlist_content)
 
     def run(self):
-        self.export_assets_xmb_monochrome_png()
+        if self.playlist_name is None:
+            print("RA_ExportPlaylist 实例未指定 .playlist_name")
+            return
 
-        xml_file_path = os.path.join(
-            LocalConfigs.repository_folder_path(),
-            f"export-config\\{self.xml_file_name}",
-        )
+        if self.export_roms is None:
+            print("RA_ExportPlaylist 实例未指定 .export_roms")
+            return
 
+        RA_ExportPlaylist.__export_assets_xmb_monochrome_png(self.playlist_name)
+
+        xml_file_path = self.export_roms.xml_file_path()
         if not os.path.exists(xml_file_path):
             print(f"无效的文件：{xml_file_path}")
             return
 
         lpl_file_path = os.path.join(
             LocalConfigs.export_root_folder_path(),
-            f"RetroArch\\playlists\\{self.lpl_file_name}.lpl",
+            f"RetroArch\\playlists\\{self.playlist_name}.lpl",
         )
-
         if os.path.exists(lpl_file_path):
             os.remove(lpl_file_path)
 
@@ -82,7 +88,7 @@ class RA_ExportPlaylist:
             tree = ET.parse(xml_file_path)
             root = tree.getroot()
 
-            self.__write_header(lpl_file)
+            RA_ExportPlaylist.__write_header(lpl_file)
 
             first_rom = True
 
@@ -94,15 +100,20 @@ class RA_ExportPlaylist:
                     lpl_file.write(",\n    {\n")
 
                 rom_crc32 = rom_elem.get("crc32").rjust(8, "0")
-                path = self.rom_crc32_to_dst_rom_path[rom_crc32].replace("\\", "\\\\")
-                lpl_file.write(f'      "path": "{path}",\n')
-                label = Helper.remove_region(rom_elem.get(self.label_in_xml))
-                lpl_file.write(f'      "label": "{label}",\n')
+
+                value = self.rom_path_value.parse(
+                    self.export_roms.rom_dst_path(rom_crc32)
+                )
+                lpl_file.write(f'      "path": "{value}",\n')
+
+                value = self.label_value.parse(rom_elem)
+                lpl_file.write(f'      "label": "{value}",\n')
+
                 lpl_file.write('      "core_path": "DETECT",\n')
                 lpl_file.write('      "core_name": "DETECT",\n')
                 lpl_file.write(f'      "crc32": "{rom_crc32}|crc",\n')
-                lpl_file.write(f'      "db_name": "{self.lpl_file_name}.lpl"\n')
+                lpl_file.write(f'      "db_name": "{self.playlist_name}.lpl"\n')
                 lpl_file.write("    }")
 
-            self.__write_footer(lpl_file)
+            RA_ExportPlaylist.__write_footer(lpl_file)
             lpl_file.close()

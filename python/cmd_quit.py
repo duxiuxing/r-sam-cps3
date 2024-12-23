@@ -1,11 +1,6 @@
 # -- coding: UTF-8 --
 
-from common.cmd_handler import CmdHandler
 
-
-class CmdQuit(CmdHandler):
-    def __init__(self):
-        super().__init__("退出程序")
-
+class CmdQuit:
     def run(self):
         exit()

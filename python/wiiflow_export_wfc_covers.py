@@ -12,10 +12,14 @@ from wiiflow_plugins_data import WiiFlowPluginsData
 
 
 class WiiFlow_ExportWfcCovers:
-    def __init__(self, rom_crc32_to_dst_rom_path):
-        self.rom_crc32_to_dst_rom_path = rom_crc32_to_dst_rom_path
+    def __init__(self):
+        self.export_roms = None
 
     def run(self):
+        if self.export_roms is None:
+            print("WiiFlow_ExportWfcCovers 实例未指定 .export_roms")
+            return
+
         wiiflow_plugins_data = WiiFlowPluginsData.instance()
         plugin_name = ConsoleConfigs.wiiflow_plugin_name()
 
@@ -26,7 +30,7 @@ class WiiFlow_ExportWfcCovers:
             return
 
         # 根据导出的 ROM 文件来拷贝对应的封面文件
-        for rom_crc32, dst_rom_path in self.rom_crc32_to_dst_rom_path.items():
+        for rom_crc32, dst_rom_path in self.export_roms.rom_crc32_to_dst_path_items():
             game_info = wiiflow_plugins_data.query_game_info(rom_crc32=rom_crc32)
             if game_info is None:
                 continue
@@ -45,4 +49,6 @@ if __name__ == "__main__":
     export_roms = RA_ExportFakeRoms()
     export_roms.run()
 
-    WiiFlow_ExportWfcCovers(export_roms.rom_crc32_to_dst_rom_path).run()
+    export_wfc_covers = WiiFlow_ExportWfcCovers()
+    export_wfc_covers.export_roms = export_roms
+    export_wfc_covers.run()

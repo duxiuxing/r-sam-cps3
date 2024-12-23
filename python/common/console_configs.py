@@ -10,14 +10,6 @@ class ConsoleConfigs:
         return "CPS3"
 
     @staticmethod
-    def en_name():
-        return "CPS3 Arcade"
-
-    @staticmethod
-    def zhcn_name():
-        return "CPS3 街机"
-
-    @staticmethod
     def rom_extension():
         return ".zip"
 
@@ -36,9 +28,19 @@ class ConsoleConfigs:
         return False
 
     @staticmethod
-    def retroarch_default_core_name():
+    def ra_default_core_name():
         # 默认的 RetroArch 核心名称
         return "Arcade (FB Alpha 2012 CPS-3)"
+
+    @staticmethod
+    def ra_default_playlist_name_en():
+        # 默认的英文游戏列表名称
+        return "R-Sam - CPS3 Arcade Games"
+
+    @staticmethod
+    def ra_default_playlist_name_zhcn():
+        # 默认的中文游戏列表名称
+        return "认真玩 - CPS3 街机游戏"
 
     @staticmethod
     def wiiflow_plugin_name():
