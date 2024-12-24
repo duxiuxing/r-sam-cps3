@@ -61,7 +61,7 @@ class RSamRoms:
 
         # rom_crc32 为键，RomInfo 为值的字典
         # 内容来自 roms 文件夹里的各个 .xml
-        self.rom_crc32_to_info = {}
+        self.__rom_crc32_to_info = {}
         self.__load_rom_xml()
 
     def __load_xml_file(self, xml_file_path):
@@ -90,7 +90,7 @@ class RSamRoms:
                     print(f"缺失 ROM 文件 {rom_path}")
                     continue
                 else:
-                    self.rom_crc32_to_info[rom_crc32] = rom_info
+                    self.__rom_crc32_to_info[rom_crc32] = rom_info
 
     def __load_rom_xml(self):
         # 本函数执行的操作如下：
@@ -109,32 +109,20 @@ class RSamRoms:
             )
             self.__load_xml_file(xml_file_path)
 
+    def rom_crc32_to_info_items(self):
+        return self.__rom_crc32_to_info.items()
+
     def rom_exist(self, rom_crc32):
-        return rom_crc32 in self.rom_crc32_to_info.keys()
+        return rom_crc32 in self.__rom_crc32_to_info.keys()
 
     def query_rom_info(self, rom_crc32):
         if self.rom_exist(rom_crc32):
-            return self.rom_crc32_to_info[rom_crc32]
+            return self.__rom_crc32_to_info[rom_crc32]
         else:
             return None
 
     def add_rom_info(self, rom_crc32, rom_info):
-        self.rom_crc32_to_info[rom_crc32] = rom_info
-
-    def CheckRomsCrc32(self):
-        # 检查 roms 文件夹里配置的 CRC32 是否等于实际值
-        for rom_crc32, rom_info in self.rom_crc32_to_info.items():
-            rom_path = RSamRoms.compute_rom_path(rom_info)
-            rom_crc32_compute = Helper.compute_crc32(rom_path)
-            if rom_crc32 != rom_crc32_compute:
-                print(f"crc32 属性不一致 {rom_path}")
-                print(f"\t{rom_crc32} 在 roms 文件夹里的 .xml 文件中")
-                print(f"\t{rom_crc32_compute} 是实际计算出来的 crc32")
-            rom_bytes_compute = str(os.stat(rom_path).st_size)
-            if rom_info.rom_bytes != rom_bytes_compute:
-                print(f"bytes 属性不一致 {rom_path}")
-                print(f"\t{rom_info.rom_bytes} 在 roms 文件夹里的 .xml 文件中")
-                print(f"\t{rom_bytes_compute} 是实际计算出来的文件大小")
+        self.__rom_crc32_to_info[rom_crc32] = rom_info
 
 
 if __name__ == "__main__":
