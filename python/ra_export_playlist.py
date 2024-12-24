@@ -69,7 +69,7 @@ class RA_ExportPlaylist:
 
         RA_ExportPlaylist.__export_assets_xmb_monochrome_png(self.playlist_name)
 
-        xml_file_path = self.export_roms.xml_file_path()
+        xml_file_path = self.export_roms.config_file_path()
         if not os.path.exists(xml_file_path):
             print(f"无效的文件：{xml_file_path}")
             return

@@ -1,5 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <Copy-List description="导出到 Wii 的文件">
+    <Folder
+        src="wii\retroarch\system\cache"
+        dst="retroarch\system\cache"
+    />
     <File
         src="wii\wiiflow\boxcovers\blank_covers\CPS3.png"
         dst="wiiflow\boxcovers\blank_covers\CPS3.png"

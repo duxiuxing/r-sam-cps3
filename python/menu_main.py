@@ -1,8 +1,11 @@
 # -- coding: UTF-8 --
 
+from cmd_check_r_sam_roms import CmdCheckRSamRomsCrc32
+from cmd_check_r_sam_roms import CmdCheckRSamRomsTitles
 from cmd_quit import CmdQuit
 from menu_ra_export import RA_ExportMenu
 from menu_ra_export_fbneo import RA_ExportFBNeoMenu
+from wii_export_all import Wii_ExportAll
 
 
 class MainMenu:
@@ -52,6 +55,11 @@ if __name__ == "__main__":
 
     RA_ExportFBNeoMenu.add_cmds(main_menu)
 
-    main_menu.add_cmd("退出程序", CmdQuit())
+    Wii_ExportAll.add_cmds(main_menu)
+
+    CmdCheckRSamRomsCrc32.add_cmds(main_menu)
+    CmdCheckRSamRomsTitles.add_cmds(main_menu)
+
+    CmdQuit.add_cmds(main_menu)
 
     main_menu.show()

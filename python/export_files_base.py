@@ -7,14 +7,18 @@ from common.helper import Helper
 from common.local_configs import LocalConfigs
 
 
-class ExportFiles:
-    def __init__(self, xml_file_name):
-        self.xml_file_name = xml_file_name
+class ExportFilesBase:
+    def __init__(self):
+        self.config_file_name = None
 
     def run(self):
+        if self.config_file_name is None:
+            print("ExportFilesBase 实例未指定 .config_file_name")
+            return
+
         xml_file_path = os.path.join(
             LocalConfigs.repository_folder_path(),
-            f"export-config\\{self.xml_file_name}",
+            f"export-config\\{self.config_file_name}",
         )
 
         if not os.path.exists(xml_file_path):
@@ -36,7 +40,3 @@ class ExportFiles:
             src_path = os.path.join(src_root, elem.get("src"))
             dst_path = os.path.join(dst_root, elem.get("dst"))
             Helper.copy_file(src_path, dst_path)
-
-
-if __name__ == "__main__":
-    ExportFiles("wii-files-export.xml").run()

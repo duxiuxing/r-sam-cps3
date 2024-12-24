@@ -6,8 +6,8 @@ from export_roms_base import ExportRomsBase
 
 class RA_ExportRoms(ExportRomsBase):
     @staticmethod
-    def default_roms_export_xml():
-        return "roms-export.xml"
+    def default_config_file_name():
+        return "ra-roms.xml"
 
     @staticmethod
     def default_dst_folder_name():
@@ -15,7 +15,7 @@ class RA_ExportRoms(ExportRomsBase):
 
     def __init__(self):
         super().__init__()
-        self.xml_file_name = RA_ExportRoms.default_roms_export_xml()
+        self.config_file_name = RA_ExportRoms.default_config_file_name()
         self.dst_folder_name = RA_ExportRoms.default_dst_folder_name()
         self.export_fake_roms = False
 
@@ -23,7 +23,7 @@ class RA_ExportRoms(ExportRomsBase):
 class RA_ExportFakeRoms(ExportRomsBase):
     def __init__(self):
         super().__init__()
-        self.xml_file_name = RA_ExportRoms.default_roms_export_xml()
+        self.config_file_name = RA_ExportRoms.default_config_file_name()
         self.dst_folder_name = RA_ExportRoms.default_dst_folder_name()
         self.export_fake_roms = True
 

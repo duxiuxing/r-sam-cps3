@@ -2,7 +2,6 @@
 
 import os
 
-from common.cmd_handler import CmdHandler
 from common.console_configs import ConsoleConfigs
 from common.game_info import GameInfo
 from common.helper import Helper
@@ -12,18 +11,23 @@ from r_sam_roms import RSamRoms
 from wiiflow_plugins_data import WiiFlowPluginsData
 
 
-class CmdCheckRSamRomsCrc32(CmdHandler):
-    def __init__(self):
-        super().__init__("Console - 检查 roms 文件夹里配置的 CRC32 是否等于实际值")
+class CmdCheckRSamRomsCrc32:
+    @staticmethod
+    def add_cmds(main_menu):
+        main_menu.add_cmd(
+            "检查 roms 文件夹里配置的 CRC32 是否等于实际值", CmdCheckRSamRomsCrc32()
+        )
 
     def run(self):
         RSamRoms.instance().CheckRomsCrc32()
 
 
-class CmdCheckRSamRomsTitles(CmdHandler):
-    def __init__(self):
-        super().__init__(
-            "Console - 检查 roms 文件夹里配置的游戏名称是否与 WiiFlowPluginsData 的一致"
+class CmdCheckRSamRomsTitles:
+    @staticmethod
+    def add_cmds(main_menu):
+        main_menu.add_cmd(
+            "检查 roms 文件夹里配置的游戏名称是否与 WiiFlowPluginsData 的一致",
+            CmdCheckRSamRomsTitles(),
         )
 
     def run(self):

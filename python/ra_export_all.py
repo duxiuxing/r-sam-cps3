@@ -42,6 +42,7 @@ class RA_ExportAll:
         export_thumbnails.label_value = self.label_value
         export_thumbnails.src_boxart_folder = self.src_boxart_folder
         export_thumbnails.run()
+        return True
 
 
 if __name__ == "__main__":
