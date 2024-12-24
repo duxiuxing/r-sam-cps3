@@ -5,18 +5,18 @@ import xml.etree.ElementTree as ET
 
 from common.console_configs import ConsoleConfigs
 from common.helper import Helper
-from common.label_value_en import LabelValueEn
+from common.label_value import EnLabelValue
 from common.local_configs import LocalConfigs
 from common.rom_info import RomInfo
-from common.rom_path_value_win import WinRomPathValue
+from common.path_value import WinPathValue
 
 
 class RA_ExportPlaylist:
     def __init__(self):
-        self.playlist_name = None
         self.export_roms = None
-        self.label_value = LabelValueEn()
-        self.rom_path_value = WinRomPathValue()
+        self.playlist_name = None
+        self.playlist_label_value = EnLabelValue()
+        self.playlist_path_value = WinPathValue()
 
     @staticmethod
     def __write_header(lpl_file):
@@ -59,12 +59,12 @@ class RA_ExportPlaylist:
         Helper.copy_file(src_playlist_content, dst_playlist_content)
 
     def run(self):
-        if self.playlist_name is None:
-            print("RA_ExportPlaylist 实例未指定 .playlist_name")
-            return
-
         if self.export_roms is None:
             print("RA_ExportPlaylist 实例未指定 .export_roms")
+            return
+
+        if self.playlist_name is None:
+            print("RA_ExportPlaylist 实例未指定 .playlist_name")
             return
 
         RA_ExportPlaylist.__export_assets_xmb_monochrome_png(self.playlist_name)
@@ -101,12 +101,12 @@ class RA_ExportPlaylist:
 
                 rom_crc32 = rom_elem.get("crc32").rjust(8, "0")
 
-                value = self.rom_path_value.parse(
+                value = self.playlist_path_value.parse(
                     self.export_roms.rom_dst_path(rom_crc32)
                 )
                 lpl_file.write(f'      "path": "{value}",\n')
 
-                value = self.label_value.parse(rom_elem)
+                value = self.playlist_label_value.parse(rom_elem)
                 lpl_file.write(f'      "label": "{value}",\n')
 
                 lpl_file.write('      "core_path": "DETECT",\n')

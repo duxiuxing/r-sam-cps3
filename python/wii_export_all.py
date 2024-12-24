@@ -3,9 +3,9 @@
 import os
 
 from common.console_configs import ConsoleConfigs
-from common.label_value_en import LabelValueEn
+from common.label_value import EnLabelValue
 from common.local_configs import LocalConfigs
-from common.rom_path_value_wii_sd import WiiSdRomPathValue
+from common.path_value import WiiSdPathValue
 
 from ra_export_all import RA_ExportAll
 from ra_export_roms import RA_ExportFakeRoms
@@ -37,8 +37,8 @@ class Wii_ExportAll:
         ra_export_all = RA_ExportAll()
         ra_export_all.playlist_name = ConsoleConfigs.ra_default_playlist_name_en()
         ra_export_all.export_roms = self.export_roms
-        ra_export_all.label_value = LabelValueEn()
-        ra_export_all.rom_path_value = WiiSdRomPathValue()
+        ra_export_all.playlist_label_value = EnLabelValue()
+        ra_export_all.playlist_path_value = WiiSdPathValue()
         ra_export_all.src_boxart_folder = "disc"
         if ra_export_all.run() is False:
             return False

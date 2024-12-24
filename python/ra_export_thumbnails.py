@@ -5,7 +5,7 @@ import xml.etree.ElementTree as ET
 
 from common.console_configs import ConsoleConfigs
 from common.helper import Helper
-from common.label_value_en import LabelValueEn
+from common.label_value import EnLabelValue
 from common.local_configs import LocalConfigs
 from common.rom_info import RomInfo
 
@@ -26,21 +26,21 @@ class RA_ExportThumbnails:
         return "title"
 
     def __init__(self):
-        self.playlist_name = None
         self.export_roms = None
-        self.label_value = LabelValueEn()
+        self.playlist_name = None        
+        self.playlist_label_value = EnLabelValue()
         self.src_boxart_folder = RA_ExportThumbnails.default_src_boxart_folder()
         self.src_snap_folder = RA_ExportThumbnails.default_src_snap_folder()
         self.src_title_folder = RA_ExportThumbnails.default_src_title_folder()
 
     def run(self):
-        if self.playlist_name is None:
-            print("RA_ExportThumbnails 实例未指定 .playlist_name")
-            return
-
         if self.export_roms is None:
             print("RA_ExportThumbnails 实例未指定 .export_roms")
             return
+        
+        if self.playlist_name is None:
+            print("RA_ExportThumbnails 实例未指定 .playlist_name")
+            return       
 
         r_sam_roms = RSamRoms.instance()
 
@@ -56,7 +56,7 @@ class RA_ExportThumbnails:
             rom_crc32 = rom_elem.get("crc32").rjust(8, "0")
             rom_info = r_sam_roms.query_rom_info(rom_crc32)
 
-            image_name = self.label_value.parse(rom_elem)
+            image_name = self.playlist_label_value.parse(rom_elem)
 
             src_boxart_path = RSamRoms.compute_image_path(
                 rom_info, self.src_boxart_folder
