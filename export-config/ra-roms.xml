@@ -1,33 +1,33 @@
 <?xml version='1.0' encoding='utf-8'?>
 <Rom-List description="导出到 Arcade (FB Alpha 2012 CPS-3) 的游戏">
-    <Rom crc32="09565881" bytes="46008575"
-        title="jojo"
-        en="JoJo's Venture (USA 990128)"
-        zhcn="JOJO的奇妙冒险 (美版 990128)"
-    />
     <Rom crc32="03A8E3D2" bytes="54256796"
         title="jojoba"
         en="JoJo's Bizarre Adventure - Heritage for the Future (Japan 990927)"
-        zhcn="JOJO的奇妙冒险 未来遗产 (日版 990927)"
+        zhcn="J - JOJO的奇妙冒险 未来遗产 (日版 990927)"
+    />
+    <Rom crc32="09565881" bytes="46008575"
+        title="jojo"
+        en="JoJo's Venture (USA 990128)"
+        zhcn="J - JOJO的奇妙冒险 (美版 990128)"
     />
     <Rom crc32="F357FAC2" bytes="38374386"
         title="redearth"
         en="Red Earth (Euro 961121)"
-        zhcn="赤色大地 (欧版 961121)"
+        zhcn="C - 赤色大地 (欧版 961121)"
     />
     <Rom crc32="1F8CC35D" bytes="38868517"
         title="sfiii"
         en="Street Fighter III - New Generation (USA 970204)"
-        zhcn="街头霸王3 (美版 970204)"
+        zhcn="J - 街头霸王3 (美版 970204)"
     />
     <Rom crc32="EF7FA548" bytes="43777198"
         title="sfiii2"
         en="Street Fighter III 2nd Impact - Giant Attack (USA 970930)"
-        zhcn="街头霸王3.2 (美版 970930)"
+        zhcn="J - 街头霸王3.2 (美版 970930)"
     />
     <Rom crc32="36056B5E" bytes="70592155"
         title="sfiii3"
         en="Street Fighter III 3rd Strike - Fight for the Future (Euro 990608)"
-        zhcn="街头霸王3.3 (欧版 990608)"
+        zhcn="J - 街头霸王3.3 (欧版 990608)"
     />
 </Rom-List>
