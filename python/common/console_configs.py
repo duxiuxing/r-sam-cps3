@@ -35,12 +35,12 @@ class ConsoleConfigs:
     @staticmethod
     def ra_default_playlist_name_en():
         # 默认的英文游戏列表名称
-        return "R-Sam - CPS3 Arcade Games"
+        return "R-Sam - CPS3 Arcade"
 
     @staticmethod
     def ra_default_playlist_name_zhcn():
         # 默认的中文游戏列表名称
-        return "认真玩 - CPS3 街机游戏"
+        return "认真玩 - CPS3 街机"
 
     @staticmethod
     def wiiflow_plugin_name():

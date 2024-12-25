@@ -12,8 +12,8 @@ class RA_ExportFBNeoMenu:
     @staticmethod
     def add_cmds(main_menu):
         export_roms = RA_ExportFBNeoRoms()
-        playlist_name_en = "R-Sam - CPS3 Arcade Games (FBNeo)"
-        playlist_name_zhcn = "认真玩 - CPS3 街机游戏 (FBNeo)"
+        playlist_name_en = "R-Sam - CPS3 Arcade (FBNeo)"
+        playlist_name_zhcn = "认真玩 - CPS3 街机 (FBNeo)"
 
         # export to Android in English
         export_all = RA_ExportAll()
