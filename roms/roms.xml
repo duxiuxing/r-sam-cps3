@@ -1,21 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
 <Game-List description="roms 文件夹里所有的 CPS3 街机游戏">
-    <Game name="JoJo's Venture">
-        <Rom crc32="09565881" bytes="46008575"
-            title="jojo"
-            en="JoJo's Venture (USA 990128)"
-            zhcn="JOJO的奇妙冒险 (美版 990128)"
-            apps-work="Kodi-Win (FB Alpha 2012 CPS-3)|RetroArch-Wii (FB Alpha 2012 CPS-3)|RetroArch-Win (FB Alpha 2012 CPS-3)"
-            apps-not-work="RetroArch-Win (FinalBurn Neo)"
-        />
-        <Rom crc32="7B74BE6D" bytes="46008577"
-            title="jojo"
-            en="JoJo's Venture (Euro 990128)"
-            zhcn="JOJO的奇妙冒险 (欧版 990128)"
-            apps-work="Kodi-Win (FinalBurn Neo)|RetroArch-Win (FinalBurn Neo)"
-            apps-not-work="Kodi-Win (FB Alpha 2012 CPS-3)|RetroArch-Win (FB Alpha 2012 CPS-3)"
-        />
-    </Game>
     <Game name="JoJo's Bizarre Adventure - Heritage for the Future">
         <Rom crc32="03A8E3D2" bytes="54256796"
             title="jojoba"
@@ -36,6 +20,22 @@
             en="JoJo's Bizarre Adventure - Heritage for the Future (Euro 990927)"
             zhcn="JOJO的奇妙冒险 未来遗产 (欧版 990927)"
             apps-not-work="Kodi-Win (FinalBurn Neo)|RetroArch-Win (FinalBurn Neo)"
+        />
+    </Game>
+    <Game name="JoJo's Venture">
+        <Rom crc32="09565881" bytes="46008575"
+            title="jojo"
+            en="JoJo's Venture (USA 990128)"
+            zhcn="JOJO的奇妙冒险 (美版 990128)"
+            apps-work="Kodi-Win (FB Alpha 2012 CPS-3)|RetroArch-Wii (FB Alpha 2012 CPS-3)|RetroArch-Win (FB Alpha 2012 CPS-3)"
+            apps-not-work="RetroArch-Win (FinalBurn Neo)"
+        />
+        <Rom crc32="7B74BE6D" bytes="46008577"
+            title="jojo"
+            en="JoJo's Venture (Euro 990128)"
+            zhcn="JOJO的奇妙冒险 (欧版 990128)"
+            apps-work="Kodi-Win (FinalBurn Neo)|RetroArch-Win (FinalBurn Neo)"
+            apps-not-work="Kodi-Win (FB Alpha 2012 CPS-3)|RetroArch-Win (FB Alpha 2012 CPS-3)"
         />
     </Game>
     <Game name="Red Earth">
