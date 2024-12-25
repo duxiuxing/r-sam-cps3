@@ -137,7 +137,6 @@ class ImportRoms:
 
         if roms_new_count == 0:
             print("没有新游戏")
-            return
         else:
             print(f"发现 {roms_new_count} 个新游戏")
             ET.ElementTree(roms_new_xml_root).write(

@@ -4,10 +4,7 @@ from menu_ra_export import RA_ExportMenu
 from menu_ra_export_fbneo import RA_ExportFBNeoMenu
 
 from quit import Quit
-
-from r_sam_roms_check import RSamRoms_CheckCrc32
-from r_sam_roms_check import RSamRoms_CheckTitles
-
+from r_sam_roms_check import RSamRoms_CheckCrc32, RSamRoms_CheckTitles
 from wii_export_all import Wii_ExportAll
 
 
