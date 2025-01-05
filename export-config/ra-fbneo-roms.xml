@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<Rom-List description="导出到 Arcade (FinalBurn Neo)\\CPS3 的游戏">
+<Rom-List description="导出到 Arcade (FinalBurn Neo)\\CPS3 的游戏" one-folder-one-rom="true">
     <Rom crc32="4C96850A" bytes="54516223"
         title="jojobaner1"
         en="JoJo's Bizarre Adventure - Heritage for the Future (Euro 990913, NO CD)"
