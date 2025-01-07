@@ -1,0 +1,60 @@
+{
+  "version": "1.5",
+  "default_core_path": "sd:/apps/sfiii3/fbalpha2012_cps3_libretro_wii.dol",
+  "default_core_name": "Arcade (FB Alpha 2012 CPS-3)",
+  "label_display_mode": 0,
+  "right_thumbnail_mode": 3,
+  "left_thumbnail_mode": 2,
+  "thumbnail_match_mode": 0,
+  "sort_mode": 0,
+  "items": [
+    {
+      "path": "sd:/Games/Arcade (FB Alpha 2012 CPS-3)/JoJo's Bizarre Adventure - Heritage for the Future/jojoba.zip",
+      "label": "JoJo's Bizarre Adventure - Heritage for the Future",
+      "core_path": "DETECT",
+      "core_name": "DETECT",
+      "crc32": "03A8E3D2|crc",
+      "db_name": "R-Sam - CPS3 Arcade.lpl"
+    },
+    {
+      "path": "sd:/Games/Arcade (FB Alpha 2012 CPS-3)/JoJo's Venture/jojo.zip",
+      "label": "JoJo's Venture",
+      "core_path": "DETECT",
+      "core_name": "DETECT",
+      "crc32": "09565881|crc",
+      "db_name": "R-Sam - CPS3 Arcade.lpl"
+    },
+    {
+      "path": "sd:/Games/Arcade (FB Alpha 2012 CPS-3)/Red Earth/redearth.zip",
+      "label": "Red Earth",
+      "core_path": "DETECT",
+      "core_name": "DETECT",
+      "crc32": "F357FAC2|crc",
+      "db_name": "R-Sam - CPS3 Arcade.lpl"
+    },
+    {
+      "path": "sd:/Games/Arcade (FB Alpha 2012 CPS-3)/Street Fighter III - New Generation/sfiii.zip",
+      "label": "Street Fighter III - New Generation",
+      "core_path": "DETECT",
+      "core_name": "DETECT",
+      "crc32": "1F8CC35D|crc",
+      "db_name": "R-Sam - CPS3 Arcade.lpl"
+    },
+    {
+      "path": "sd:/Games/Arcade (FB Alpha 2012 CPS-3)/Street Fighter III 2nd Impact - Giant Attack/sfiii2.zip",
+      "label": "Street Fighter III 2nd Impact - Giant Attack",
+      "core_path": "DETECT",
+      "core_name": "DETECT",
+      "crc32": "EF7FA548|crc",
+      "db_name": "R-Sam - CPS3 Arcade.lpl"
+    },
+    {
+      "path": "sd:/Games/Arcade (FB Alpha 2012 CPS-3)/Street Fighter III 3rd Strike - Fight for the Future/sfiii3.zip",
+      "label": "Street Fighter III 3rd Strike - Fight for the Future",
+      "core_path": "DETECT",
+      "core_name": "DETECT",
+      "crc32": "36056B5E|crc",
+      "db_name": "R-Sam - CPS3 Arcade.lpl"
+    }
+  ]
+}

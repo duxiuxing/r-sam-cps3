@@ -1,5 +1,81 @@
 <?xml version='1.0' encoding='utf-8'?>
-<Copy-List description="导出到 Wii 的文件">
+<Copy-List description="导出到 Wii SD 卡的文件">
+    <!-- 以下为 fbalpha2012_cps3 -->
+    <Folder
+        src="wii\apps\fbalpha2012_cps3\info"
+        dst="apps\fbalpha2012_cps3\info"
+    />
+    <Folder
+        src="wii\apps\fbalpha2012_cps3\playlists"
+        dst="apps\fbalpha2012_cps3\playlists"
+    />
+    <File
+        src="wii\apps\fbalpha2012_cps3\fbalpha2012_cps3_libretro_wii.dol"
+        dst="apps\fbalpha2012_cps3\boot.dol"
+    />
+    <File
+        src="wii\apps\fbalpha2012_cps3\fbalpha2012_cps3_libretro_wii.dol"
+        dst="apps\fbalpha2012_cps3\fbalpha2012_cps3_libretro_wii.dol"
+    />
+    <File
+        src="wii\apps\fbalpha2012_cps3\icon.png"
+        dst="apps\fbalpha2012_cps3\icon.png"
+    />
+    <File
+        src="wii\apps\fbalpha2012_cps3\meta.xml"
+        dst="apps\fbalpha2012_cps3\meta.xml"
+    />
+    <File
+        src="wii\apps\fbalpha2012_cps3\retroarch.cfg"
+        dst="apps\fbalpha2012_cps3\retroarch.cfg"
+    />
+    <File
+        src="wii\wad\fbalpha2012_cps3\CPS3 [C3LR].white.zhtw.wad"
+        dst="wad\fbalpha2012_cps3\CPS3 [C3LR].white.zhtw.wad"
+    />
+    <File
+        src="wii\wad\fbalpha2012_cps3\CPS3 [C3LR].yellow.zhtw.wad"
+        dst="wad\fbalpha2012_cps3\CPS3 [C3LR].yellow.zhtw.wad"
+    />
+    <!-- 以上为 fbalpha2012_cps3 -->
+    <!-- 以下为 sfiii3 -->
+    <Folder
+        src="wii\apps\fbalpha2012_cps3\info"
+        dst="apps\sfiii3\info"
+    />
+    <Folder
+        src="wii\apps\sfiii3\playlists"
+        dst="apps\sfiii3\playlists"
+    />
+    <File
+        src="wii\apps\fbalpha2012_cps3\fbalpha2012_cps3_libretro_wii.dol"
+        dst="apps\sfiii3\boot.dol"
+    />
+    <File
+        src="wii\apps\fbalpha2012_cps3\fbalpha2012_cps3_libretro_wii.dol"
+        dst="apps\sfiii3\fbalpha2012_cps3_libretro_wii.dol"
+    />
+    <File
+        src="wii\apps\sfiii3\icon.png"
+        dst="apps\sfiii3\icon.png"
+    />
+    <File
+        src="wii\apps\sfiii3\meta.xml"
+        dst="apps\sfiii3\meta.xml"
+    />
+    <File
+        src="wii\apps\sfiii3\retroarch.cfg"
+        dst="apps\sfiii3\retroarch.cfg"
+    />
+    <File
+        src="wii\wad\sfiii3\Street Fighter 3.3 [A5F3].classic.zhtw.wad"
+        dst="wad\sfiii3\Street Fighter 3.3 [A5F3].classic.zhtw.wad"
+    />
+    <File
+        src="wii\wad\sfiii3\Street Fighter 3.3 [A5F3].zhtw.wad"
+        dst="wad\sfiii3\Street Fighter 3.3 [A5F3].zhtw.wad"
+    />
+    <!-- 以上为 sfiii3 -->
     <Folder
         src="wii\retroarch\system\cache"
         dst="retroarch\system\cache"
