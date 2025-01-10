@@ -30,12 +30,12 @@
         dst="apps\fbalpha2012_cps3\retroarch.cfg"
     />
     <File
-        src="wii\wad\fbalpha2012_cps3\CPS3 [C3LR].white.zhtw.wad"
-        dst="wad\fbalpha2012_cps3\CPS3 [C3LR].white.zhtw.wad"
+        src="wii\wad\fbalpha2012_cps3\CPS3 White [C3LR].zhtw.wad"
+        dst="wad\fbalpha2012_cps3\CPS3 White [C3LR].zhtw.wad"
     />
     <File
-        src="wii\wad\fbalpha2012_cps3\CPS3 [C3LR].yellow.zhtw.wad"
-        dst="wad\fbalpha2012_cps3\CPS3 [C3LR].yellow.zhtw.wad"
+        src="wii\wad\fbalpha2012_cps3\CPS3 Yellow [C3LR].zhtw.wad"
+        dst="wad\fbalpha2012_cps3\CPS3 Yellow [C3LR].zhtw.wad"
     />
     <!-- 以上为 fbalpha2012_cps3 -->
     <!-- 以下为 sfiii3 -->
@@ -68,8 +68,8 @@
         dst="apps\sfiii3\retroarch.cfg"
     />
     <File
-        src="wii\wad\sfiii3\Street Fighter 3.3 [A5F3].classic.zhtw.wad"
-        dst="wad\sfiii3\Street Fighter 3.3 [A5F3].classic.zhtw.wad"
+        src="wii\wad\sfiii3\Street Fighter 3.3 Classic [A5F3].zhtw.wad"
+        dst="wad\sfiii3\Street Fighter 3.3 Classic [A5F3].zhtw.wad"
     />
     <File
         src="wii\wad\sfiii3\Street Fighter 3.3 [A5F3].zhtw.wad"
