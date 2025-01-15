@@ -65,4 +65,5 @@ RetroArch 使用的街机游戏数据库文件。运行全能模拟器，通过�
 
 Wii 版的 FB Alpha 2012 CPS-3 核心。
 
+- 项目网址：<https://github.com/libretro/fbalpha2012_cps3>
 - 下载页面：<https://buildbot.libretro.com/stable>
