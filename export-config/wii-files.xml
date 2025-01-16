@@ -80,13 +80,13 @@
         src="wii\retroarch\system\cache"
         dst="retroarch\system\cache"
     />
-    <File
-        src="wii\wiiflow\boxcovers\blank_covers\CPS3.png"
-        dst="wiiflow\boxcovers\blank_covers\CPS3.png"
+    <Folder
+        src="wii\wiiflow\boxcovers\blank_covers"
+        dst="wiiflow\boxcovers\blank_covers"
     />
-    <File
-        src="wii\wiiflow\cache\blank_covers\CPS3.wfc"
-        dst="wiiflow\cache\blank_covers\CPS3.wfc"
+    <Folder
+        src="wii\wiiflow\cache\blank_covers"
+        dst="wiiflow\cache\blank_covers"
     />
     <Folder
         src="wii\wiiflow\plugins"
@@ -96,8 +96,8 @@
         src="wii\wiiflow\plugins_data"
         dst="wiiflow\plugins_data"
     />
-    <File
-        src="wii\wiiflow\source_menu\CPS3.png"
-        dst="wiiflow\source_menu\CPS3.png"
+    <Folder
+        src="wii\wiiflow\source_menu"
+        dst="wiiflow\source_menu"
     />
 </Copy-List>
