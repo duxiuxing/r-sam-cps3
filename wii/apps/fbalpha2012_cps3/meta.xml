@@ -9,6 +9,7 @@
 
 Channel Forwarders are stored in wad/fbalpha2012_cps3.
 
-Website: https://github.com/R-Sam-1980/cps3</long_description> 
+Website: https://github.com/R-Sam-1980/cps3</long_description>
+  <no_ios_reload/>
   <ahb_access/>
 </app>
