@@ -68,10 +68,44 @@
         dst="apps\sfiii\retroarch.cfg"
     />
     <File
-        src="wii\wad\sfiii\Street Fighter 3 [ESF3].zhtw.wad"
-        dst="wad\sfiii\Street Fighter 3 [ESF3].zhtw.wad"
+        src="wii\wad\sfiii\Street Fighter 3 [ESF3].wad"
+        dst="wad\sfiii\Street Fighter 3 [ESF3].wad"
     />
     <!-- 以上为 sfiii -->
+    <!-- 以下为 sfiii2 -->
+    <Folder
+        src="wii\apps\fbalpha2012_cps3\info"
+        dst="apps\sfiii2\info"
+    />
+    <Folder
+        src="wii\apps\sfiii2\playlists"
+        dst="apps\sfiii2\playlists"
+    />
+    <File
+        src="wii\apps\fbalpha2012_cps3\fbalpha2012_cps3_libretro_wii.dol"
+        dst="apps\sfiii2\boot.dol"
+    />
+    <File
+        src="wii\apps\fbalpha2012_cps3\fbalpha2012_cps3_libretro_wii.dol"
+        dst="apps\sfiii2\fbalpha2012_cps3_libretro_wii.dol"
+    />
+    <File
+        src="wii\apps\sfiii2\icon.png"
+        dst="apps\sfiii2\icon.png"
+    />
+    <File
+        src="wii\apps\sfiii2\meta.xml"
+        dst="apps\sfiii2\meta.xml"
+    />
+    <File
+        src="wii\apps\sfiii2\retroarch.cfg"
+        dst="apps\sfiii2\retroarch.cfg"
+    />
+    <File
+        src="wii\wad\sfiii2\Street Fighter 3.2 [RSF3].wad"
+        dst="wad\sfiii2\Street Fighter 3.2 [RSF3].wad"
+    />
+    <!-- 以上为 sfiii2 -->
     <!-- 以下为 sfiii3 -->
     <Folder
         src="wii\apps\fbalpha2012_cps3\info"
@@ -102,12 +136,8 @@
         dst="apps\sfiii3\retroarch.cfg"
     />
     <File
-        src="wii\wad\sfiii3\Street Fighter 3.3 Classic [A5F3].zhtw.wad"
-        dst="wad\sfiii3\Street Fighter 3.3 Classic [A5F3].zhtw.wad"
-    />
-    <File
-        src="wii\wad\sfiii3\Street Fighter 3.3 [A5F3].zhtw.wad"
-        dst="wad\sfiii3\Street Fighter 3.3 [A5F3].zhtw.wad"
+        src="wii\wad\sfiii3\Street Fighter 3.3 [A5F3].wad"
+        dst="wad\sfiii3\Street Fighter 3.3 [A5F3].wad"
     />
     <!-- 以上为 sfiii3 -->
     <Folder
