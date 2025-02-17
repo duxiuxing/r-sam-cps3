@@ -18,6 +18,10 @@ class RA_ExportThumbnails:
         return "boxart"
 
     @staticmethod
+    def src_logo_folder():
+        return "logo"
+
+    @staticmethod
     def src_snap_folder():
         return "snap"
 
@@ -72,6 +76,15 @@ class RA_ExportThumbnails:
                     f"Named_Boxarts\\{image_name}.png",
                 )
                 Helper.copy_file(src_boxart_path, dst_boxart_path)
+
+            src_logo_path = RSamRoms.compute_image_path(
+                rom_info, RA_ExportThumbnails.src_logo_folder()
+            )
+            dst_logo_path = os.path.join(
+                dst_playlist_folder_path,
+                f"Named_Logos\\{image_name}.png",
+            )
+            Helper.copy_file(src_logo_path, dst_logo_path)
 
             src_snap_path = RSamRoms.compute_image_path(
                 rom_info, RA_ExportThumbnails.src_snap_folder()
