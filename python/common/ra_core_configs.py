@@ -3,7 +3,7 @@
 import os
 import xml.etree.ElementTree as ET
 
-from local_configs import LocalConfigs
+from common.local_configs import LocalConfigs
 
 
 class RA_CoreConfigs:
