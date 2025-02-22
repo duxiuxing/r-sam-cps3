@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RA-Core-Configs
+    core-display-name="Arcade (FinalBurn Neo)"
+    core-file-name_wii=""
+    core-file-name_win="fbneo_libretro.dll"
+/>
