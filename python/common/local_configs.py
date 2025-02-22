@@ -9,16 +9,16 @@ class LocalConfigs:
 
     def __init__(self):
         if LocalConfigs.__instance is not None:
-            raise Exception("请使用 LocalConfigs.instance() 获取实例")
+            raise Exception("请使用类的 _instance() 获取实例")
         else:
             LocalConfigs.__instance = self
 
         self._repository_directory = os.getcwd()
-        self._seven_zip_exe_path = ""
-        self._root_directory_export_to = ""
 
         xml_file_path = os.path.join(self._repository_directory, "config\\local.xml")
-        if os.path.exists(xml_file_path):
+        if not os.path.exists(xml_file_path):
+            print(f"【错误】无效文件 {xml_file_path}")
+        else:
             tree = ET.parse(xml_file_path)
             root = tree.getroot()
             self._seven_zip_exe_path = root.attrib["seven_zip_exe_path"]
@@ -26,8 +26,6 @@ class LocalConfigs:
             self._root_directory_export_to = root.attrib[
                 f"root_directory_export_to_{index}"
             ]
-        else:
-            print(f"【错误】无效文件 {xml_file_path}")
 
     @staticmethod
     def _instance():
