@@ -7,7 +7,7 @@ from local_configs import LocalConfigs
 
 
 class RA_CoreConfigs:
-    def __init__(self, xml_file_name="ra-default-core.xml"):
+    def __init__(self, xml_file_name):
         self._items = {}
         xml_file_path = os.path.join(
             LocalConfigs.repository_directory(), f"config\\{xml_file_name}"
@@ -24,10 +24,17 @@ class RA_CoreConfigs:
         return self._items.get(key, default_value)
 
     def core_display_name(self):
-        return self._get_value("core-display-name")
+        return self._get_value("core_display_name")
 
     def core_file_name_wii(self):
-        return self._get_value("core-file-name_wii")
+        return self._get_value("core_file_name_wii")
 
     def core_file_name_win(self):
-        return self._get_value("core-file-name_win")
+        return self._get_value("core_file_name_win")
+
+
+if __name__ == "__main__":
+    ra_core_configs = RA_CoreConfigs("ra-core.xml")
+    print(ra_core_configs.core_display_name())
+    print(ra_core_configs.core_file_name_wii())
+    print(ra_core_configs.core_file_name_win())
