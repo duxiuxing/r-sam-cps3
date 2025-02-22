@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Local-Configs
+    seven_zip_exe_path="C:\Program Files\7-Zip\7z.exe"
+    root_directory_export_to_index="0"
+    root_directory_export_to_0="C:\Users\duxiu\AppData\Roaming\Dolphin Emulator\Load\WiiSDSync"
+    root_directory_export_to_1="G:\"
+    root_directory_export_to_2="X:\"
+/>
