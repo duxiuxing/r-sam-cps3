@@ -5,13 +5,13 @@ import xml.etree.ElementTree as ET
 
 
 class LocalConfigs:
-    _instance = None
+    __instance = None
 
     def __init__(self):
-        if LocalConfigs._instance is not None:
+        if LocalConfigs.__instance is not None:
             raise Exception("请使用 LocalConfigs.instance() 获取实例")
         else:
-            LocalConfigs._instance = self
+            LocalConfigs.__instance = self
 
         self._repository_directory = os.getcwd()
         self._seven_zip_exe_path = ""
@@ -30,26 +30,26 @@ class LocalConfigs:
             print(f"【错误】无效文件 {xml_file_path}")
 
     @staticmethod
-    def instance():
+    def _instance():
         # 获取单例实例
-        if LocalConfigs._instance is None:
+        if LocalConfigs.__instance is None:
             LocalConfigs()
-        return LocalConfigs._instance
+        return LocalConfigs.__instance
 
     @staticmethod
     def repository_directory():
         # 本地仓库路径
-        return LocalConfigs.instance()._repository_directory
+        return LocalConfigs._instance()._repository_directory
 
     @staticmethod
     def seven_zip_exe_path():
         # 本机 7z.exe 的路径
-        return LocalConfigs.instance()._seven_zip_exe_path
+        return LocalConfigs._instance()._seven_zip_exe_path
 
     @staticmethod
     def root_directory_export_to():
         # 导出根目录路径
-        return LocalConfigs.instance()._root_directory_export_to
+        return LocalConfigs._instance()._root_directory_export_to
 
 
 if __name__ == "__main__":
