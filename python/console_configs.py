@@ -4,8 +4,8 @@ import fnmatch
 import os
 import xml.etree.ElementTree as ET
 
-from common.local_configs import LocalConfigs
-from common.ra_core_configs import RA_CoreConfigs
+from local_configs import LocalConfigs
+from ra_core_configs import RA_CoreConfigs
 
 
 class ConsoleConfigs:

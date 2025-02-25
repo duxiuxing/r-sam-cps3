@@ -3,7 +3,8 @@
 import os
 
 from abc import ABC, abstractmethod
-from common.console_configs import ConsoleConfigs
+from console_configs import ConsoleConfigs
+from ra_core_info import RA_CoreInfo
 
 
 class PlaylistHeaderBase(ABC):
@@ -27,14 +28,17 @@ class BlankPlaylistHeader(PlaylistHeaderBase):
 
 
 class WiiSdPlaylistHeader(PlaylistHeaderBase):
+    def __init__(self, app_folder_name):
+        self._app_folder_name = app_folder_name
+
     def write(self, lpl_file):
         lpl_file.write("{\n")
         lpl_file.write('  "version": "1.5",\n')
         lpl_file.write(
-            f'  "default_core_path": "sd:/apps/retroarch-wii/{ConsoleConfigs.ra_default_core_file_title()}_wii.dol",\n'
+            f'  "default_core_path": "sd:/apps/{self._app_folder_name}/{ConsoleConfigs.ra_default_core_file_title()}_wii.dol",\n'
         )
         lpl_file.write(
-            f'  "default_core_name": "{ConsoleConfigs.ra_default_core_name()}",\n'
+            f'  "default_core_name": "{ConsoleConfigs.current_ra_core_info().core_display_name}",\n'
         )
         lpl_file.write('  "label_display_mode": 0,\n')
         lpl_file.write('  "right_thumbnail_mode": 3,\n')

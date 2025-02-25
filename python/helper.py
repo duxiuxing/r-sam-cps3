@@ -4,7 +4,7 @@ import os
 import shutil
 import zlib
 
-from common.local_configs import LocalConfigs
+from local_configs import LocalConfigs
 
 
 class Helper:
@@ -154,7 +154,7 @@ class Helper:
     def files_in_letter_folder():
         # 如果 roms 文件夹里有 roms.xml，则返回 False，否则返回 True
         xml_file_path = os.path.join(
-            LocalConfigs.repository_folder_path(), "roms\\roms.xml"
+            LocalConfigs.repository_directory(), "roms\\roms.xml"
         )
         if os.path.exists(xml_file_path):
             return False

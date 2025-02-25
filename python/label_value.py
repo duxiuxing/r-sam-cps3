@@ -1,7 +1,7 @@
 # -- coding: UTF-8 --
 
 from abc import ABC, abstractmethod
-from common.helper import Helper
+from helper import Helper
 
 
 class LabelValueBase(ABC):

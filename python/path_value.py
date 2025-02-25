@@ -3,7 +3,7 @@
 import os
 
 from abc import ABC, abstractmethod
-from common.local_configs import LocalConfigs
+from local_configs import LocalConfigs
 
 
 class PathValueBase(ABC):
@@ -16,7 +16,7 @@ class PathValueBase(ABC):
 class AndroidPathValue(PathValueBase):
     def parse(self, path):
         value = path.replace(
-            os.path.join(LocalConfigs.export_root_folder_path(), "Games"),
+            os.path.join(LocalConfigs.root_directory_export_to(), "Games"),
             "/storage/emulated/0/Games",
         )
         return value.replace("\\", "/")
@@ -26,7 +26,7 @@ class AndroidPathValue(PathValueBase):
 class WiiSdPathValue(PathValueBase):
     def parse(self, path):
         value = path.replace(
-            os.path.join(LocalConfigs.export_root_folder_path(), "Games"), "sd:\\Games"
+            os.path.join(LocalConfigs.root_directory_export_to(), "Games"), "sd:\\Games"
         )
         return value.replace("\\", "/")
 
@@ -41,6 +41,6 @@ class WinPathValue(PathValueBase):
 class XBoxPathValue(PathValueBase):
     def parse(self, path):
         value = path.replace(
-            os.path.join(LocalConfigs.export_root_folder_path(), "Games"), "E:\\Games"
+            os.path.join(LocalConfigs.root_directory_export_to(), "Games"), "E:\\Games"
         )
         return value.replace("\\", "\\\\")
