@@ -14,20 +14,20 @@ class RomExportConfigs:
     def __init__(self):
         self.rom_title_filter = None
         self.export_fake_rom = False
-        self.all_rom_export_list = []
+        self.all_rom_export_info_list = []
         self.dst_roms_folder_path = os.path.join(
             LocalConfigs.root_directory_export_to(),
             f"Games\\{ConsoleConfigs.current_ra_core_configs().core_display_name()}",
         )
 
-    def rom_export_list(self):
+    def rom_export_info_list(self):
         ret_list = []
         if self.rom_title_filter is None:
-            ret_list.extend(self.all_rom_export_list)
+            ret_list.extend(self.all_rom_export_info_list)
         else:
-            for item in self.all_rom_export_list:
-                if item.rom_title == self.rom_title_filter:
-                    ret_list.append(item)
+            for rom_export_info in self.all_rom_export_info_list:
+                if rom_export_info.rom_title == self.rom_title_filter:
+                    ret_list.append(rom_export_info)
                     break
         return ret_list
 
@@ -40,7 +40,7 @@ class RomExportConfigs:
             print(f"【错误】无效的文件 {xml_file_path}")
             return False
 
-        self.all_rom_export_list = []
+        self.all_rom_export_info_list = []
         r_sam_roms = RSamRoms.instance()
 
         tree = ET.parse(xml_file_path)
@@ -98,7 +98,7 @@ class RomExportConfigs:
                 rom_name = f"{rom_info.game_name}\\{rom_name}"
             rom_export_info.dst_path = os.path.join(self.dst_roms_folder_path, rom_name)
 
-            self.all_rom_export_list.append(rom_export_info)
+            self.all_rom_export_info_list.append(rom_export_info)
 
         return True
 
@@ -107,6 +107,6 @@ if __name__ == "__main__":
     rom_export_configs = RomExportConfigs()
     rom_export_configs.parse()
     index = 1
-    for item in rom_export_configs.rom_export_list():
-        print(f"{index}. {item.game_name}")
+    for rom_export_info in rom_export_configs.rom_export_info_list():
+        print(f"{index}. {rom_export_info.game_name}")
         index = index + 1

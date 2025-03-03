@@ -16,7 +16,7 @@ class RomExporter:
             print(f"【错误】无效的目标文件夹 {self.configs.dst_roms_folder_path}")
             return False
 
-        for item in self.configs.rom_export_list():
+        for item in self.configs.rom_export_info_list():
             src_path = item.src_path
             dst_path = item.dst_path
             if Helper.verify_exist_folder_ex(os.path.dirname(dst_path)):
