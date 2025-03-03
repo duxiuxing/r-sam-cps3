@@ -13,7 +13,7 @@ class ConsoleConfigs:
 
     def __init__(self):
         if ConsoleConfigs.__instance is not None:
-            raise Exception("请使用类的 _instance() 获取实例")
+            raise Exception("请使用 ConsoleConfigs._instance() 获取实例")
         else:
             ConsoleConfigs.__instance = self
 
