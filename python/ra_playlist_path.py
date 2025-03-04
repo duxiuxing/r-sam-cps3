@@ -3,17 +3,29 @@
 import os
 
 from abc import ABC, abstractmethod
+from console_configs import ConsoleConfigs
 from local_configs import LocalConfigs
+from ra_configs import RA_Configs
 
 
-class PathValueBase(ABC):
+class RA_PlaylistPath(ABC):
+    @staticmethod
+    def create_instance():
+        sys_code = ConsoleConfigs.ra_configs().sys_code()
+        if sys_code == RA_Configs.SYS_WII:
+            return Wii_PlaylistPath()
+        elif sys_code == RA_Configs.SYS_WIN:
+            return Win_PlaylistPath()
+        else:
+            return None
+
     @abstractmethod
     def parse(self, path):
         pass
 
 
 # 把 Windows 路径转成 Android 路径
-class AndroidPathValue(PathValueBase):
+class Android_PlaylistPath(RA_PlaylistPath):
     def parse(self, path):
         value = path.replace(
             os.path.join(LocalConfigs.root_directory_export_to(), "Games"),
@@ -23,22 +35,26 @@ class AndroidPathValue(PathValueBase):
 
 
 # 把 Windows 路径转成 Wii SD 路径
-class WiiSdPathValue(PathValueBase):
+class Wii_PlaylistPath(RA_PlaylistPath):
     def parse(self, path):
         value = path.replace(
-            os.path.join(LocalConfigs.root_directory_export_to(), "Games"), "sd:\\Games"
+            os.path.join(LocalConfigs.root_directory_export_to(), "Games"),
+            "..\\..\\Games",
         )
         return value.replace("\\", "/")
 
 
 # RetraArch 要求 Windows 路径使用双反斜杠
-class WinPathValue(PathValueBase):
+class Win_PlaylistPath(RA_PlaylistPath):
     def parse(self, path):
-        return path.replace("\\", "\\\\")
+        value = path.replace(
+            os.path.join(LocalConfigs.root_directory_export_to(), "Games"), "..\\Games"
+        )
+        return value.replace("\\", "\\\\")
 
 
 # 把 Windows 路径转成 XBOX 路径
-class XBoxPathValue(PathValueBase):
+class XBox_PlaylistPath(RA_PlaylistPath):
     def parse(self, path):
         value = path.replace(
             os.path.join(LocalConfigs.root_directory_export_to(), "Games"), "E:\\Games"

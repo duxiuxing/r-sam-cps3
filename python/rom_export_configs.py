@@ -1,6 +1,7 @@
 # -- coding: UTF-8 --
 
 import os
+import random
 import xml.etree.ElementTree as ET
 
 from console_configs import ConsoleConfigs
@@ -15,9 +16,9 @@ class RomExportConfigs:
         self.rom_title_filter = None
         self.export_fake_rom = False
         self.all_rom_export_info_list = []
-        self.dst_roms_folder_path = os.path.join(
+        self.dst_roms_directory = os.path.join(
             LocalConfigs.root_directory_export_to(),
-            f"Games\\{ConsoleConfigs.current_ra_core_configs().core_display_name()}",
+            f"Games\\{ConsoleConfigs.ra_configs().default_core_name()}",
         )
 
     def rom_export_info_list(self):
@@ -47,7 +48,7 @@ class RomExportConfigs:
         root = tree.getroot()
 
         if "dst_folder" in root.attrib:
-            self.dst_roms_folder_path = os.path.join(
+            self.dst_roms_directory = os.path.join(
                 LocalConfigs.root_directory_export_to(), root.get("dst_folder")
             )
 
@@ -96,7 +97,7 @@ class RomExportConfigs:
             if one_folder_one_rom:
                 # 把 ROM 文件放在以游戏命名的文件夹里
                 rom_name = f"{rom_info.game_name}\\{rom_name}"
-            rom_export_info.dst_path = os.path.join(self.dst_roms_folder_path, rom_name)
+            rom_export_info.dst_path = os.path.join(self.dst_roms_directory, rom_name)
 
             self.all_rom_export_info_list.append(rom_export_info)
 
@@ -106,7 +107,22 @@ class RomExportConfigs:
 if __name__ == "__main__":
     rom_export_configs = RomExportConfigs()
     rom_export_configs.parse()
+    print("Index\t | ROM\t\t\t | Game")
     index = 1
     for rom_export_info in rom_export_configs.rom_export_info_list():
-        print(f"{index}. {rom_export_info.game_name}")
+        print(
+            f"{index}.\t | {rom_export_info.rom_title}{ConsoleConfigs.rom_extension()}\t\t | {rom_export_info.game_name}"
+        )
+        index = index + 1
+
+    random_index = random.randrange(0, index)
+    rom_export_info = rom_export_configs.rom_export_info_list()[random_index]
+    rom_export_configs.rom_title_filter = rom_export_info.rom_title
+    print(f"\nSet {rom_export_info.rom_title} as filter")
+    print("Index\t | ROM\t\t\t | Game")
+    index = 1
+    for rom_export_info in rom_export_configs.rom_export_info_list():
+        print(
+            f"{index}.\t | {rom_export_info.rom_title}{ConsoleConfigs.rom_extension()}\t\t | {rom_export_info.game_name}"
+        )
         index = index + 1

@@ -5,7 +5,7 @@ import os
 import xml.etree.ElementTree as ET
 
 from local_configs import LocalConfigs
-from ra_core_configs import RA_CoreConfigs
+from ra_configs import RA_Configs
 
 
 class ConsoleConfigs:
@@ -25,9 +25,9 @@ class ConsoleConfigs:
         else:
             tree = ET.parse(xml_file_path)
             root = tree.getroot()
-            self._ra_core_configs = RA_CoreConfigs(root.attrib["ra_core_configs"])
-            self._rom_extension = root.attrib["rom_extension"]
-            self._wiiflow_plugin_name = root.attrib["wiiflow_plugin_name"]
+            self.ra_configs = RA_Configs(root.attrib["ra_configs"])
+            self.rom_extension = root.attrib["rom_extension"]
+            self.wiiflow_plugin_name = root.attrib["wiiflow_plugin_name"]
 
     @staticmethod
     def _instance():
@@ -39,7 +39,7 @@ class ConsoleConfigs:
     @staticmethod
     def rom_extension():
         # ROM 文件的扩展名
-        return ConsoleConfigs._instance()._rom_extension
+        return ConsoleConfigs._instance().rom_extension
 
     @staticmethod
     def rom_extension_match(file_name):
@@ -47,18 +47,17 @@ class ConsoleConfigs:
         return fnmatch.fnmatch(file_name, pat)
 
     @staticmethod
-    def current_ra_core_configs():
-        # RetroArch 核心信息
-        return ConsoleConfigs._instance()._ra_core_configs
+    def ra_configs():
+        return ConsoleConfigs._instance().ra_configs
 
     @staticmethod
-    def set_ra_core_configs(ra_core_configs):
-        ConsoleConfigs._instance()._ra_core_configs = ra_core_configs
+    def set_ra_configs(ra_configs):
+        ConsoleConfigs._instance().ra_configs = ra_configs
 
     @staticmethod
     def wiiflow_plugin_name():
         # WiiFlow 的插件名称
-        return ConsoleConfigs._instance()._wiiflow_plugin_name
+        return ConsoleConfigs._instance().wiiflow_plugin_name
 
 
 if __name__ == "__main__":
@@ -68,5 +67,5 @@ if __name__ == "__main__":
         print(f"{file_name} ROM 文件名匹配成功")
     else:
         print(f"{file_name} ROM 文件名不匹配")
-    print(ConsoleConfigs.current_ra_core_configs().core_display_name())
+    print(ConsoleConfigs.ra_configs().default_core_name())
     print(ConsoleConfigs.wiiflow_plugin_name())

@@ -22,63 +22,63 @@ class Helper:
             return crc32.rjust(8, "0")
 
     @staticmethod
-    def exist_folder(folder_path):
+    def exist_directory(dir_path):
         # 判断指定文件夹是否存在
         # Args:
-        #     folder_path (str): 待判断的文件夹路径
+        #     dir_path (str): 待判断的文件夹路径
         # Returns:
         #     bool: 如果文件夹存在则返回 True，否则返回 False
-        if os.path.isdir(folder_path):
+        if os.path.isdir(dir_path):
             return True
         else:
             return False
 
     @staticmethod
-    def verify_exist_folder(folder_path):
+    def verify_exist_directory(dir_path):
         # 判断指定文件夹是否存在，如果不存在则创建该文件夹
         # Args:
-        #     folder_path (str): 待判断的文件夹路径，要求父文件夹必须是存在的
+        #     dir_path (str): 待判断的文件夹路径，要求父文件夹必须是存在的
         # Returns:
         #     bool: 如果文件夹存在或创建成功，则返回 True，否则返回 False
-        if Helper.exist_folder(folder_path):
+        if Helper.exist_directory(dir_path):
             return True
         else:
-            os.mkdir(folder_path)
-            return Helper.exist_folder(folder_path)
+            os.mkdir(dir_path)
+            return Helper.exist_directory(dir_path)
 
     @staticmethod
-    def verify_exist_folder_ex(folder_full_path):
+    def verify_exist_directory_ex(dir_path):
         # 判断指定文件夹是否存在，如果不存在则逐级创建
         # Args:
-        #     folder_path (str): 待判断的文件夹路径，如果父文件夹不存在会逐级创建
+        #     dir_path (str): 待判断的文件夹路径，如果父文件夹不存在会逐级创建
         # Returns:
         #     bool: 如果文件夹存在或创建成功，则返回 True，否则返回 False
-        folder_path = None
-        for folder_name in folder_full_path.split("\\"):
-            if folder_path is None:
-                folder_path = folder_name
-                if not Helper.exist_folder(folder_path):
+        path = None
+        for folder in dir_path.split("\\"):
+            if path is None:
+                path = folder
+                if not Helper.exist_directory(path):
                     return False
             else:
-                folder_path = f"{folder_path}\\{folder_name}"
-                if not Helper.verify_exist_folder(folder_path):
+                path = f"{path}\\{folder}"
+                if not Helper.verify_exist_directory(path):
                     return False
-        return Helper.exist_folder(folder_full_path)
+        return Helper.exist_directory(dir_path)
 
     @staticmethod
-    def copy_folder(src, dst):
+    def copy_directory(src, dst):
         # 用递归的方式，复制文件夹
         # Args:
         #     src (str): 源文件夹路径
         #     dst (str): 目标文件夹路径
-        if not Helper.verify_exist_folder_ex(dst):
+        if not Helper.verify_exist_directory_ex(dst):
             print(f"【错误】无效的目标文件夹 {dst}")
             return
         for item in os.listdir(src):
             s = os.path.join(src, item)
             d = os.path.join(dst, item)
             if os.path.isdir(s):
-                Helper.copy_folder(s, d)
+                Helper.copy_directory(s, d)
             elif not os.path.exists(d):
                 shutil.copy2(s, d)
 
@@ -88,7 +88,7 @@ class Helper:
         # Args:
         #     src (str): 源文件路径
         #     dst (str): 目标文件路径，如果父文件夹不存在会逐级创建
-        if not Helper.verify_exist_folder_ex(os.path.dirname(dst)):
+        if not Helper.verify_exist_directory_ex(os.path.dirname(dst)):
             print(f"【错误】无效的目标文件 {dst}")
             return
         if not os.path.exists(dst):
