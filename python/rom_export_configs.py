@@ -18,7 +18,7 @@ class RomExportConfigs:
         self.all_rom_export_info_list = []
         self.dst_roms_directory = os.path.join(
             LocalConfigs.root_directory_export_to(),
-            f"Games\\{ConsoleConfigs.ra_configs().default_core_name()}",
+            f"Games\\{ConsoleConfigs.ra_configs().core_name()}",
         )
 
     def rom_export_info_list(self):

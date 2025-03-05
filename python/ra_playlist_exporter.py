@@ -39,7 +39,7 @@ class RA_PlaylistExporter:
             return
 
         with open(lpl_file_path, "w", encoding="utf-8") as lpl_file:
-            RA_PlaylistHeader.create_instance().write(lpl_file)
+            core_path = RA_PlaylistHeader.create_instance().write(lpl_file)
             playlist_lable = RA_PlaylistLabel.create_instance()
             playlist_path = RA_PlaylistPath.create_instance()
 
@@ -58,8 +58,8 @@ class RA_PlaylistExporter:
                 value = playlist_lable.parse(rom_export_info)
                 lpl_file.write(f'      "label": "{value}",\n')
 
-                lpl_file.write('      "core_path": "DETECT",\n')
-                lpl_file.write('      "core_name": "DETECT",\n')
+                lpl_file.write(f'      "core_path": "{core_path}",\n')
+                lpl_file.write(f'      "core_name": "{ra_configs.core_name()}",\n')
                 lpl_file.write(f'      "crc32": "{rom_export_info.rom_crc32}|crc",\n')
                 lpl_file.write(f'      "db_name": "{ra_configs.playlist_name()}.lpl"\n')
                 lpl_file.write("    }")

@@ -27,18 +27,20 @@ class Win_PlaylistHeader(RA_PlaylistHeader):
     def write(self, lpl_file):
         ra_configs = ConsoleConfigs.ra_configs()
 
+        core_path = f".\\\\core\\\\{ra_configs.core_file()}"
+
         lpl_file.write("{\n")
         lpl_file.write('  "version": "1.5",\n')
-        lpl_file.write(
-            f'  "default_core_path": ".\\\\core\\\\{ra_configs.default_core_file()}",\n'
-        )
-        lpl_file.write(f'  "default_core_name": "{ra_configs.default_core_name()}",\n')
+        lpl_file.write(f'  "default_core_path": "{core_path}",\n')
+        lpl_file.write(f'  "default_core_name": "{ra_configs.core_name()}",\n')
         lpl_file.write('  "label_display_mode": 0,\n')
         lpl_file.write('  "right_thumbnail_mode": 4,\n')
         lpl_file.write('  "left_thumbnail_mode": 2,\n')
         lpl_file.write('  "thumbnail_match_mode": 0,\n')
         lpl_file.write('  "sort_mode": 0,\n')
         lpl_file.write('  "items": [\n')
+
+        return core_path
 
 
 class Wii_PlaylistHeader(RA_PlaylistHeader):
@@ -48,15 +50,17 @@ class Wii_PlaylistHeader(RA_PlaylistHeader):
     def write(self, lpl_file):
         ra_configs = ConsoleConfigs.ra_configs()
 
+        core_path = f"./{ra_configs.core_file()}"
+
         lpl_file.write("{\n")
         lpl_file.write('  "version": "1.5",\n')
-        lpl_file.write(
-            f'  "default_core_path": "./{ra_configs.default_core_file()}",\n'
-        )
-        lpl_file.write(f'  "default_core_name": "{ra_configs.default_core_name()}",\n')
+        lpl_file.write(f'  "default_core_path": "{core_path}",\n')
+        lpl_file.write(f'  "default_core_name": "{ra_configs.core_name()}",\n')
         lpl_file.write('  "label_display_mode": 0,\n')
         lpl_file.write('  "right_thumbnail_mode": 3,\n')
         lpl_file.write('  "left_thumbnail_mode": 2,\n')
         lpl_file.write('  "thumbnail_match_mode": 0,\n')
         lpl_file.write('  "sort_mode": 0,\n')
         lpl_file.write('  "items": [\n')
+
+        return core_path

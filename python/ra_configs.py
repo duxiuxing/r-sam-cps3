@@ -10,8 +10,10 @@ class RA_Configs:
     LANG_EN = "en"
     LANG_ZHCN = "zhcn"
 
+    SYS_ANDROID = "android"
     SYS_WII = "wii"
     SYS_WIN = "win"
+    SYS_XBOX = "xbox"
 
     def __init__(self, xml_file_name):
         self._lang = RA_Configs.LANG_EN
@@ -45,14 +47,14 @@ class RA_Configs:
     def set_sys_code(self, sys_code):
         self._sys = sys_code
 
-    def default_core_name(self):
-        return self._get_value("default_core_name")
+    def core_name(self):
+        return self._get_value("core_name")
 
     def playlist_name(self):
         return self._get_value(f"playlist_name_{self._lang}")
 
-    def default_core_file(self):
-        return self._get_value(f"default_core_file_{self._sys}")
+    def core_file(self):
+        return self._get_value(f"core_file_{self._sys}")
 
     def assets_directory(self):
         return os.path.join(
@@ -85,10 +87,10 @@ if __name__ == "__main__":
     ra_configs = RA_Configs("retroarch.xml")
     print(ra_configs.lang_code())
     print(ra_configs.sys_code())
-    print(ra_configs.default_core_name())
+    print(ra_configs.core_name())
     print(ra_configs.assets_directory())
     print(ra_configs.playlist_name())
-    print(ra_configs.default_core_file())
+    print(ra_configs.core_file())
     print(ra_configs.playlist_directory())
     print(ra_configs.thumbnails_directory())
     print(ra_configs.thumbnails_filter())

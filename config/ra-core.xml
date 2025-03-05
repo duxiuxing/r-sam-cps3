@@ -1,6 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<RA_CoreConfigs
-    core_display_name="Arcade (FB Alpha 2012 CPS-3)"
-    core_file_name_wii="fbalpha2012_cps3_libretro_wii.dol"
-    core_file_name_win="fbalpha2012_cps3_libretro.dll"
-/>

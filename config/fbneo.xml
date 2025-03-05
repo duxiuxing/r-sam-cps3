@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RA_Configs
+    core_name="Arcade (FinalBurn Neo)"
+    playlist_name_en="R-Sam - CPS3 Arcade (FBNeo)"
+    playlist_name_zhcn="认真玩 - CPS3 街机 (FBNeo)"
+    core_file_wii=""
+    assets_directory_wii=""
+    playlist_directory_wii=""
+    thumbnails_directory_wii=""
+    thumbnails_filter_wii=""
+    core_file_win="fbneo_libretro.dll"
+    assets_directory_win="RetroArch-Win64\assets"
+    playlist_directory_win="RetroArch-Win64\playlists"
+    thumbnails_directory_win="RetroArch-Win64\thumbnails"
+    thumbnails_filter_win="boxart|logo|snap"
+/>

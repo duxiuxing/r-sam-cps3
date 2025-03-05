@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<RA_Configs
+    core_name="Arcade (FB Alpha 2012 CPS-3)"
+    playlist_name_en="R-Sam - CPS3 Arcade"
+    playlist_name_zhcn="认真玩 - CPS3 街机"
+    core_file_wii="fbalpha2012_cps3_libretro_wii.dol"
+    assets_directory_wii="apps\fbalpha2012_cps3\assets"
+    playlist_directory_wii="apps\fbalpha2012_cps3\playlists"
+    thumbnails_directory_wii="retroarch\thumbnails"
+    thumbnails_filter_wii="snap|title"
+    core_file_win="fbalpha2012_cps3_libretro.dll"
+    assets_directory_win="RetroArch-Win64\assets"
+    playlist_directory_win="RetroArch-Win64\playlists"
+    thumbnails_directory_win="RetroArch-Win64\thumbnails"
+    thumbnails_filter_win="disc|logo|snap"
+/>

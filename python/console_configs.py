@@ -25,7 +25,7 @@ class ConsoleConfigs:
         else:
             tree = ET.parse(xml_file_path)
             root = tree.getroot()
-            self.ra_configs = RA_Configs(root.attrib["ra_configs"])
+            self.ra_configs = RA_Configs(root.attrib["ra_configs_file"])
             self.rom_extension = root.attrib["rom_extension"]
             self.wiiflow_plugin_name = root.attrib["wiiflow_plugin_name"]
 
@@ -67,5 +67,5 @@ if __name__ == "__main__":
         print(f"{file_name} ROM 文件名匹配成功")
     else:
         print(f"{file_name} ROM 文件名不匹配")
-    print(ConsoleConfigs.ra_configs().default_core_name())
+    print(ConsoleConfigs.ra_configs().core_name())
     print(ConsoleConfigs.wiiflow_plugin_name())
