@@ -37,20 +37,20 @@ class RSamRoms:
             )
 
     @staticmethod
-    def compute_image_path(rom_info, sub_folder):
-        # 根据 rom_info 和 sub_folder 拼接图片文件的路径
+    def compute_image_path(game_name, sub_folder):
+        # 根据 game_name 和 sub_folder 拼接图片文件的路径
         if Helper.files_in_letter_folder():
-            letter = rom_info.game_name.upper()[0]
+            letter = game_name.upper()[0]
             if letter not in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
                 letter = "#"
             return os.path.join(
                 LocalConfigs.repository_directory(),
-                f"image\\{sub_folder}\\{letter}\\{rom_info.game_name}.png",
+                f"image\\{sub_folder}\\{letter}\\{game_name}.png",
             )
         else:
             return os.path.join(
                 LocalConfigs.repository_directory(),
-                f"image\\{sub_folder}\\{rom_info.game_name}.png",
+                f"image\\{sub_folder}\\{game_name}.png",
             )
 
     def __init__(self):

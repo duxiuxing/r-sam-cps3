@@ -1,77 +1,80 @@
 <?xml version='1.0' encoding='utf-8'?>
-<Copy-List description="导出到 Wii SD 卡的文件">
-    <!-- 以下为 fbalpha2012_cps3 -->
-    <Folder
-        src="wii\apps\fbalpha2012_cps3\info"
-        dst="apps\fbalpha2012_cps3\info"
-    />
-    <Folder
-        src="wii\apps\fbalpha2012_cps3\playlists"
-        dst="apps\fbalpha2012_cps3\playlists"
-    />
-    <File
-        src="wii\apps\fbalpha2012_cps3\fbalpha2012_cps3_libretro_wii.dol"
-        dst="apps\fbalpha2012_cps3\boot.dol"
-    />
-    <File
-        src="wii\apps\fbalpha2012_cps3\fbalpha2012_cps3_libretro_wii.dol"
-        dst="apps\fbalpha2012_cps3\fbalpha2012_cps3_libretro_wii.dol"
-    />
-    <File
-        src="wii\apps\fbalpha2012_cps3\icon.png"
-        dst="apps\fbalpha2012_cps3\icon.png"
-    />
-    <File
-        src="wii\apps\fbalpha2012_cps3\meta.xml"
-        dst="apps\fbalpha2012_cps3\meta.xml"
-    />
-    <File
-        src="wii\apps\fbalpha2012_cps3\retroarch.cfg"
-        dst="apps\fbalpha2012_cps3\retroarch.cfg"
-    />
-    <File
-        src="wii\wad\fbalpha2012_cps3\Capcom CPS-3 White [C3LR].wad"
-        dst="wad\fbalpha2012_cps3\Capcom CPS-3 White [C3LR].wad"
-    />
-    <File
-        src="wii\wad\fbalpha2012_cps3\Capcom CPS-3 Yellow [C3LR].wad"
-        dst="wad\fbalpha2012_cps3\Capcom CPS-3 Yellow [C3LR].wad"
-    />
-    <!-- 以上为 fbalpha2012_cps3 -->
-    <!-- 以下为 sfiii -->
-    <Folder
-        src="wii\apps\fbalpha2012_cps3\info"
-        dst="apps\sfiii\info"
-    />
-    <Folder
-        src="wii\apps\sfiii\playlists"
-        dst="apps\sfiii\playlists"
-    />
-    <File
-        src="wii\apps\fbalpha2012_cps3\fbalpha2012_cps3_libretro_wii.dol"
-        dst="apps\sfiii\boot.dol"
-    />
-    <File
-        src="wii\apps\fbalpha2012_cps3\fbalpha2012_cps3_libretro_wii.dol"
-        dst="apps\sfiii\fbalpha2012_cps3_libretro_wii.dol"
-    />
-    <File
-        src="wii\apps\sfiii\icon.png"
-        dst="apps\sfiii\icon.png"
-    />
-    <File
-        src="wii\apps\sfiii\meta.xml"
-        dst="apps\sfiii\meta.xml"
-    />
-    <File
-        src="wii\apps\sfiii\retroarch.cfg"
-        dst="apps\sfiii\retroarch.cfg"
-    />
-    <File
-        src="wii\wad\sfiii\Street Fighter 3 [ESF3].wad"
-        dst="wad\sfiii\Street Fighter 3 [ESF3].wad"
-    />
-    <!-- 以上为 sfiii -->
+<Wii-Files description="导出到 Wii SD 卡的文件">
+    <APP name="FB Alpha 2012 CPS-3" folder-name="fbalpha2012_cps3">
+        <Folder
+            src="wii\apps\fbalpha2012_cps3\info"
+            dst="apps\fbalpha2012_cps3\info"
+        />
+        <Folder
+            src="wii\apps\fbalpha2012_cps3\playlists"
+            dst="apps\fbalpha2012_cps3\playlists"
+        />
+        <File
+            src="wii\apps\fbalpha2012_cps3\fbalpha2012_cps3_libretro_wii.dol"
+            dst="apps\fbalpha2012_cps3\boot.dol"
+        />
+        <File
+            src="wii\apps\fbalpha2012_cps3\fbalpha2012_cps3_libretro_wii.dol"
+            dst="apps\fbalpha2012_cps3\fbalpha2012_cps3_libretro_wii.dol"
+        />
+        <File
+            src="wii\apps\fbalpha2012_cps3\icon.png"
+            dst="apps\fbalpha2012_cps3\icon.png"
+        />
+        <File
+            src="wii\apps\fbalpha2012_cps3\meta.xml"
+            dst="apps\fbalpha2012_cps3\meta.xml"
+        />
+        <File
+            src="wii\apps\fbalpha2012_cps3\retroarch.cfg"
+            dst="apps\fbalpha2012_cps3\retroarch.cfg"
+        />
+        <File
+            src="wii\wad\fbalpha2012_cps3\Capcom CPS-3 White [C3LR].wad"
+            dst="wad\fbalpha2012_cps3\Capcom CPS-3 White [C3LR].wad"
+        />
+        <File
+            src="wii\wad\fbalpha2012_cps3\Capcom CPS-3 Yellow [C3LR].wad"
+            dst="wad\fbalpha2012_cps3\Capcom CPS-3 Yellow [C3LR].wad"
+        />
+    </APP>
+    <APP name="Street Fighter 3" folder-name="sfiii"
+        icon="image\logo\Street Fighter III - New Generation.png"
+        gen-meta-xml="true"
+        gen-playlist="true">
+        <Folder
+            src="wii\apps\fbalpha2012_cps3\info"
+            dst="apps\sfiii\info"
+        />
+        <Folder
+            src="wii\apps\sfiii\playlists"
+            dst="apps\sfiii\playlists"
+        />
+        <File
+            src="wii\apps\fbalpha2012_cps3\fbalpha2012_cps3_libretro_wii.dol"
+            dst="apps\sfiii\boot.dol"
+        />
+        <File
+            src="wii\apps\fbalpha2012_cps3\fbalpha2012_cps3_libretro_wii.dol"
+            dst="apps\sfiii\fbalpha2012_cps3_libretro_wii.dol"
+        />
+        <File
+            src="wii\apps\sfiii\icon.png"
+            dst="apps\sfiii\icon.png"
+        />
+        <File
+            src="wii\apps\sfiii\meta.xml"
+            dst="apps\sfiii\meta.xml"
+        />
+        <File
+            src="wii\apps\sfiii\retroarch.cfg"
+            dst="apps\sfiii\retroarch.cfg"
+        />
+        <File
+            src="wii\wad\sfiii\Street Fighter 3 [ESF3].wad"
+            dst="wad\sfiii\Street Fighter 3 [ESF3].wad"
+        />
+    </APP>
     <!-- 以下为 sfiii2 -->
     <Folder
         src="wii\apps\fbalpha2012_cps3\info"
@@ -166,4 +169,4 @@
         dst="wiiflow\source_menu"
     />
     -->
-</Copy-List>
+</Wii-Files>

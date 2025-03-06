@@ -5,16 +5,16 @@
 		<id>800703</id>
 	<locale lang="EN">
 	<title>JoJo's Venture</title>
-	<genre>Fight,Fight / Versus</genre>
+	<genre>Fight / Versus</genre>
 	</locale>
 	<locale lang="ZHCN">
 		<title>JOJO的奇妙冒险</title>
-		<genre>格斗游戏</genre>
+		<genre>格斗 / 对战</genre>
 		<synopsis>《JOJO 的 奇 妙 冒 险》是 日 本 漫 画 家 荒 木 飞 吕 彦 的 漫 画 作 品。1998 年，卡 普 空 在 CPS3 基 板 上 推 出 同 名 格 斗 游 戏《JOJO 的 奇 妙 冒 险》。游 戏 再 现 了 原 作 漫 画 第 三 卷 的 风 格，并 再 现 了 漫 画 的 场 景 和 情 节。游 戏 系 统 上，本 作 继 承 了 卡 普 空 一 向 的 严 谨 设 定，并 加 入 了《恶 魔 战 士》的 一 些 特 性。必 杀 技 都 是 卡 普 空 作 品 的 一 贯 使 用 方 式，很 容 易 让 新 手 上 手。超 必 杀 KO 对 手 时 还 会 以 漫 画 形 式 表 现 出 来。</synopsis>
 	</locale>
 		<developer>Capcom</developer>
 		<publisher>Capcom</publisher>
-		<date year="1998" month="" day=""/>
+		<date year="1998" month="12" day="08"/>
 		<rating type="NOTE" value="16">
 		</rating>
 		<input players="2">
@@ -28,16 +28,16 @@
 		<id>800704</id>
 	<locale lang="EN">
 	<title>JoJo's Bizarre Adventure - Heritage for the Future</title>
-	<genre>Fight,Fight / Versus</genre>
+	<genre>Fight / Versus</genre>
 	</locale>
 	<locale lang="ZHCN">
 		<title>JOJO的奇妙冒险 未来遗产</title>
-		<genre>格斗游戏</genre>
+		<genre>格斗 / 对战</genre>
 		<synopsis>《JOJO 的 奇 妙 冒 险 未 来 遗 产》是 卡 普 空 推 出 的 一 款 格 斗 街 机 游 戏，前 作 为《JOJO 的 奇 妙 冒 险》，改 编 自 荒 木 飞 吕 彦 的 漫 画《JOJO 的 奇 妙 冒 险》。1999 年 卡 普 空 推 出 原 作 的 加 强 版，添 加 挑 战 模 式 以 及 新 角 色，细 节 有 所 改 动。</synopsis>
 	</locale>
 		<developer>Capcom</developer>
 		<publisher>Capcom</publisher>
-		<date year="1999" month="" day=""/>
+		<date year="1999" month="09" day="13"/>
 		<rating type="NOTE" value="16">
 		</rating>
 		<input players="2">
@@ -51,18 +51,18 @@
 		<id>800705</id>
 	<locale lang="EN">
 	<title>Red Earth</title>
-	<genre>Fight,Fight / Versus</genre>
+	<genre>Fight / Co-op</genre>
 	</locale>
 	<locale lang="ZHCN">
 		<title>赤色大地</title>
-		<genre>格斗游戏</genre>
+		<genre>格斗 / 合作</genre>
 		<synopsis>《赤 色 大 地》，又 名《红 色 地 球》，是 1996 年 卡 普 空 在 CPS3 上 推 出 的 第 一 部 游 戏。这 是 一 款 极 具 创 意 的 格 斗 游 戏，它 的 舞 台 为 中 世 纪 剑 与 魔 法 的 世 界，每 名 角 色 都 富 有 特 色。系 统 上，它 融 合 角 色 扮 演 游 戏 的 升 级 元 素，在 一 回 合 结 束 后 会 恢 复 部 分 HP 之 余，还 会 增 加 经 验 值，当 经 验 值 到 达 一 定 水 平 就 能 获 得 新 的 必 杀 技。可 惜 的 是 当 年 还 没 有 用 上 记 忆 卡，只 是 用 密 码 去 记 录 能 力。密 码 模 式 允 许 玩 家 下 一 次 玩 游 戏 时 在 街 机 上 输 入 密 码，以 他 们 的 角 色 在 上 次 结 束 时 达 到 的 相 同 技 能 水 平 继 续 游 戏，角 色 可 以 根 据 已 达 到 的 技 能 等 级 获 得 新 的 能 力。
 
 故 事 发 生 在 1999 年 的 一 个 平 行 地 球，讲 述 了 四 位 英 雄 对 抗 巨 人 Scion 释 放 的 神 话 怪 兽 军 队，以 防 止 他 们 摧 毁 世 界 的 故 事。你 可 以 选 择 扮 演 狮 王 Leo、武 术 家 Mai -Ling、女 巫 Tessa 或 忍 者 Kenji，他 们 将 穿 越 全 球，击 败 铁 Scion。</synopsis>
 	</locale>
 		<developer>Capcom</developer>
 		<publisher>Capcom</publisher>
-		<date year="1996" month="" day=""/>
+		<date year="1996" month="11" day="21"/>
 		<rating type="NOTE" value="16">
 		</rating>
 		<input players="2">
@@ -76,16 +76,16 @@
 		<id>800706</id>
 	<locale lang="EN">
 	<title>Street Fighter III - New Generation</title>
-	<genre>Fight,Fight / Versus</genre>
+	<genre>Fight / Versus</genre>
 	</locale>
 	<locale lang="ZHCN">
 		<title>街头霸王3</title>
-		<genre>格斗游戏</genre>
+		<genre>格斗 / 对战</genre>
 		<synopsis></synopsis>
 	</locale>
 		<developer>Capcom</developer>
 		<publisher>Capcom</publisher>
-		<date year="1997" month="" day=""/>
+		<date year="1997" month="02" day="04"/>
 		<rating type="NOTE" value="16">
 		</rating>
 		<input players="2">
@@ -99,16 +99,16 @@
 		<id>800707</id>
 	<locale lang="EN">
 	<title>Street Fighter III 2nd Impact - Giant Attack</title>
-	<genre>Fight,Fight / Versus</genre>
+	<genre>Fight / Versus</genre>
 	</locale>
 	<locale lang="ZHCN">
 		<title>街头霸王3.2</title>
-		<genre>格斗游戏</genre>
+		<genre>格斗 / 对战</genre>
 		<synopsis></synopsis>
 	</locale>
 		<developer>Capcom</developer>
 		<publisher>Capcom</publisher>
-		<date year="1997" month="" day=""/>
+		<date year="1997" month="09" day="30"/>
 		<rating type="NOTE" value="16">
 		</rating>
 		<input players="2">
@@ -122,16 +122,16 @@
 		<id>800708</id>
 	<locale lang="EN">
 	<title>Street Fighter III 3rd Strike - Fight for the Future</title>
-	<genre>Fight,Fight / Versus</genre>
+	<genre>Fight / Versus</genre>
 	</locale>
 	<locale lang="ZHCN">
 		<title>街头霸王3.3</title>
-		<genre>格斗游戏</genre>
+		<genre>格斗 / 对战</genre>
 		<synopsis></synopsis>
 	</locale>
 		<developer>Capcom</developer>
 		<publisher>Capcom</publisher>
-		<date year="1999" month="" day=""/>
+		<date year="1999" month="05" day="12"/>
 		<rating type="NOTE" value="16">
 		</rating>
 		<input players="2">

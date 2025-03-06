@@ -2,12 +2,11 @@
 
 import os
 
-from common.console_configs import ConsoleConfigs
-from common.game_info import GameInfo
-from common.helper import Helper
-from common.local_configs import LocalConfigs
+from console_configs import ConsoleConfigs
+from game_info import GameInfo
+from helper import Helper
+from local_configs import LocalConfigs
 from PIL import Image
-
 from wiiflow_plugins_data import WiiFlowPluginsData
 
 
@@ -30,29 +29,29 @@ class Wii_MakeBanner:
 
     def make_banner_bg(self):
         wallpaper_path = os.path.join(
-            LocalConfigs.repository_folder_path(),
+            LocalConfigs.repository_directory(),
             f"image\\wallpaper\\{self.game_info.name}.jpg",
         )
         banner_bg_path = os.path.join(
-            LocalConfigs.repository_folder_path(),
+            LocalConfigs.repository_directory(),
             f"wii\\wad\\{self.game_info.rom_title}\\res\\MenuScreen1-bg.png",
         )
-        Helper.verify_exist_folder_ex(os.path.dirname(banner_bg_path))
+        Helper.verify_exist_directory_ex(os.path.dirname(banner_bg_path))
         image = Image.open(wallpaper_path).resize((590, 332))
         image.save(banner_bg_path, format="PNG")
         return image
 
-    def make_banner(self):
+    def run(self):
         banner_bg = self.make_banner_bg()
 
         game_logo_path = os.path.join(
-            LocalConfigs.repository_folder_path(),
+            LocalConfigs.repository_directory(),
             f"image\\logo\\{self.game_info.name}.png",
         )
         game_logo = Image.open(game_logo_path).resize(self.banner_info.game_logo_size)
 
         capcom_logo_path = os.path.join(
-            LocalConfigs.repository_folder_path(), "image\\logo\\capcom.png"
+            LocalConfigs.repository_directory(), "image\\logo\\capcom.png"
         )
         capcom_logo = Image.open(capcom_logo_path).resize((142, 29))
 
@@ -62,7 +61,7 @@ class Wii_MakeBanner:
         )
 
         banner_path = os.path.join(
-            LocalConfigs.repository_folder_path(),
+            LocalConfigs.repository_directory(),
             f"wii\\wad\\{self.game_info.rom_title}\\res\\MenuScreen1.png",
         )
         banner_bg.save(banner_path)
@@ -83,4 +82,18 @@ if __name__ == "__main__":
         capcom_logo_left_top=(422, 8),  # 右上
     )
 
-    Wii_MakeBanner(sfiii2_banner_info).make_banner()
+    jojo_banner_info = BannerInfo(
+        "jojo",
+        game_logo_size=(160, 80),
+        game_logo_left_top=(420, 250),  # 右下
+        capcom_logo_left_top=(422, 8),  # 右上
+    )
+
+    jojoba_banner_info = BannerInfo(
+        "jojoba",
+        game_logo_size=(270, 150),
+        game_logo_left_top=(306, 122),  # 右中
+        capcom_logo_left_top=(422, 8),  # 右上
+    )
+
+    Wii_MakeBanner(jojo_banner_info).run()

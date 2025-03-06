@@ -28,6 +28,7 @@ class ConsoleConfigs:
             self.ra_configs = RA_Configs(root.attrib["ra_configs_file"])
             self.rom_extension = root.attrib["rom_extension"]
             self.wiiflow_plugin_name = root.attrib["wiiflow_plugin_name"]
+            self.wii_ra_app_configs = None
 
     @staticmethod
     def _instance():
@@ -52,12 +53,36 @@ class ConsoleConfigs:
 
     @staticmethod
     def set_ra_configs(ra_configs):
+        ret = ConsoleConfigs._instance().ra_configs
         ConsoleConfigs._instance().ra_configs = ra_configs
+        return ret
 
     @staticmethod
     def wiiflow_plugin_name():
         # WiiFlow 的插件名称
         return ConsoleConfigs._instance().wiiflow_plugin_name
+
+    @staticmethod
+    def wii_ra_app_configs():
+        return ConsoleConfigs._instance().wii_ra_app_configs
+
+    @staticmethod
+    def set_wii_ra_app_configs(wii_ra_app_configs):
+        ret = ConsoleConfigs._instance().wii_ra_app_configs
+        ConsoleConfigs._instance().wii_ra_app_configs = wii_ra_app_configs
+        return ret
+
+    @staticmethod
+    def current_playlist_directory():
+        if ConsoleConfigs._instance().ra_configs.sys_code() == RA_Configs.SYS_WII:
+            app_configs = ConsoleConfigs._instance().wii_ra_app_configs
+            if app_configs is not None:
+                return os.path.join(
+                    LocalConfigs.root_directory_export_to(),
+                    f"apps\\{app_configs.folder}\\playlists",
+                )
+
+        return ConsoleConfigs._instance().ra_configs.playlist_directory()
 
 
 if __name__ == "__main__":

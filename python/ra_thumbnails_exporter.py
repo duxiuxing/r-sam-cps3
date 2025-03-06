@@ -16,7 +16,9 @@ class RA_ThumbnailsExporter:
     def copy_image(
         rom_export_info: RomExportInfo, src_image_folder: str, dst_image_folder: str
     ):
-        src_image_path = RSamRoms.compute_image_path(rom_export_info, src_image_folder)
+        src_image_path = RSamRoms.compute_image_path(
+            rom_export_info.game_name, src_image_folder
+        )
 
         ra_configs = ConsoleConfigs.ra_configs()
         dst_image_name = Helper.remove_region(rom_export_info.en_title) + ".png"

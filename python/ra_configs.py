@@ -18,7 +18,6 @@ class RA_Configs:
     def __init__(self, xml_file_name):
         self._lang = RA_Configs.LANG_EN
         self._sys = RA_Configs.SYS_WIN
-        self._playlist_directory = None
 
         self._items = {}
         xml_file_path = os.path.join(
@@ -39,13 +38,17 @@ class RA_Configs:
         return self._lang
 
     def set_lang_code(self, lang_code):
+        ret = self._lang
         self._lang = lang_code
+        return ret
 
     def sys_code(self):
         return self._sys
 
     def set_sys_code(self, sys_code):
+        ret = self._sys
         self._sys = sys_code
+        return ret
 
     def core_name(self):
         return self._get_value("core_name")
@@ -63,15 +66,10 @@ class RA_Configs:
         )
 
     def playlist_directory(self):
-        if self._playlist_directory is None:
-            self._playlist_directory = os.path.join(
-                LocalConfigs.root_directory_export_to(),
-                self._get_value(f"playlist_directory_{self._sys}"),
-            )
-        return self._playlist_directory
-
-    def set_playlist_directory(self, dir_path):
-        self._playlist_directory = dir_path
+        return os.path.join(
+            LocalConfigs.root_directory_export_to(),
+            self._get_value(f"playlist_directory_{self._sys}"),
+        )
 
     def thumbnails_directory(self):
         return os.path.join(

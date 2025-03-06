@@ -2,7 +2,7 @@
 
 import os
 
-from common.local_configs import LocalConfigs
+from local_configs import LocalConfigs
 
 
 class WiiFlow_ConvertGameSynopsis:
@@ -12,7 +12,7 @@ class WiiFlow_ConvertGameSynopsis:
         # 本函数用于生成 WiiFlow 专用排版格式的游戏摘要文本，原始的摘要文本存于 game_synopsis.md，
         # 转换后的摘要文本存于 game_synopsis.wiiflow.md，需要手动合入 .xml 文件
         src_file_path = os.path.join(
-            LocalConfigs.repository_folder_path(), "doc\\game_synopsis.md"
+            LocalConfigs.repository_directory(), "doc\\game_synopsis.md"
         )
         if not os.path.exists(src_file_path):
             return
@@ -45,7 +45,7 @@ class WiiFlow_ConvertGameSynopsis:
                     dst_lines.append(dst_line)
 
         dst_file_path = os.path.join(
-            LocalConfigs.repository_folder_path(), "doc\\game_synopsis.wiiflow.md"
+            LocalConfigs.repository_directory(), "doc\\game_synopsis.wiiflow.md"
         )
         with open(dst_file_path, "w", encoding="utf-8") as dst_file:
             for line in dst_lines:

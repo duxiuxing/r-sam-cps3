@@ -25,19 +25,19 @@ class ImportRoms:
         exist_rom_crc32_to_name = {}
         roms_new_xml_root = ET.Element("Game-List")
 
-        import_folder_path = os.path.join(
+        import_dir_path = os.path.join(
             LocalConfigs.repository_directory(), "roms-import"
         )
-        if not Helper.exist_directory(import_folder_path):
-            print(f"【错误】无效的文件夹 {import_folder_path}")
+        if not Helper.exist_directory(import_dir_path):
+            print(f"【错误】无效的文件夹 {import_dir_path}")
             return
 
         roms_new_count = 0
-        for src_rom_name in os.listdir(import_folder_path):
+        for src_rom_name in os.listdir(import_dir_path):
             if not ConsoleConfigs.rom_extension_match(src_rom_name):
                 continue
 
-            src_rom_path = os.path.join(import_folder_path, src_rom_name)
+            src_rom_path = os.path.join(import_dir_path, src_rom_name)
             src_rom_crc32 = Helper.compute_crc32(src_rom_path)
             if r_sam_roms.rom_exist(src_rom_crc32):
                 exist_rom_crc32_to_name[src_rom_crc32] = src_rom_name

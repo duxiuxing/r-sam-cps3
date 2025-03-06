@@ -26,9 +26,8 @@ class RA_PlaylistExporter:
         RA_ThumbnailsExporter(self.rom_export_configs).run()
 
         ra_configs = ConsoleConfigs.ra_configs()
-
         lpl_file_path = os.path.join(
-            ra_configs.playlist_directory(),
+            ConsoleConfigs.current_playlist_directory(),
             f"{ra_configs.playlist_name()}.lpl",
         )
         if os.path.exists(lpl_file_path):
