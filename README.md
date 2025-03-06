@@ -61,25 +61,14 @@ RetroArch 使用的街机游戏数据库文件。运行全能模拟器，通过�
 - 远程路径：rdb > FBNeo - Arcade Games.rdb
 
 
-### wii > apps > fbalpha2012_cps3
+### wii > apps > retroarch-wii
 
-Wii 版的 FB Alpha 2012 CPS-3 核心。
+只保留了 FB Alpha 2012 CPS-3 核心相关的文件。
 
 - 项目网址：<https://github.com/libretro/fbalpha2012_cps3>
 - 下载页面：<https://buildbot.libretro.com/stable>
 
-retroarch.cfg 是 fbalpha2012_cps3 首次运行时自动生成的配置文件，由于 video_refresh_rate 是一个波动的值，为了同步方便，上库的时候手动设置成 60：
+retroarch.cfg 是 retroarch-wii 首次运行时自动生成的配置文件，由于 video_refresh_rate 是一个波动的值，为了同步方便，上库的时候手动设置成 60：
 ```ini
 video_refresh_rate = "60"
-```
-
-以下为 fbalpha2012_cps3 首次运行前的目录结构：
-```
-💾SD Card:
- ┗ 📂apps
-    ┗ 📂fbalpha2012_cps3
-       ┣ 📂info
-       ┃  ┗ 📜fbalpha2012_cps3_libretro.info
-       ┣ 📜boot.dol
-       ┗ 📜fbalpha2012_cps3_libretro_wii.dol
 ```
