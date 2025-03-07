@@ -45,7 +45,7 @@ class WiiRA_CfgExporter:
             'content_show_netplay = "false"',
             # 精简 PLAYLISTS 界面
             'content_show_add_entry = "0"',
-            'content_show_favorites = "false"',
+            # 'content_show_favorites = "false"',
             'content_show_explore = "false"',
             # 精简游戏的快捷菜单界面
             'menu_show_rewind = "false"',
@@ -68,6 +68,11 @@ class WiiRA_CfgExporter:
             f'overlay_directory = "sd:/apps/{app_configs.folder}/overlays"',
             f'video_filter_dir = "sd:/apps/{app_configs.folder}/filters/video"',
         ]
+
+        if app_configs.content_show_favorites:
+            list_ret.append('content_show_favorites = "true"')
+        else:
+            list_ret.append('content_show_favorites = "false"')
 
         if app_configs.content_show_history:
             list_ret.append('content_show_history = "true"')
