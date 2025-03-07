@@ -4,7 +4,9 @@ import os
 
 from abc import ABC, abstractmethod
 from console_configs import ConsoleConfigs
+from local_configs import LocalConfigs
 from ra_configs import RA_Configs
+from ra_playlist_path import Wii_PlaylistPath
 from wii_ra_app_configs import WiiRA_AppConfigs
 
 
@@ -49,7 +51,11 @@ class Wii_PlaylistHeader(RA_PlaylistHeader):
         ra_configs = ConsoleConfigs.ra_configs()
         app_configs = ConsoleConfigs.wii_ra_app_configs()
 
-        core_path = f"sd:/apps/{app_configs.folder}/{ra_configs.core_file()}"
+        core_path = os.path.join(
+            LocalConfigs.root_directory_export_to(),
+            f"apps\\{app_configs.folder}\\{ra_configs.core_file()}",
+        )
+        core_path = Wii_PlaylistPath().parse(core_path)
 
         lpl_file.write("{\n")
         lpl_file.write('  "version": "1.5",\n')
