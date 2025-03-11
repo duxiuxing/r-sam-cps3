@@ -16,7 +16,7 @@ class W_BannerInfo:
     CAPCOM_LOGO_OFFSET_X_TOP = 39
     CAPCOM_LOGO_OFFSET_Y = 8
     CAPCOM_LOGO_ALIGN_LEFT_TOP = (39, 8)
-    CAPCOM_LOGO_ALIGN_TOP_RIGHT = (649, 8) # 649=830-142-39
+    CAPCOM_LOGO_ALIGN_TOP_RIGHT = (649, 8)  # 649=830-142-39
 
     MENU_SCREEN_WIDTH = 830
     MENU_SCREEN_HEIGHT = 332
@@ -45,11 +45,11 @@ class Wii_MakeWidescreenBanner:
         if os.path.exists(main_screen_bg_path):
             return Image.open(main_screen_bg_path)
         else:
-            wallpaper_path = os.path.join(
+            marquee_path = os.path.join(
                 LocalConfigs.repository_directory(),
-                f"image\\wallpaper\\{self.game_info.name}.jpg",
+                f"image\\marquee\\{self.game_info.name}.jpg",
             )
-            image = Image.open(wallpaper_path).resize(
+            image = Image.open(marquee_path).resize(
                 (W_BannerInfo.MENU_SCREEN_WIDTH, W_BannerInfo.MENU_SCREEN_HEIGHT)
             )
             Helper.verify_exist_directory_ex(os.path.dirname(main_screen_bg_path))
@@ -104,7 +104,7 @@ if __name__ == "__main__":
     sfiii_banner_info = W_BannerInfo(
         "sfiii",
         game_logo_size=(540, 270),
-        game_logo_left_top=(156, 40), # 水平居中，垂直靠下
+        game_logo_left_top=(156, 40),  # 水平居中，垂直靠下
         capcom_logo_left_top=W_BannerInfo.CAPCOM_LOGO_ALIGN_LEFT_TOP,
     )
 
