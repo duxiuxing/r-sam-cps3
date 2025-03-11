@@ -90,7 +90,6 @@ Wii 版的 RetroArch 对缩略图的处理主打的是模糊不清，图片再�
 设置项名称 | 取值 | 说明 | 备注
 :--- | :--- | :--- | :---
 Menu Toggle (Controller Combo) | Start + Select | 同时按 Start 和 Select<br/>几乎适用于所有手柄和摇杆 | input_menu_toggle_gamepad_combo = "4"
-Menu Toggle | Axis +2 | 右摇杆的右<br/>适用于有右摇杆的手柄 | input_menu_toggle_axis = "+2"
 
 ![HOTKEYS Menu Toggle](./hotkeys-menu-toggle.png)
 
@@ -98,8 +97,10 @@ Menu Toggle | Axis +2 | 右摇杆的右<br/>适用于有右摇杆的手柄 | inp
 
 设置项名称 | 取值 | 说明 | 备注
 :--- | :--- | :--- | :---
-Load State | Axis -3 | 右摇杆的上<br/>读取进度 | input_load_state_axis = "-3"
-Save State | Axis +3 | 右摇杆的下<br/>保存进度 | input_save_state_axis = "+3"
+Load State | Axis -2 | 右摇杆的左<br/>读取进度 | input_load_state_axis = "-2"
+Save State | Axis +2 | 右摇杆的右<br/>保存进度 | input_save_state_axis = "+2"
+Next Save State Slot | Axis +3 | 右摇杆的下<br/>下一个存档点 | input_state_slot_increase_axis = "+3"
+Previous Save State Slot | Axis -3 | 右摇杆的上<br/>上一个存档点 | input_state_slot_decrease_axis = "-3"
 
 ![HOTKEYS Menu State](./hotkeys-state.png)
 
