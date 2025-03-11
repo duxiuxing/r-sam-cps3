@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='utf-8'?>
+<WiiFileExporter description="导出到 Wii SD 卡的文件">
+    <WiiRA_App name="FB Alpha 2012 CPS-3" folder="fbalpha2012_cps3"
+        content_show_history="true">
+        <Folder
+            src="wii\remaps"
+            dst="remaps\FB Alpha 2012 CPS-3"
+        />
+        <Folder
+            src="wii\retroarch\system\cache"
+            dst="retroarch\system\cache"
+        />
+        <File
+            src="wii\wad\fbalpha2012_cps3\Capcom CPS-3 White [CPS3].wad"
+            dst="wad\fbalpha2012_cps3\Capcom CPS-3 White [CPS3].wad"
+        />
+        <File
+            src="wii\wad\fbalpha2012_cps3\Capcom CPS-3 Yellow [CPS3].wad"
+            dst="wad\fbalpha2012_cps3\Capcom CPS-3 Yellow [CPS3].wad"
+        />
+    </WiiRA_App>
+    <WiiRA_App name="JoJo's Venture" folder="jojo" rom_title="jojo">
+        <File
+            src="wii\retroarch\system\cache\RomGame_D_jojo"
+            dst="retroarch\system\cache\RomGame_D_jojo"
+        />
+        <File
+            src="wii\retroarch\system\cache\RomGame_jojo"
+            dst="retroarch\system\cache\RomGame_jojo"
+        />
+        <File
+            src="wii\retroarch\system\cache\RomUser_jojo"
+            dst="retroarch\system\cache\RomUser_jojo"
+        />
+        <File
+            src="wii\wad\jojo\JoJo's Venture [ZU2R]-S.wad"
+            dst="wad\jojo\JoJo's Venture [ZU2R]-S.wad"
+        />
+        <File
+            src="wii\wad\jojo\JoJo's Venture [ZU2R]-W.wad"
+            dst="wad\jojo\JoJo's Venture [ZU2R]-W.wad"
+        />
+    </WiiRA_App>
+    <WiiRA_App name="JoJo's Venture 2" folder="jojoba" rom_title="jojoba">
+        <File
+            src="wii\retroarch\system\cache\RomGame_D_jojoba"
+            dst="retroarch\system\cache\RomGame_D_jojoba"
+        />
+        <File
+            src="wii\retroarch\system\cache\RomGame_jojoba"
+            dst="retroarch\system\cache\RomGame_jojoba"
+        />
+        <File
+            src="wii\retroarch\system\cache\RomUser_jojoba"
+            dst="retroarch\system\cache\RomUser_jojoba"
+        />
+        <File
+            src="wii\wad\jojoba\JoJo's Venture 2 [ZU2S]-S.wad"
+            dst="wad\jojoba\JoJo's Venture 2 [ZU2S]-S.wad"
+        />
+        <File
+            src="wii\wad\jojoba\JoJo's Venture 2 [ZU2S]-W.wad"
+            dst="wad\jojoba\JoJo's Venture 2 [ZU2S]-W.wad"
+        />
+    </WiiRA_App>
+    <WiiRA_App name="Street Fighter 3" folder="sfiii" rom_title="sfiii">
+        <File
+            src="wii\retroarch\system\cache\RomGame_D_sfiii"
+            dst="retroarch\system\cache\RomGame_D_sfiii"
+        />
+        <File
+            src="wii\retroarch\system\cache\RomGame_sfiii"
+            dst="retroarch\system\cache\RomGame_sfiii"
+        />
+        <File
+            src="wii\retroarch\system\cache\RomUser_sfiii"
+            dst="retroarch\system\cache\RomUser_sfiii"
+        />
+        <File
+            src="wii\wad\sfiii\Street Fighter 3 [ZU2U]-S.wad"
+            dst="wad\sfiii\Street Fighter 3 [ZU2U]-S.wad"
+        />
+        <File
+            src="wii\wad\sfiii\Street Fighter 3 [ZU2U]-W.wad"
+            dst="wad\sfiii\Street Fighter 3 [ZU2U]-W.wad"
+        />
+    </WiiRA_App>
+    <WiiRA_App name="Street Fighter 3.2" folder="sfiii2" rom_title="sfiii2">
+        <File
+            src="wii\retroarch\system\cache\RomGame_D_sfiii2"
+            dst="retroarch\system\cache\RomGame_D_sfiii2"
+        />
+        <File
+            src="wii\retroarch\system\cache\RomGame_sfiii2"
+            dst="retroarch\system\cache\RomGame_sfiii2"
+        />
+        <File
+            src="wii\retroarch\system\cache\RomUser_sfiii2"
+            dst="retroarch\system\cache\RomUser_sfiii2"
+        />
+        <File
+            src="wii\wad\sfiii2\Street Fighter 3.2 [ZU2V]-S.wad"
+            dst="wad\sfiii2\Street Fighter 3.2 [ZU2V]-S.wad"
+        />
+        <File
+            src="wii\wad\sfiii2\Street Fighter 3.2 [ZU2V]-W.wad"
+            dst="wad\sfiii2\Street Fighter 3.2 [ZU2V]-W.wad"
+        />
+    </WiiRA_App>
+    <WiiRA_App name="Street Fighter 3.3" folder="sfiii3" rom_title="sfiii3">
+        <File
+            src="wii\retroarch\system\cache\RomGame_D_sfiii3"
+            dst="retroarch\system\cache\RomGame_D_sfiii3"
+        />
+        <File
+            src="wii\retroarch\system\cache\RomGame_sfiii3"
+            dst="retroarch\system\cache\RomGame_sfiii3"
+        />
+        <File
+            src="wii\retroarch\system\cache\RomUser_sfiii3"
+            dst="retroarch\system\cache\RomUser_sfiii3"
+        />
+        <File
+            src="wii\wad\sfiii3\Street Fighter 3.3 [ZU2W].wad"
+            dst="wad\sfiii3\Street Fighter 3.3 [ZU2W].wad"
+        />
+        <File
+            src="wii\wad\sfiii3\Street Fighter 3.3 [ZU2W]-S.wad"
+            dst="wad\sfiii3\Street Fighter 3.3 [ZU2W]-S.wad"
+        />
+        <File
+            src="wii\wad\sfiii3\Street Fighter 3.3 [ZU2W]-W.wad"
+            dst="wad\sfiii3\Street Fighter 3.3 [ZU2W]-W.wad"
+        />
+    </WiiRA_App>
+    <!--
+    <Folder
+        src="wii\wiiflow\boxcovers\blank_covers"
+        dst="wiiflow\boxcovers\blank_covers"
+    />
+    <Folder
+        src="wii\wiiflow\cache\blank_covers"
+        dst="wiiflow\cache\blank_covers"
+    />
+    <Folder
+        src="wii\wiiflow\plugins"
+        dst="wiiflow\plugins"
+    />
+    <Folder
+        src="wii\wiiflow\plugins_data"
+        dst="wiiflow\plugins_data"
+    />
+    <Folder
+        src="wii\wiiflow\source_menu"
+        dst="wiiflow\source_menu"
+    />
+    -->
+</WiiFileExporter>

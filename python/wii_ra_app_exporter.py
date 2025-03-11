@@ -137,7 +137,7 @@ class WiiRA_AppExporter:
     def run(self):
         if self.rom_export_configs is None:
             print("【错误】未指定 rom_export_configs: RomExportConfigs")
-            return False
+            return
 
         ra_configs = ConsoleConfigs.ra_configs()
 
@@ -145,21 +145,21 @@ class WiiRA_AppExporter:
             print(
                 f"【错误】sys_code 当前值={ra_configs.sys_code()}，预期值={RA_Configs.SYS_WII}"
             )
-            return False
+            return
 
         if ra_configs.lang_code() != RA_Configs.LANG_EN:
             print(
                 f"lang_code 当前值={ra_configs.lang_code()}，预期值={RA_Configs.LANG_EN}"
             )
-            return False
+            return
 
         if self.app_configs is None:
             print("【错误】未指定 app_configs: Wii_RaAppConfigs")
-            return False
-        old_app_configs = ConsoleConfigs.set_wii_ra_app_configs(app_configs)
+            return
+        old_app_configs = ConsoleConfigs.set_wii_ra_app_configs(self.app_configs)
 
         old_rom_filter = self.rom_export_configs.rom_title_filter
-        self.rom_export_configs.rom_title_filter = app_configs.rom_title
+        self.rom_export_configs.rom_title_filter = self.app_configs.rom_title
 
         ra_all_exporter = RA_AllExporter()
         ra_all_exporter.rom_export_configs = self.rom_export_configs
@@ -192,6 +192,7 @@ if __name__ == "__main__":
     app_configs.name = "FB Alpha 2012 CPS-3"
     app_configs.folder = "fbalpha2012_cps3"
     app_configs.rom_title = None
+    app_configs.content_show_history = True
     app_exporter.app_configs = app_configs
     app_exporter.run()
 
@@ -200,7 +201,7 @@ if __name__ == "__main__":
     app_configs.folder = "jojo"
     app_configs.rom_title = "jojo"
     app_exporter.app_configs = app_configs
-    app_exporter.run()
+    # app_exporter.run()
 
     app_configs = WiiRA_AppConfigs()
     app_configs.name = "JoJo's Venture 2"
@@ -214,20 +215,20 @@ if __name__ == "__main__":
     app_configs.folder = "sfiii"
     app_configs.rom_title = "sfiii"
     app_exporter.app_configs = app_configs
-    app_exporter.run()
+    # app_exporter.run()
 
     app_configs = WiiRA_AppConfigs()
     app_configs.name = "Street Fighter 3.2"
     app_configs.folder = "sfiii2"
     app_configs.rom_title = "sfiii2"
     app_exporter.app_configs = app_configs
-    app_exporter.run()
+    # app_exporter.run()
 
     app_configs = WiiRA_AppConfigs()
     app_configs.name = "Street Fighter 3.3"
     app_configs.folder = "sfiii3"
     app_configs.rom_title = "sfiii3"
     app_exporter.app_configs = app_configs
-    app_exporter.run()
+    # app_exporter.run()
 
     ConsoleConfigs.set_ra_configs(old_ra_configs)

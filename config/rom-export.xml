@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<RomExportList description="使用 FB Alpha 2012 CPS-3 核心加载的游戏"
+<RomExportConfigs description="使用 FB Alpha 2012 CPS-3 核心加载的游戏"
     dst_folder="Games\Arcade (FB Alpha 2012 CPS-3)" one_folder_one_rom="true">
     <Rom crc32="03A8E3D2" bytes="54256796"
         title="jojoba"
@@ -31,4 +31,4 @@
         en="Street Fighter III 3rd Strike - Fight for the Future (Euro 990608)"
         zhcn="J - 街头霸王3.3 (欧版 990608)"
     />
-</RomExportList>
+</RomExportConfigs>

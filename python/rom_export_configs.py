@@ -32,7 +32,7 @@ class RomExportConfigs:
                     break
         return ret_list
 
-    def parse(self, xml_file_name="rom-export-list.xml"):
+    def parse(self, xml_file_name="rom-export.xml"):
         xml_file_path = os.path.join(
             LocalConfigs.repository_directory(),
             f"config\\{xml_file_name}",

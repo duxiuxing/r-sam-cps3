@@ -10,7 +10,7 @@ class Menu_ExportFBNeoFiles:
     @staticmethod
     def add_cmds(main_menu):
         rom_export_configs = RomExportConfigs()
-        rom_export_configs.parse("fbneo-rom-export-list.xml")
+        rom_export_configs.parse("fbneo-rom-export.xml")
 
         ra_configs_file_name = "fbneo.xml"
 
