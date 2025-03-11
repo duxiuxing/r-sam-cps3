@@ -39,6 +39,10 @@ if __name__ == "__main__":
     rom_export_configs.parse()
     ra_all_exporter.rom_export_configs = rom_export_configs
 
-    ra_all_exporter.ra_configs = RA_Configs("retroarch.xml")
+    # 导出 Windows 用的中文游戏列表
+    ra_configs = RA_Configs("retroarch.xml")
+    ra_configs.set_lang_code(RA_Configs.LANG_ZHCN)
+    ra_configs.set_sys_code(RA_Configs.SYS_WIN)
+    ra_all_exporter.ra_configs = ra_configs
 
     ra_all_exporter.run()

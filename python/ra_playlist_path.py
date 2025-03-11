@@ -37,7 +37,11 @@ class Android_PlaylistPath(RA_PlaylistPath):
 # 把 Windows 路径转成 Wii 路径
 class Wii_PlaylistPath(RA_PlaylistPath):
     def parse(self, path):
-        value = path.replace(LocalConfigs.root_directory_export_to(), "sd:")
+        root_old = LocalConfigs.root_directory_export_to()
+        root_new = "sd:"
+        if root_old[-1] == "\\":
+            root_new = "sd:\\"
+        value = path.replace(root_old, root_new)
         return value.replace("\\", "/")
 
 
