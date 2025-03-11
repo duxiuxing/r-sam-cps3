@@ -6,6 +6,7 @@ from console_configs import ConsoleConfigs
 from helper import Helper
 from local_configs import LocalConfigs
 from ra_configs import RA_Configs
+from ra_playlist_path import Wii_PlaylistPath
 from wii_ra_app_configs import WiiRA_AppConfigs
 
 
@@ -34,9 +35,10 @@ class WiiRA_CfgExporter:
             'input_player8_analog_dpad_mode = "1"',
             # 快捷键相关的设置
             'input_menu_toggle_gamepad_combo = "4"',
-            'input_menu_toggle_axis = "+2"',
-            'input_load_state_axis = "-3"',
-            'input_save_state_axis = "+3"',
+            'input_load_state_axis = "-2"',
+            'input_save_state_axis = "+2"',
+            'input_state_slot_decrease_axis = "-3"',
+            'input_state_slot_increase_axis = "+3"',
             # 精简 MAIN MENU 界面
             'menu_show_load_core = "false"',
             'menu_show_load_content = "false"',
@@ -89,6 +91,43 @@ class WiiRA_CfgExporter:
 
         return dict_ret
 
+    @staticmethod
+    def export_retroarch_salamander_cfg():
+        ra_configs = ConsoleConfigs.ra_configs()
+        app_configs = ConsoleConfigs.wii_ra_app_configs()
+
+        cfg_path = os.path.join(
+            LocalConfigs.root_directory_export_to(),
+            f"apps\\{app_configs.folder}\\retroarch-salamander.cfg",
+        )
+        if os.path.exists(cfg_path):
+            os.remove(cfg_path)
+        with open(cfg_path, "w", encoding="utf-8") as dst_cfg:
+            core_path = os.path.join(
+                LocalConfigs.root_directory_export_to(),
+                f"apps\\{app_configs.folder}\\{ra_configs.core_file()}",
+            )
+            core_path = Wii_PlaylistPath().parse(core_path)
+            dst_cfg.write(f'libretro_path = "{core_path}"\n')
+            dst_cfg.close()
+
+    @staticmethod
+    def export_remap_file():
+        app_configs = ConsoleConfigs.wii_ra_app_configs()
+        if app_configs.rom_title is None:
+            return
+
+        ra_configs = ConsoleConfigs.ra_configs()
+        src_rmp_path = os.path.join(
+            LocalConfigs.repository_directory(),
+            f"wii\\remaps\\{app_configs.rom_title}.rmp",
+        )
+        dst_rmp_path = os.path.join(
+            ra_configs.remapping_directory(),
+            f"{app_configs.rom_title}.rmp",
+        )
+        Helper.copy_file(src_rmp_path, dst_rmp_path)
+
     def run(self):
         ra_configs = ConsoleConfigs.ra_configs()
 
@@ -137,6 +176,9 @@ class WiiRA_CfgExporter:
                     dst_cfg.write(line)
                     line = src_cfg.readline()
             dst_cfg.close()
+
+        WiiRA_CfgExporter.export_retroarch_salamander_cfg()
+        WiiRA_CfgExporter.export_remap_file()
 
 
 if __name__ == "__main__":

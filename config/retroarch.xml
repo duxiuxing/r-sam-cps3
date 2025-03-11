@@ -6,6 +6,7 @@
     core_file_wii="fbalpha2012_cps3_libretro_wii.dol"
     assets_directory_wii="apps\fbalpha2012_cps3\assets"
     playlist_directory_wii="apps\fbalpha2012_cps3\playlists"
+    remapping_directory_wii="remaps\FB Alpha 2012 CPS-3"
     thumbnails_directory_wii="retroarch\thumbnails"
     thumbnails_filter_wii="snap|title"
     core_file_win="fbalpha2012_cps3_libretro.dll"

@@ -71,6 +71,12 @@ class RA_Configs:
             self._get_value(f"playlist_directory_{self._sys}"),
         )
 
+    def remapping_directory(self):
+        return os.path.join(
+            LocalConfigs.root_directory_export_to(),
+            self._get_value(f"remapping_directory_{self._sys}"),
+        )
+
     def thumbnails_directory(self):
         return os.path.join(
             LocalConfigs.root_directory_export_to(),
