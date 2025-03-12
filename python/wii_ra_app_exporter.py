@@ -96,7 +96,7 @@ class WiiRA_AppExporter:
             xml_file.write('<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n')
             xml_file.write('<app version="1">\n')
             xml_file.write(f"  <name>{app_configs.name}</name>\n")
-            xml_file.write("  <author>R-Sam based on RetroArch</author>\n")
+            xml_file.write("  <author>R-Sam</author>\n")
             xml_file.write("  <version>1.20.0</version>\n")
             xml_file.write("  <release_date>2025/01/04</release_date>\n")
             xml_file.write(
@@ -114,7 +114,7 @@ class WiiRA_AppExporter:
             xml_file.write(f"- Release Date : {game_info.date}\n")
             xml_file.write(f"- Max Players : {game_info.players}\n\n")
 
-            xml_file.write(f"Wii Channel : sd:/wad/{app_configs.folder}\n")
+            xml_file.write(f"Wii Channel : sd:/wad/{app_configs.name}\n")
             xml_file.write(
                 "Website : https://github.com/R-Sam-1980/cps3</long_description>\n"
             )

@@ -58,6 +58,8 @@ class WiiFileExporter:
             and app_elem.get("content_show_history").lower() == "true"
         ):
             app_configs.content_show_history = True
+        if "remap" in app_elem.attrib:
+            app_configs.remap = app_elem.get("remap")
         app_exporter.app_configs = app_configs
         app_exporter.run()
         WiiFileExporter.export_files_and_folders(app_elem)

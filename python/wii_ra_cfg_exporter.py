@@ -114,13 +114,13 @@ class WiiRA_CfgExporter:
     @staticmethod
     def export_remap_file():
         app_configs = ConsoleConfigs.wii_ra_app_configs()
-        if app_configs.rom_title is None:
+        if app_configs.remap is None:
             return
 
         ra_configs = ConsoleConfigs.ra_configs()
         src_rmp_path = os.path.join(
             LocalConfigs.repository_directory(),
-            f"wii\\remaps\\{app_configs.rom_title}.rmp",
+            f"wii\\remaps\\{app_configs.remap}.rmp",
         )
         dst_rmp_path = os.path.join(
             ra_configs.remapping_directory(),
