@@ -16,7 +16,9 @@ class S_BannerInfo:
     CAPCOM_LOGO_OFFSET_X_TOP = 34
     CAPCOM_LOGO_OFFSET_X_BOTTOM = 6
     CAPCOM_LOGO_OFFSET_Y = 8
-    CAPCOM_LOGO_ALIGN_TOP_RIGHT = (414, 8)  # 414=590-142-34
+    CAPCOM_LOGO_ALIGN_LEFT_TOP = (34, 8)
+    CAPCOM_LOGO_ALIGN_LEFT_BOTTOM = (6, 297)
+    CAPCOM_LOGO_ALIGN_RIGHT_TOP = (414, 8)  # 414=590-142-34
     CAPCOM_LOGO_ALIGN_RIGHT_BOTTOM = (442, 297)  # 442=590-142-6
 
     MENU_SCREEN_WIDTH = 590
@@ -63,8 +65,13 @@ class Wii_MakeStandardBanner:
         if self.banner_info.game_logo_size != (0, 0):
             game_logo_path = os.path.join(
                 LocalConfigs.repository_directory(),
-                f"image\\logo\\{self.game_info.name}.png",
+                f"wii\\wad\\{self.game_info.rom_title}\\res\\standard\\logo.png",
             )
+            if not os.path.exists(game_logo_path):
+                game_logo_path = os.path.join(
+                    LocalConfigs.repository_directory(),
+                    f"image\\logo\\{self.game_info.name}.png",
+                )
             game_logo = Image.open(game_logo_path).resize(
                 self.banner_info.game_logo_size
             )
@@ -102,34 +109,34 @@ if __name__ == "__main__":
         "sfiii2",
         game_logo_size=(240, 120),
         game_logo_left_top=(6, 208),  # 左下
-        capcom_logo_left_top=S_BannerInfo.CAPCOM_LOGO_ALIGN_TOP_RIGHT,
+        capcom_logo_left_top=S_BannerInfo.CAPCOM_LOGO_ALIGN_RIGHT_TOP,
     )
 
     sfiii3_banner_info = S_BannerInfo(
         "sfiii3",
         game_logo_size=(0, 0),
         game_logo_left_top=(0, 0),
-        capcom_logo_left_top=S_BannerInfo.CAPCOM_LOGO_ALIGN_TOP_RIGHT,
+        capcom_logo_left_top=S_BannerInfo.CAPCOM_LOGO_ALIGN_RIGHT_TOP,
     )
 
     jojo_banner_info = S_BannerInfo(
         "jojo",
         game_logo_size=(160, 80),
         game_logo_left_top=(418, 250),
-        capcom_logo_left_top=S_BannerInfo.CAPCOM_LOGO_ALIGN_TOP_RIGHT,
+        capcom_logo_left_top=S_BannerInfo.CAPCOM_LOGO_ALIGN_RIGHT_TOP,
     )
 
     jojoba_banner_info = S_BannerInfo(
         "jojoba",
         game_logo_size=(270, 150),
         game_logo_left_top=(306, 122),  # 右中
-        capcom_logo_left_top=S_BannerInfo.CAPCOM_LOGO_ALIGN_TOP_RIGHT,
+        capcom_logo_left_top=S_BannerInfo.CAPCOM_LOGO_ALIGN_RIGHT_TOP,
     )
 
     sfiii2_banner_info = S_BannerInfo(
         "sfiii2",
         game_logo_size=(0, 0),
         game_logo_left_top=(0, 0),
-        capcom_logo_left_top=S_BannerInfo.CAPCOM_LOGO_ALIGN_TOP_RIGHT,
+        capcom_logo_left_top=S_BannerInfo.CAPCOM_LOGO_ALIGN_RIGHT_TOP,
     )
     Wii_MakeStandardBanner(sfiii2_banner_info).run()

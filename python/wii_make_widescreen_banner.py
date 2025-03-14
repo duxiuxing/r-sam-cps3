@@ -14,9 +14,12 @@ class W_BannerInfo:
     CAPCOM_LOGO_WIDTH = 142
     CAPCOM_LOGO_HEIGHT = 29
     CAPCOM_LOGO_OFFSET_X_TOP = 39
+    CAPCOM_LOGO_OFFSET_X_BOTTOM = 10
     CAPCOM_LOGO_OFFSET_Y = 8
     CAPCOM_LOGO_ALIGN_LEFT_TOP = (39, 8)
-    CAPCOM_LOGO_ALIGN_TOP_RIGHT = (649, 8)  # 649=830-142-39
+    CAPCOM_LOGO_ALIGN_RIGHT_TOP = (649, 8)  # 649=830-142-39
+    CAPCOM_LOGO_ALIGN_RIGHT_BOTTOM = (678, 297)  # 678=830-142-10
+    CAPCOM_LOGO_ALIGN_BOTTOM_CENTER = (344, 297)  # 344=(830-142)/2
 
     MENU_SCREEN_WIDTH = 830
     MENU_SCREEN_HEIGHT = 332
@@ -63,8 +66,13 @@ class Wii_MakeWidescreenBanner:
         if self.banner_info.game_logo_size != (0, 0):
             game_logo_path = os.path.join(
                 LocalConfigs.repository_directory(),
-                f"image\\logo\\{self.game_info.name}.png",
+                f"wii\\wad\\{self.game_info.rom_title}\\res\\widescreen\\logo.png",
             )
+            if not os.path.exists(game_logo_path):
+                game_logo_path = os.path.join(
+                    LocalConfigs.repository_directory(),
+                    f"image\\logo\\{self.game_info.name}.png",
+                )
             game_logo = Image.open(game_logo_path).resize(
                 self.banner_info.game_logo_size
             )
@@ -119,7 +127,7 @@ if __name__ == "__main__":
         "sfiii3",
         game_logo_size=(400, 200),
         game_logo_left_top=(430, 85),  # 水平靠右，垂直居中
-        capcom_logo_left_top=W_BannerInfo.CAPCOM_LOGO_ALIGN_TOP_RIGHT,
+        capcom_logo_left_top=W_BannerInfo.CAPCOM_LOGO_ALIGN_RIGHT_TOP,
     )
 
     jojo_banner_info = W_BannerInfo(
@@ -133,7 +141,7 @@ if __name__ == "__main__":
         "jojoba",
         game_logo_size=(270, 150),
         game_logo_left_top=(273, 182),  # 水平居中，垂直靠下
-        capcom_logo_left_top=W_BannerInfo.CAPCOM_LOGO_ALIGN_TOP_RIGHT,
+        capcom_logo_left_top=W_BannerInfo.CAPCOM_LOGO_ALIGN_RIGHT_TOP,
     )
 
     Wii_MakeWidescreenBanner(sfiii_banner_info).run()
