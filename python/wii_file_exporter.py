@@ -11,11 +11,13 @@ from ra_configs import RA_Configs
 from rom_export_configs import RomExportConfigs
 from wii_ra_app_configs import WiiRA_AppConfigs
 from wii_ra_app_exporter import WiiRA_AppExporter
+from wii_ra_ss_app_exporter import WiiRA_SS_AppExporter
 
 
 class WiiFileExporter:
-    def __init__(self, app_name_filter=None):
+    def __init__(self, app_name_filter=None, ra_code_filter=None):
         self._app_name_filter = app_name_filter
+        self._ra_code_filter = ra_code_filter
         self._rom_export_configs = None
 
     @staticmethod
@@ -40,6 +42,12 @@ class WiiFileExporter:
         ):
             return
 
+        if (
+            self._ra_code_filter is not None
+            and self._ra_code_filter != RA_Configs.RA_WII
+        ):
+            return
+
         app_exporter = WiiRA_AppExporter()
         app_exporter.rom_export_configs = self._rom_export_configs
 
@@ -58,6 +66,33 @@ class WiiFileExporter:
             and app_elem.get("content_show_history").lower() == "true"
         ):
             app_configs.content_show_history = True
+        if "remap" in app_elem.attrib:
+            app_configs.remap = app_elem.get("remap")
+        app_exporter.app_configs = app_configs
+        app_exporter.run()
+        WiiFileExporter.export_files_and_folders(app_elem)
+
+    def export_wii_ra_ss_app(self, app_elem):
+        if (
+            self._app_name_filter is not None
+            and app_elem.get("name") != self._app_name_filter
+        ):
+            return
+
+        if (
+            self._ra_code_filter is not None
+            and self._ra_code_filter != RA_Configs.RA_SS
+        ):
+            return
+
+        app_exporter = WiiRA_SS_AppExporter()
+        app_exporter.rom_export_configs = self._rom_export_configs
+
+        app_configs = WiiRA_AppConfigs()
+        app_configs.name = app_elem.get("name")
+        app_configs.folder = app_elem.get("folder")
+        if "rom_title" in app_elem.attrib:
+            app_configs.rom_title = app_elem.get("rom_title")
         if "remap" in app_elem.attrib:
             app_configs.remap = app_elem.get("remap")
         app_exporter.app_configs = app_configs
@@ -90,6 +125,8 @@ class WiiFileExporter:
         for elem in root:
             if elem.tag == "WiiRA_App":
                 self.export_wii_ra_app(elem)
+            elif elem.tag == "WiiRA_SS_App":
+                self.export_wii_ra_ss_app(elem)
 
         ConsoleConfigs.set_ra_configs(old_ra_configs)
 
