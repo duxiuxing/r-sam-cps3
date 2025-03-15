@@ -14,12 +14,13 @@ class WiiRA_CfgExporter:
     def config_list(self):
         ra_configs = ConsoleConfigs.ra_configs()
         app_configs = ConsoleConfigs.wii_ra_app_configs()
+        device_code = ConsoleConfigs.storage_device_code()
 
         list_ret = [
             # 目录相关的设置
-            'thumbnails_directory = "sd:/retroarch/thumbnails"',
-            f'rgui_browser_directory = "sd:/Games/{ra_configs.core_name()}"',
-            f'playlist_directory = "sd:/apps/{app_configs.folder}/playlists"',
+            f'thumbnails_directory = "{device_code}:/retroarch/thumbnails"',
+            f'rgui_browser_directory = "{device_code}:/Games/{ra_configs.core_name()}"',
+            f'playlist_directory = "{device_code}:/apps/{app_configs.folder}/playlists"',
             # 在游戏列表中显示缩略图
             'rgui_inline_thumbnails = "true"',
             'menu_thumbnails = "2"',
@@ -55,20 +56,25 @@ class WiiRA_CfgExporter:
             'quick_menu_show_reset_core_association = "false"',
             'quick_menu_show_download_thumbnails = "false"',
             # others
-            f'assets_directory = "sd:/apps/{app_configs.folder}/assets"',
-            f'audio_filter_dir = "sd:/apps/{app_configs.folder}/filters/audio"',
-            f'cheat_database_path = "sd:/apps/{app_configs.folder}/cheats"',
-            f'content_favorites_path = "sd:/apps/{app_configs.folder}/content_favorites.lpl"',
-            f'content_history_path = "sd:/apps/{app_configs.folder}/content_history.lpl"',
-            f'content_image_history_path = "sd:/apps/{app_configs.folder}/content_image_history.lpl"',
-            f'content_music_history_path = "sd:/apps/{app_configs.folder}/content_music_history.lpl"',
-            f'content_video_history_path = "sd:/apps/{app_configs.folder}/content_video_history.lpl"',
-            f'joypad_autoconfig_dir = "sd:/apps/{app_configs.folder}/autoconfig"',
-            f'libretro_directory = "sd:/apps/{app_configs.folder}"',
-            f'libretro_info_path = "sd:/apps/{app_configs.folder}/info"',
-            f'osk_overlay_directory = "sd:/apps/{app_configs.folder}/overlays/keyboards"',
-            f'overlay_directory = "sd:/apps/{app_configs.folder}/overlays"',
-            f'video_filter_dir = "sd:/apps/{app_configs.folder}/filters/video"',
+            f'assets_directory = "{device_code}:/apps/{app_configs.folder}/assets"',
+            f'audio_filter_dir = "{device_code}:/apps/{app_configs.folder}/filters/audio"',
+            f'cheat_database_path = "{device_code}:/apps/{app_configs.folder}/cheats"',
+            f'content_favorites_path = "{device_code}:/apps/{app_configs.folder}/content_favorites.lpl"',
+            f'content_history_path = "{device_code}:/apps/{app_configs.folder}/content_history.lpl"',
+            f'content_image_history_path = "{device_code}:/apps/{app_configs.folder}/content_image_history.lpl"',
+            f'content_music_history_path = "{device_code}:/apps/{app_configs.folder}/content_music_history.lpl"',
+            f'content_video_history_path = "{device_code}:/apps/{app_configs.folder}/content_video_history.lpl"',
+            f'joypad_autoconfig_dir = "{device_code}:/apps/{app_configs.folder}/autoconfig"',
+            f'libretro_directory = "{device_code}:/apps/{app_configs.folder}"',
+            f'libretro_info_path = "{device_code}:/apps/{app_configs.folder}/info"',
+            f'log_dir = "{device_code}:/retroarch/logs"',
+            f'osk_overlay_directory = "{device_code}:/apps/{app_configs.folder}/overlays/keyboards"',
+            f'overlay_directory = "{device_code}:/apps/{app_configs.folder}/overlays"',
+            f'rgui_config_directory = "{device_code}:/retroarch/config"',
+            f'savefile_directory = "{device_code}:/retroarch/savefiles"',
+            f'savestate_directory = "{device_code}:/retroarch/savestates"',
+            f'system_directory = "{device_code}:/retroarch/system"',
+            f'video_filter_dir = "{device_code}:/apps/{app_configs.folder}/filters/video"',
         ]
 
         if app_configs.content_show_favorites:
@@ -126,6 +132,8 @@ class WiiRA_CfgExporter:
             ra_configs.remapping_directory(),
             f"{app_configs.rom_title}.rmp",
         )
+        if os.path.exists(dst_rmp_path):
+            os.remove(dst_rmp_path)
         Helper.copy_file(src_rmp_path, dst_rmp_path)
 
     def run(self):

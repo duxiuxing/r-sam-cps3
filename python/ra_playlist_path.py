@@ -38,9 +38,9 @@ class Android_PlaylistPath(RA_PlaylistPath):
 class Wii_PlaylistPath(RA_PlaylistPath):
     def parse(self, path):
         root_old = LocalConfigs.root_directory_export_to()
-        root_new = "sd:"
+        root_new = f"{ConsoleConfigs.storage_device_code()}:"
         if root_old[-1] == "\\":
-            root_new = "sd:\\"
+            root_new = f"{ConsoleConfigs.storage_device_code()}:\\"
         value = path.replace(root_old, root_new)
         return value.replace("\\", "/")
 

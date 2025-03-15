@@ -50,6 +50,15 @@ class RA_Configs:
         self._sys = sys_code
         return ret
 
+    def version(self):
+        return self._get_value("version")
+
+    def release_date(self):
+        return self._get_value("release_date")
+
+    def short_description(self):
+        return self._get_value("short_description")
+
     def core_name(self):
         return self._get_value("core_name")
 
@@ -58,6 +67,12 @@ class RA_Configs:
 
     def core_file(self):
         return self._get_value(f"core_file_{self._sys}")
+
+    def ra_ss_core_file(self):
+        return self._get_value(f"ra_ss_core_file_wii")
+
+    def ra_ss_data_folder(self):
+        return self._get_value(f"ra_ss_data_folder_wii")
 
     def assets_directory(self):
         return os.path.join(

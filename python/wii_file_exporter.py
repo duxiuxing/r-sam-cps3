@@ -15,9 +15,12 @@ from wii_ra_ss_app_exporter import WiiRA_SS_AppExporter
 
 
 class WiiFileExporter:
-    def __init__(self, app_name_filter=None, ra_code_filter=None):
+    WiiRA_App = "WiiRA_App"
+    WiiRA_SS_App = "WiiRA_SS_App"
+
+    def __init__(self, app_name_filter=None, app_type_filter=None):
         self._app_name_filter = app_name_filter
-        self._ra_code_filter = ra_code_filter
+        self._app_type_filter = app_type_filter
         self._rom_export_configs = None
 
     @staticmethod
@@ -39,12 +42,6 @@ class WiiFileExporter:
         if (
             self._app_name_filter is not None
             and app_elem.get("name") != self._app_name_filter
-        ):
-            return
-
-        if (
-            self._ra_code_filter is not None
-            and self._ra_code_filter != RA_Configs.RA_WII
         ):
             return
 
@@ -76,12 +73,6 @@ class WiiFileExporter:
         if (
             self._app_name_filter is not None
             and app_elem.get("name") != self._app_name_filter
-        ):
-            return
-
-        if (
-            self._ra_code_filter is not None
-            and self._ra_code_filter != RA_Configs.RA_SS
         ):
             return
 
@@ -123,19 +114,19 @@ class WiiFileExporter:
         root = tree.getroot()
 
         for elem in root:
-            if elem.tag == "WiiRA_App":
+            if elem.tag == WiiFileExporter.WiiRA_App:
+                if (
+                    self._app_type_filter is not None
+                    and self._app_type_filter != WiiFileExporter.WiiRA_App
+                ):
+                    continue
                 self.export_wii_ra_app(elem)
-            elif elem.tag == "WiiRA_SS_App":
+            elif elem.tag == WiiFileExporter.WiiRA_SS_App:
+                if (
+                    self._app_type_filter is not None
+                    and self._app_type_filter != WiiFileExporter.WiiRA_SS_App
+                ):
+                    continue
                 self.export_wii_ra_ss_app(elem)
 
         ConsoleConfigs.set_ra_configs(old_ra_configs)
-
-
-if __name__ == "__main__":
-    # WiiFileExporter("FB Alpha 2012 CPS-3").run()
-    # WiiFileExporter("JoJo's Venture").run()
-    # WiiFileExporter("JoJo's Venture 2").run()
-    # WiiFileExporter("Street Fighter 3").run()
-    # WiiFileExporter("Street Fighter 3.2").run()
-    # WiiFileExporter("Street Fighter 3.3").run()
-    WiiFileExporter().run()

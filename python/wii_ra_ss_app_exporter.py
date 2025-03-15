@@ -7,47 +7,50 @@ from helper import Helper
 from local_configs import LocalConfigs
 from PIL import Image
 from r_sam_roms import RSamRoms
-from ra_all_exporter import RA_AllExporter
 from ra_configs import RA_Configs
 from ra_playlist_path import Wii_PlaylistPath
 from rom_export_configs import RomExportConfigs
+from rom_exporter import RomExporter
+from wii_ra_ss_cfg_exporter import WiiRA_SS_CfgExporter
 from wii_ra_app_configs import WiiRA_AppConfigs
-from wii_ra_cfg_exporter import WiiRA_CfgExporter
 from wiiflow_plugins_data import WiiFlowPluginsData
 
 
-class WiiRA_AppExporter:
+class WiiRA_SS_AppExporter:
     def __init__(self):
         self.rom_export_configs = None
         self.app_configs = None
 
-    def _copy_ra_core_files(self):
+    def _copy_ra_ss_core_file(self):
         app_configs = ConsoleConfigs.wii_ra_app_configs()
-
-        src_dir_path = os.path.join(
-            LocalConfigs.repository_directory(), "wii\\apps\\retroarch-wii\\info"
-        )
-        dst_dir_path = os.path.join(
-            LocalConfigs.root_directory_export_to(), f"apps\\{app_configs.folder}\\info"
-        )
-        Helper.copy_directory(src_dir_path, dst_dir_path)
 
         ra_configs = ConsoleConfigs.ra_configs()
         src_file_path = os.path.join(
             LocalConfigs.repository_directory(),
-            f"wii\\apps\\retroarch-wii\\{ra_configs.core_file()}",
+            f"wii\\apps\\RA-HEXAECO\\{ra_configs.ra_ss_core_file()}",
         )
-        dst_file_path = os.path.join(
-            LocalConfigs.root_directory_export_to(),
-            f"apps\\{app_configs.folder}\\{ra_configs.core_file()}",
-        )
-        Helper.copy_file(src_file_path, dst_file_path)
-
         dst_file_path = os.path.join(
             LocalConfigs.root_directory_export_to(),
             f"apps\\{app_configs.folder}\\boot.dol",
         )
         Helper.copy_file(src_file_path, dst_file_path)
+
+    def _copy_ra_ss_data_folder(self):
+        ra_configs = ConsoleConfigs.ra_configs()
+        src_root = os.path.join(
+            LocalConfigs.repository_directory(),
+            f"wii\\private\\{ra_configs.ra_ss_data_folder()}",
+        )
+        dst_root = os.path.join(
+            LocalConfigs.root_directory_export_to(),
+            f"private\\{ra_configs.ra_ss_data_folder()}",
+        )
+
+        folder_list = ["audiofilters", "overlays", "videofilters"]
+        for folder in folder_list:
+            src_dir = os.path.join(src_root, folder)
+            dst_dir = os.path.join(dst_root, folder)
+            Helper.copy_directory(src_dir, dst_dir)
 
     def _export_icon_png(self):
         app_configs = ConsoleConfigs.wii_ra_app_configs()
@@ -60,8 +63,6 @@ class WiiRA_AppExporter:
             LocalConfigs.root_directory_export_to(),
             f"apps\\{app_configs.folder}\\icon.png",
         )
-        if os.path.exists(dst_path):
-            os.remove(dst_path)
         if os.path.exists(src_path):
             Helper.copy_file(src_path, dst_path)
             return
@@ -77,14 +78,12 @@ class WiiRA_AppExporter:
 
         src_path = os.path.join(
             LocalConfigs.repository_directory(),
-            f"wii\\apps\\{app_configs.folder}\\meta-{ConsoleConfigs.storage_device_code()}.xml",
+            f"wii\\apps\\{app_configs.folder}\\meta.xml",
         )
         dst_path = os.path.join(
             LocalConfigs.root_directory_export_to(),
             f"apps\\{app_configs.folder}\\meta.xml",
         )
-        if os.path.exists(dst_path):
-            os.remove(dst_path)
         if os.path.exists(src_path):
             Helper.copy_file(src_path, dst_path)
             return
@@ -102,13 +101,11 @@ class WiiRA_AppExporter:
             xml_file.write('<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n')
             xml_file.write('<app version="1">\n')
             xml_file.write(f"  <name>{app_configs.name}</name>\n")
-            xml_file.write("  <author>Libretro Team &amp; R-Sam</author>\n")
+            xml_file.write("  <author>RunningSnakes &amp; R-Sam</author>\n")
             xml_file.write(
-                f"  <version>{ra_configs.version()} {ConsoleConfigs.storage_device_code()}</version>\n"
+                f"  <version>{ConsoleConfigs.storage_device_code()}</version>\n"
             )
-            xml_file.write(
-                f"  <release_date>{ra_configs.release_date()}</release_date>\n"
-            )
+            xml_file.write("  <release_date>2024/08/15</release_date>\n")
             xml_file.write(
                 f"  <short_description>{ra_configs.short_description()}</short_description>\n"
             )
@@ -125,10 +122,7 @@ class WiiRA_AppExporter:
             xml_file.write(f"- Max Players : {game_info.players}\n\n")
 
             xml_file.write(
-                f"Wii Channel : {ConsoleConfigs.storage_device_code()}:/wad/{app_configs.name}\n"
-            )
-            xml_file.write(
-                "Website : https://github.com/R-Sam-1980/cps3</long_description>\n"
+                f"Wii Channel : {ConsoleConfigs.storage_device_code()}:/wad/{app_configs.name}</long_description>\n"
             )
             xml_file.write("  <no_ios_reload/>\n")
             xml_file.write("  <ahb_access/>\n")
@@ -173,14 +167,138 @@ class WiiRA_AppExporter:
         old_rom_filter = self.rom_export_configs.rom_title_filter
         self.rom_export_configs.rom_title_filter = self.app_configs.rom_title
 
-        ra_all_exporter = RA_AllExporter()
-        ra_all_exporter.rom_export_configs = self.rom_export_configs
-        ra_all_exporter.run()
+        RomExporter(self.rom_export_configs).run()
 
-        self._copy_ra_core_files()
+        self._copy_ra_ss_core_file()
+        self._copy_ra_ss_data_folder()
         self._export_icon_png()
         self._export_meta_xml()
-        WiiRA_CfgExporter().run()
+        WiiRA_SS_CfgExporter().run()
 
         ConsoleConfigs.set_wii_ra_app_configs(old_app_configs)
         self.rom_export_configs.rom_title_filter = old_rom_filter
+
+
+if __name__ == "__main__":
+    rom_export_configs = RomExportConfigs()
+    rom_export_configs.parse()
+
+    old_ra_configs = ConsoleConfigs.ra_configs()
+
+    ra_configs = RA_Configs("retroarch.xml")
+    ra_configs.set_sys_code(RA_Configs.SYS_WII)
+    ra_configs.set_lang_code(RA_Configs.LANG_EN)
+    old_ra_configs = ConsoleConfigs.set_ra_configs(ra_configs)
+
+    app_exporter = WiiRA_SS_AppExporter()
+    app_exporter.rom_export_configs = rom_export_configs
+
+    app_configs = WiiRA_AppConfigs()
+    app_configs.name = "FB Alpha 2012 CPS-1"
+    app_configs.folder = "fbalpha2012_cps1"
+    app_configs.rom_title = None
+    app_configs.content_show_favorites = True
+    app_configs.content_show_history = True
+    app_exporter.app_configs = app_configs
+    # app_exporter.run()
+
+    app_configs = WiiRA_AppConfigs()
+    app_configs.name = "Three Wonders"
+    app_configs.folder = "ra-3wonders"
+    app_configs.rom_title = "3wonders"
+    app_configs.remap = "2p2b"
+    app_exporter.app_configs = app_configs
+    app_exporter.run()
+
+    app_configs = WiiRA_AppConfigs()
+    app_configs.name = "1941 - Counter Attack"
+    app_configs.folder = "1941"
+    app_configs.rom_title = "1941"
+    app_exporter.app_configs = app_configs
+    app_exporter.run()
+
+    app_configs = WiiRA_AppConfigs()
+    app_configs.name = "Captain Commando"
+    app_configs.folder = "captcomm"
+    app_configs.rom_title = "captcomm"
+    app_exporter.app_configs = app_configs
+    app_exporter.run()
+
+    app_configs = WiiRA_AppConfigs()
+    app_configs.name = "Carrier Air Wing"
+    app_configs.folder = "cawing"
+    app_configs.rom_title = "cawing"
+    app_exporter.app_configs = app_configs
+    app_exporter.run()
+
+    app_configs = WiiRA_AppConfigs()
+    app_configs.name = "Cadillacs and Dinosaurs"
+    app_configs.folder = "dino"
+    app_configs.rom_title = "dino"
+    app_exporter.app_configs = app_configs
+    app_exporter.run()
+
+    app_configs = WiiRA_AppConfigs()
+    app_configs.name = "Final Fight"
+    app_configs.folder = "ffight"
+    app_configs.rom_title = "ffight"
+    app_exporter.app_configs = app_configs
+    app_exporter.run()
+
+    app_configs = WiiRA_AppConfigs()
+    app_configs.name = "Forgotten Worlds"
+    app_configs.folder = "forgottn"
+    app_configs.rom_title = "forgottn"
+    app_exporter.app_configs = app_configs
+    app_exporter.run()
+
+    app_configs = WiiRA_AppConfigs()
+    app_configs.name = "The Punisher"
+    app_configs.folder = "punisher"
+    app_configs.rom_title = "punisher"
+    app_exporter.app_configs = app_configs
+    app_exporter.run()
+
+    app_configs = WiiRA_AppConfigs()
+    app_configs.name = ""
+    app_configs.folder = ""
+    app_configs.rom_title = ""
+    app_exporter.app_configs = app_configs
+    # app_exporter.run()
+
+    app_configs = WiiRA_AppConfigs()
+    app_configs.name = "Street Fighter 2"
+    app_configs.folder = "sf2"
+    app_configs.rom_title = "sf2"
+    app_exporter.app_configs = app_configs
+    app_exporter.run()
+
+    app_configs = WiiRA_AppConfigs()
+    app_configs.name = "Street Fighter 2' CE"
+    app_configs.folder = "sf2ce"
+    app_configs.rom_title = "sf2ce"
+    app_exporter.app_configs = app_configs
+    app_exporter.run()
+
+    app_configs = WiiRA_AppConfigs()
+    app_configs.name = "Street Fighter 2' HF"
+    app_configs.folder = "sf2hf"
+    app_configs.rom_title = "sf2hf"
+    app_exporter.app_configs = app_configs
+    app_exporter.run()
+
+    app_configs = WiiRA_AppConfigs()
+    app_configs.name = "Street Fighter Zero"
+    app_configs.folder = "sfzch"
+    app_configs.rom_title = "sfzch"
+    app_exporter.app_configs = app_configs
+    app_exporter.run()
+
+    app_configs = WiiRA_AppConfigs()
+    app_configs.name = "Street Fighter 3.3"
+    app_configs.folder = "sfiii3"
+    app_configs.rom_title = "sfiii3"
+    app_exporter.app_configs = app_configs
+    # app_exporter.run()
+
+    ConsoleConfigs.set_ra_configs(old_ra_configs)

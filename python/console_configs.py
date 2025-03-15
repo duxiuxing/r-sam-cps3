@@ -9,6 +9,9 @@ from ra_configs import RA_Configs
 
 
 class ConsoleConfigs:
+    STORAGE_SD = "sd"
+    STORAGE_USB = "usb"
+
     __instance = None
 
     def __init__(self):
@@ -29,6 +32,7 @@ class ConsoleConfigs:
             self.rom_extension = root.attrib["rom_extension"]
             self.wiiflow_plugin_name = root.attrib["wiiflow_plugin_name"]
             self.wii_ra_app_configs = None
+            self.storage_device_code = ConsoleConfigs.STORAGE_SD
 
     @staticmethod
     def _instance():
@@ -83,6 +87,16 @@ class ConsoleConfigs:
                 )
 
         return ConsoleConfigs._instance().ra_configs.playlist_directory()
+
+    @staticmethod
+    def storage_device_code():
+        return ConsoleConfigs._instance().storage_device_code
+
+    @staticmethod
+    def set_storage_device_code(storage_device_code):
+        ret = ConsoleConfigs._instance().storage_device_code
+        ConsoleConfigs._instance().storage_device_code = storage_device_code
+        return ret
 
 
 if __name__ == "__main__":

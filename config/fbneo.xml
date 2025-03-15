@@ -1,11 +1,17 @@
 <?xml version='1.0' encoding='utf-8'?>
 <RA_Configs
+    version="1.20.0"
+    release_date="2025/01/04"
+    short_description=""
     core_name="Arcade (FinalBurn Neo)"
     playlist_name_en="R-Sam - CPS3 Arcade (FBNeo)"
     playlist_name_zhcn="认真玩 - CPS3 街机 (FBNeo)"
     core_file_wii=""
+    ra_ss_core_file_wii="Arcade CPS3.dol"
+    ra_ss_data_folder_wii="C3MOD"
     assets_directory_wii=""
     playlist_directory_wii=""
+    remapping_directory_wii=""
     thumbnails_directory_wii=""
     thumbnails_filter_wii=""
     core_file_win="fbneo_libretro.dll"

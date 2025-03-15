@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<app version="1">
+  <name>Street Fighter 3.3</name>
+  <author>Libretro Team &amp; R-Sam</author>
+  <version>1.20.0 usb</version>
+  <release_date>2025/01/04</release_date>
+  <short_description>Capcom Play System 3 Emulator</short_description>
+  <long_description>Street Fighter III 3rd Strike - Fight for the Future
+- Developer &amp; Publisher : Capcom
+- Genre : Fight / Versus
+- Release Date : 1999/05/12
+- Max Players : 2
+
+Wii Channel : usb:/wad/Street Fighter 3.3
+- Street Fighter 3.3 [ZU2W].wad is shared by "Zorg" on YouTube.
+
+Website : https://github.com/R-Sam-1980/cps3</long_description>
+  <no_ios_reload/>
+  <ahb_access/>
+  <arguments>
+    <arg>usb:/Games/Arcade (FB Alpha 2012 CPS-3)/Street Fighter III 3rd Strike - Fight for the Future</arg>
+    <arg>sfiii3.zip</arg>
+  </arguments>
+</app>
