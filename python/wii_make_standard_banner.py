@@ -2,7 +2,6 @@
 
 import os
 
-from console_configs import ConsoleConfigs
 from game_info import GameInfo
 from helper import Helper
 from local_configs import LocalConfigs

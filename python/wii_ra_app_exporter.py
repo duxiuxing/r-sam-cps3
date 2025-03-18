@@ -104,7 +104,7 @@ class WiiRA_AppExporter:
             xml_file.write(f"  <name>{app_configs.name}</name>\n")
             xml_file.write("  <author>Libretro Team &amp; R-Sam</author>\n")
             xml_file.write(
-                f"  <version>{ra_configs.version()} {ConsoleConfigs.storage_device_code()}</version>\n"
+                f"  <version>{ra_configs.version()} {ConsoleConfigs.storage_device_code().upper()}</version>\n"
             )
             xml_file.write(
                 f"  <release_date>{ra_configs.release_date()}</release_date>\n"

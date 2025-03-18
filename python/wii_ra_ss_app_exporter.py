@@ -78,12 +78,14 @@ class WiiRA_SS_AppExporter:
 
         src_path = os.path.join(
             LocalConfigs.repository_directory(),
-            f"wii\\apps\\{app_configs.folder}\\meta.xml",
+            f"wii\\apps\\{app_configs.folder}\\meta-{ConsoleConfigs.storage_device_code()}.xml",
         )
         dst_path = os.path.join(
             LocalConfigs.root_directory_export_to(),
             f"apps\\{app_configs.folder}\\meta.xml",
         )
+        if os.path.exists(dst_path):
+            os.remove(dst_path)
         if os.path.exists(src_path):
             Helper.copy_file(src_path, dst_path)
             return
@@ -103,7 +105,7 @@ class WiiRA_SS_AppExporter:
             xml_file.write(f"  <name>{app_configs.name}</name>\n")
             xml_file.write("  <author>RunningSnakes &amp; R-Sam</author>\n")
             xml_file.write(
-                f"  <version>{ConsoleConfigs.storage_device_code()}</version>\n"
+                f"  <version>{ConsoleConfigs.storage_device_code().upper()}</version>\n"
             )
             xml_file.write("  <release_date>2024/08/15</release_date>\n")
             xml_file.write(
