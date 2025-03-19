@@ -4,21 +4,21 @@
         <Rom crc32="03A8E3D2" bytes="54256796"
             title="jojoba"
             en="JoJo's Bizarre Adventure - Heritage for the Future (Japan 990927)"
-            zhcn="JOJO的奇妙冒险 未来遗产 (日版 990927)"
+            zhcn="JOJO的奇妙冒险2 未来遗产 (日版 990927)"
             apps-work="Kodi-Win (FB Alpha 2012 CPS-3)|RetroArch-Wii (FB Alpha 2012 CPS-3)|RetroArch-Win (FB Alpha 2012 CPS-3)"
             apps-not-work="RetroArch-Win (FinalBurn Neo)"
         />
         <Rom crc32="4C96850A" bytes="54516223"
             title="jojobaner1"
             en="JoJo's Bizarre Adventure - Heritage for the Future (Euro 990913, NO CD)"
-            zhcn="JOJO的奇妙冒险 未来遗产 (欧版 990913, NO CD)"
+            zhcn="JOJO的奇妙冒险2 未来遗产 (欧版 990913, NO CD)"
             apps-work="Kodi-Win (FinalBurn Neo)|RetroArch-Win (FinalBurn Neo)"
             apps-not-work="Kodi-Win (FB Alpha 2012 CPS-3)|RetroArch-Win (FB Alpha 2012 CPS-3)"
         />
         <Rom crc32="9A06A533" bytes="54256886"
             title="jojoba"
             en="JoJo's Bizarre Adventure - Heritage for the Future (Euro 990927)"
-            zhcn="JOJO的奇妙冒险 未来遗产 (欧版 990927)"
+            zhcn="JOJO的奇妙冒险2 未来遗产 (欧版 990927)"
             apps-not-work="Kodi-Win (FinalBurn Neo)|RetroArch-Win (FinalBurn Neo)"
         />
     </Game>
@@ -26,14 +26,14 @@
         <Rom crc32="09565881" bytes="46008575"
             title="jojo"
             en="JoJo's Venture (USA 990128)"
-            zhcn="JOJO的奇妙冒险 (美版 990128)"
+            zhcn="JOJO的奇妙冒险1 (美版 990128)"
             apps-work="Kodi-Win (FB Alpha 2012 CPS-3)|RetroArch-Wii (FB Alpha 2012 CPS-3)|RetroArch-Win (FB Alpha 2012 CPS-3)"
             apps-not-work="RetroArch-Win (FinalBurn Neo)"
         />
         <Rom crc32="7B74BE6D" bytes="46008577"
             title="jojo"
             en="JoJo's Venture (Euro 990128)"
-            zhcn="JOJO的奇妙冒险 (欧版 990128)"
+            zhcn="JOJO的奇妙冒险1 (欧版 990128)"
             apps-work="Kodi-Win (FinalBurn Neo)|RetroArch-Win (FinalBurn Neo)"
             apps-not-work="Kodi-Win (FB Alpha 2012 CPS-3)|RetroArch-Win (FB Alpha 2012 CPS-3)"
         />
@@ -51,14 +51,14 @@
         <Rom crc32="1F8CC35D" bytes="38868517"
             title="sfiii"
             en="Street Fighter III - New Generation (USA 970204)"
-            zhcn="街头霸王3 (美版 970204)"
+            zhcn="街头霸王3 新纪元(美版 970204)"
             apps-work="Kodi-Win (FB Alpha 2012 CPS-3)|RetroArch-Wii (FB Alpha 2012 CPS-3)"
             apps-not-work="RetroArch-Win (FinalBurn Neo)"
         />
         <Rom crc32="809A9658" bytes="38868497"
             title="sfiii"
             en="Street Fighter III - New Generation (Euro 970204)"
-            zhcn="街头霸王3 (欧版 970204)"
+            zhcn="街头霸王3 新纪元(欧版 970204)"
             apps-work="Kodi-Win (FinalBurn Neo)|RetroArch-Win (FinalBurn Neo)"
             apps-not-work="Kodi-Win (FB Alpha 2012 CPS-3)|RetroArch-Win (FB Alpha 2012 CPS-3)"
         />
@@ -67,7 +67,7 @@
         <Rom crc32="EF7FA548" bytes="43777198"
             title="sfiii2"
             en="Street Fighter III 2nd Impact - Giant Attack (USA 970930)"
-            zhcn="街头霸王3.2 (美版 970930)"
+            zhcn="街头霸王3.2 巨型打击(美版 970930)"
             apps-work="Kodi-Win (FB Alpha 2012 CPS-3)|Kodi-Win (FinalBurn Neo)|RetroArch-Wii (FB Alpha 2012 CPS-3)|RetroArch-Win (FB Alpha 2012 CPS-3)|RetroArch-Win (FinalBurn Neo)"
         />
     </Game>
@@ -75,7 +75,7 @@
         <Rom crc32="36056B5E" bytes="70592155"
             title="sfiii3"
             en="Street Fighter III 3rd Strike - Fight for the Future (Euro 990608)"
-            zhcn="街头霸王3.3 (欧版 990608)"
+            zhcn="街头霸王3.3 未来战斗(欧版 990608)"
             apps-work="Kodi-Win (FB Alpha 2012 CPS-3)|Kodi-Win (FinalBurn Neo)|RetroArch-Wii (FB Alpha 2012 CPS-3)|RetroArch-Win (FB Alpha 2012 CPS-3)|RetroArch-Win (FinalBurn Neo)"
         />
     </Game>
