@@ -123,12 +123,12 @@
             dst="retroarch\system\cache\RomUser_sfiii3"
         />
         <File
-            src="wii\wad\sfiii3\Street Fighter 3.3 [ZU2W].wad"
-            dst="wad\Street Fighter 3.3\Street Fighter 3.3 [ZU2W].wad"
+            src="wii\wad\sfiii3\Street Fighter 3.3 [ZU2W]-S1.wad"
+            dst="wad\Street Fighter 3.3\Street Fighter 3.3 [ZU2W]-S1.wad"
         />
         <File
-            src="wii\wad\sfiii3\Street Fighter 3.3 [ZU2W]-S.wad"
-            dst="wad\Street Fighter 3.3\Street Fighter 3.3 [ZU2W]-S.wad"
+            src="wii\wad\sfiii3\Street Fighter 3.3 [ZU2W]-S2.wad"
+            dst="wad\Street Fighter 3.3\Street Fighter 3.3 [ZU2W]-S2.wad"
         />
         <File
             src="wii\wad\sfiii3\Street Fighter 3.3 [ZU2W]-W.wad"
