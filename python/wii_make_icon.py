@@ -69,20 +69,27 @@ class Wii_MakeIcon:
         ):
             return logo
 
-        new_logo = logo.crop((left, top, right, bottom))
-        new_logo_path = os.path.join(
-            LocalConfigs.repository_directory(),
-            f"wii\\wad\\{self._game_info.rom_title}\\res\\IconImage-org.png",
-        )
-        if Helper.verify_exist_directory_ex(os.path.dirname(new_logo_path)):
-            new_logo.save(new_logo_path)
-        return new_logo
+        return logo.crop((left, top, right + 1, bottom + 1))
 
     def run(self):
+        image_path = os.path.join(
+            LocalConfigs.repository_directory(),
+            f"wii\\wad\\{self._game_info.rom_title}\\res\\IconImage-bg.png",
+        )
+        icon_image = Image.open(image_path)
+
         logo = self.load_logo()
+        new_height = 80
+        top = 8
+        new_width = int(logo.width * 80 / logo.height)
+        if new_width > 110:
+            new_width = 110
+        left = int((128 - new_width) / 2)
+        new_logo = logo.resize((new_width, new_height))
+        icon_image.paste(new_logo, (left, top), mask=new_logo)
 
-
-if __name__ == "__main__":
-    Wii_MakeIcon("sfiii").run()
-    Wii_MakeIcon("sfiii2").run()
-    Wii_MakeIcon("sfiii3").run()
+        image_path = os.path.join(
+            LocalConfigs.repository_directory(),
+            f"wii\\wad\\{self._game_info.rom_title}\\res\\IconImage.png",
+        )
+        icon_image.save(image_path)
