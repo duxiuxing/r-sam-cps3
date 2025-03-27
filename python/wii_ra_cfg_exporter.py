@@ -87,6 +87,23 @@ class WiiRA_CfgExporter:
         else:
             list_ret.append('content_show_history = "false"')
 
+        if app_configs.remap is None:
+            return list_ret
+
+        remap_file_path = os.path.join(
+            LocalConfigs.repository_directory(),
+            f"wii\\remaps\\{app_configs.remap}.txt",
+        )
+        if not os.path.exists(remap_file_path):
+            return list_ret
+
+        with open(remap_file_path, "r", encoding="utf-8") as remap_file:
+            line = remap_file.readline()
+            while line:
+                if line.startswith("input_"):
+                    list_ret.append(line.rstrip())
+                line = remap_file.readline()
+
         return list_ret
 
     def config_dict(self):
@@ -120,7 +137,7 @@ class WiiRA_CfgExporter:
     @staticmethod
     def export_remap_file():
         app_configs = ConsoleConfigs.wii_ra_app_configs()
-        if app_configs.remap is None:
+        if app_configs.rom_title is None:
             return
 
         ra_configs = ConsoleConfigs.ra_configs()

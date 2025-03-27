@@ -103,7 +103,11 @@ class WiiRA_SS_AppExporter:
             xml_file.write(f"- Max Players : {game_info.players}\n\n")
 
             xml_file.write(
-                f"Wii Channel : {ConsoleConfigs.storage_device_code()}:/wad/{app_configs.name}</long_description>\n"
+                f"Wii Channel : {ConsoleConfigs.storage_device_code()}:/wad/{app_configs.name}\n"
+            )
+            repository_name = ConsoleConfigs.wiiflow_plugin_name().lower()
+            xml_file.write(
+                f"Website : https://github.com/R-Sam-1980/{repository_name}</long_description>\n"
             )
             xml_file.write("  <no_ios_reload/>\n")
             xml_file.write("  <ahb_access/>\n")
@@ -161,7 +165,7 @@ class WiiRA_SS_AppExporter:
         self._copy_ra_ss_data_folder()
         Wii_AppIconExporter().run()
         self._export_meta_xml()
-        WiiRA_SS_CfgExporter().run()
+        WiiRA_SS_CfgExporter(self.app_configs.rom_title, self.app_configs.remap).run()
 
         ConsoleConfigs.set_wii_ra_app_configs(old_app_configs)
         self.rom_export_configs.rom_title_filter = old_rom_filter
