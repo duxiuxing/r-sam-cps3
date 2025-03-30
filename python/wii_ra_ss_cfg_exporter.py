@@ -48,10 +48,9 @@ class WiiRA_SS_CfgExporter:
             # 快捷键相关的设置
             'input_menu_combos = "1"',
             'input_load_state_axis = "-2"',
-            'input_save_state_axis = "+2"',
             'input_state_slot_decrease_axis = "-3"',
             'input_state_slot_increase_axis = "+3"',
-            'input_menu_toggle_axis = "nul"',
+            'input_menu_toggle_axis = "+2"',
             # 界面相关的设置
             'clock_posx = "240"',
         ]

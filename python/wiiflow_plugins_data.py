@@ -150,7 +150,9 @@ class WiiFlowPluginsData:
                             print("【警告】英文名不一致")
                             print(f"\tname     = {game_name}")
                             print(f"\tEN title = {en_title}")
-                        genre = elem.find("genre").text
+                        genre_elem = elem.find("genre")
+                        if genre_elem is not None:
+                            genre = genre_elem.text
                     elif lang == "ZHCN":
                         zhcn_title = elem.find("title").text
                 elif elem.tag == "developer":
