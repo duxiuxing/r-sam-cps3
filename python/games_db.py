@@ -15,10 +15,27 @@ class GamesDB:
     def __init__(self):
         GamesDB.__instance = self
         self.__id_to_game = {}
-        self.__name_to_game = {}
+
+    def all_game_ids(self):
+        return self.__id_to_game.keys()
+
+    def all_games(self):
+        return self.__id_to_game.values()
 
     def add_game(self, game: Game):
         self.__id_to_game[game.id] = game
 
-    def query_game_by_id(self, game_id):
-        return self.__id_to_game.get(game_id)
+    def query_game(self, game_id=None, game_title=None):
+        if game_id is not None:
+            game = self.__id_to_game.get(game_id)
+            if game is not None:
+                return game
+
+        if game_title is not None:
+            for game in self.all_games():
+                if game_title == game.en_title:
+                    return game
+                if game_title == game.zhcn_title:
+                    return game
+
+        return None

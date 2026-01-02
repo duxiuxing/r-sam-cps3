@@ -15,49 +15,43 @@ from roms_db import RomsDB
 
 class ResourceFileHelper:
     @staticmethod
-    def compute_rom_path(rom: Rom):
-        game = GamesDB.instance().query_game_by_id(rom.game_id)
+    def compute_rom_file_path(rom: Rom, include_crc32: bool):
+        game = GamesDB.instance().query_game(game_id=rom.game_id)
         repository_dir = Path(LocalConfigs.repository_directory())
 
-        rom_parent_dir = None
+        rom_file_parent_dir = None
         if Helper.files_in_letter_folder():
             letter = game.en_title.upper()[0]
             if letter not in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
                 letter = "#"
-            rom_parent_dir = repository_dir.joinpath(f"roms\\{letter}")
+            rom_file_parent_dir = repository_dir.joinpath(f"roms\\{letter}")
         else:
-            rom_parent_dir = repository_dir.joinpath("roms")
+            rom_file_parent_dir = repository_dir.joinpath("roms")
 
-        rom_path = rom_parent_dir.joinpath(f"{rom.crc32}\\{rom.file_name}")
-        if rom_path.exists() and rom_path.is_file():
-            return rom_path
-
-        rom_path = rom_parent_dir.joinpath(rom.file_name)
-        if rom_path.exists() and rom_path.is_file():
-            return rom_path
-
-        return None
+        if include_crc32:
+            return rom_file_parent_dir.joinpath(f"{rom.crc32}\\{rom.file_name}")
+        else:
+            return rom_file_parent_dir.joinpath(rom.file_name)
 
     @staticmethod
-    def compute_media_path(rom: Rom, folder_name, file_extension):
+    def compute_media_file_path(
+        rom: Rom, folder_name: str, file_extension: str, use_game_en_title: bool
+    ):
         game = GamesDB.instance().get_game_by_id(rom.game_id)
         repository_dir = Path(LocalConfigs.repository_directory())
 
-        folder_path = None
+        media_file_parent_dir = None
         if Helper.files_in_letter_folder():
             letter = game.en_title.upper()[0]
             if letter not in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
                 letter = "#"
-            folder_path = repository_dir.joinpath(f"media\\{folder_name}\\{letter}")
+            media_file_parent_dir = repository_dir.joinpath(
+                f"media\\{folder_name}\\{letter}"
+            )
         else:
-            folder_path = repository_dir.joinpath(f"media\\{folder_name}")
+            media_file_parent_dir = repository_dir.joinpath(f"media\\{folder_name}")
 
-        image_path = folder_path.joinpath(f"{rom.file_title}{file_extension}")
-        if image_path.exists() and image_path.is_file():
-            return image_path
-
-        image_path = folder_path.joinpath(f"{game.en_title}{file_extension}")
-        if image_path.exists() and image_path.is_file():
-            return image_path
-
-        return None
+        if use_game_en_title:
+            return media_file_parent_dir.joinpath(f"{game.en_title}{file_extension}")
+        else:
+            return media_file_parent_dir.joinpath(f"{rom.file_title}{file_extension}")

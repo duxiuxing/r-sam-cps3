@@ -16,6 +16,12 @@ class RomsDB:
         RomsDB.__instance = self
         self.__crc32_to_rom = {}
 
+    def all_rom_crc32_values(self):
+        return self.__crc32_to_rom.keys()
+
+    def all_roms(self):
+        return self.__crc32_to_rom.values()
+
     def rom_exist(self, rom_crc32):
         return rom_crc32 in self.__crc32_to_rom.keys()
 
@@ -27,7 +33,7 @@ class RomsDB:
             return self.__crc32_to_rom.get(rom_crc32)
 
         if rom_file_name is not None:
-            for rom in self.__crc32_to_rom.values():
+            for rom in self.all_roms():
                 if rom.file_name == rom_file_name:
                     return rom
 
