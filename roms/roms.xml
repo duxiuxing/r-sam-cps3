@@ -1,82 +1,109 @@
 <?xml version='1.0' encoding='utf-8'?>
-<Game-List description="roms 文件夹里所有的 CPS3 街机游戏">
-    <Game name="JoJo's Bizarre Adventure - Heritage for the Future">
+<GameList description="roms 文件夹里所有的 CPS3 街机游戏">
+    <Game id="32138"
+        en_title="JoJo's Bizarre Adventure - Heritage for the Future"
+        zhcn_title="JOJO的奇妙冒险2 未来遗产"
+        launchbox="https://gamesdb.launchbox-app.com/games/details/32138-jojos-bizarre-adventure-heritage-for-the-future"
+    >
         <Rom crc32="03A8E3D2" bytes="54256796"
-            title="jojoba"
-            en="JoJo's Bizarre Adventure - Heritage for the Future (Japan 990927)"
-            zhcn="JOJO的奇妙冒险2 未来遗产 (日版 990927)"
-            apps-work="Kodi-Win (FB Alpha 2012 CPS-3)|RetroArch-Wii (FB Alpha 2012 CPS-3)|RetroArch-Win (FB Alpha 2012 CPS-3)"
-            apps-not-work="RetroArch-Win (FinalBurn Neo)"
-        />
-        <Rom crc32="4C96850A" bytes="54516223"
-            title="jojobaner1"
-            en="JoJo's Bizarre Adventure - Heritage for the Future (Euro 990913, NO CD)"
-            zhcn="JOJO的奇妙冒险2 未来遗产 (欧版 990913, NO CD)"
-            apps-work="Kodi-Win (FinalBurn Neo)|RetroArch-Win (FinalBurn Neo)"
-            apps-not-work="Kodi-Win (FB Alpha 2012 CPS-3)|RetroArch-Win (FB Alpha 2012 CPS-3)"
+            file_name="jojoba.zip"
+            en_title="JoJo's Bizarre Adventure - Heritage for the Future (Japan 990927)"
+            zhcn_title="JOJO的奇妙冒险2 未来遗产 (日版 990927)"
         />
         <Rom crc32="9A06A533" bytes="54256886"
-            title="jojoba"
-            en="JoJo's Bizarre Adventure - Heritage for the Future (Euro 990927)"
-            zhcn="JOJO的奇妙冒险2 未来遗产 (欧版 990927)"
-            apps-not-work="Kodi-Win (FinalBurn Neo)|RetroArch-Win (FinalBurn Neo)"
+            file_name="jojoba.zip"
+            en_title="JoJo's Bizarre Adventure - Heritage for the Future (Euro 990927)"
+            zhcn_title="JOJO的奇妙冒险2 未来遗产 (欧版 990927)"
+        />
+        <Rom crc32="DBE72E53" bytes="16693383"
+            file_name="jojobaner1.zip"
+            parent_rom_file_name="jojoba.zip" parent_rom_crc32="9A06A533"
+            en_title="JoJo's Bizarre Adventure - Heritage for the Future (Euro 990913, NO CD)"
+            zhcn_title="JOJO的奇妙冒险2 未来遗产 (欧版 990913, 免CD)"
         />
     </Game>
-    <Game name="JoJo's Venture">
+    <Game id="36950"
+        en_title="JoJo's Venture"
+        zhcn_title="JOJO的奇妙冒险1"
+        launchbox="https://gamesdb.launchbox-app.com/games/details/36950-jojos-bizarre-adventure"
+    >
         <Rom crc32="09565881" bytes="46008575"
-            title="jojo"
-            en="JoJo's Venture (USA 990128)"
-            zhcn="JOJO的奇妙冒险1 (美版 990128)"
-            apps-work="Kodi-Win (FB Alpha 2012 CPS-3)|RetroArch-Wii (FB Alpha 2012 CPS-3)|RetroArch-Win (FB Alpha 2012 CPS-3)"
-            apps-not-work="RetroArch-Win (FinalBurn Neo)"
+            file_name="jojo.zip"
+            en_title="JoJo's Venture (USA 990128)"
+            zhcn_title="JOJO的奇妙冒险1 (美版 990128)"
         />
         <Rom crc32="7B74BE6D" bytes="46008577"
-            title="jojo"
-            en="JoJo's Venture (Euro 990128)"
-            zhcn="JOJO的奇妙冒险1 (欧版 990128)"
-            apps-work="Kodi-Win (FinalBurn Neo)|RetroArch-Win (FinalBurn Neo)"
-            apps-not-work="Kodi-Win (FB Alpha 2012 CPS-3)|RetroArch-Win (FB Alpha 2012 CPS-3)"
+            file_name="jojo.zip"
+            en_title="JoJo's Venture (Euro 990128)"
+            zhcn_title="JOJO的奇妙冒险1 (欧版 990128)"
+        />
+        <Rom crc32="D1FB9FFE" bytes="129251"
+            file_name="jojon.zip"
+            parent_rom_file_name="jojo.zip" parent_rom_crc32="7B74BE6D"
+            en_title="JoJo's Venture (Asia 990128, NO CD)"
+            zhcn_title="JOJO的奇妙冒险1 (亚版 990128, 免CD)"
         />
     </Game>
-    <Game name="Red Earth">
+    <Game id="7956"
+        en_title="Red Earth"
+        zhcn_title="赤色大地"
+        launchbox="https://gamesdb.launchbox-app.com/games/details/7956-red-earth"
+    >
         <Rom crc32="F357FAC2" bytes="38374386"
-            title="redearth"
-            en="Red Earth (Euro 961121)"
-            zhcn="赤色大地 (欧版 961121)"
-            apps-work="Kodi-Win (FinalBurn Neo)|RetroArch-Wii (FB Alpha 2012 CPS-3)|RetroArch-Win (FB Alpha 2012 CPS-3)|RetroArch-Win (FinalBurn Neo)"
-            apps-not-work="Kodi-Win (FB Alpha 2012 CPS-3)"
+            file_name="redearth.zip"
+            en_title="Red Earth (Euro 961121)"
+            zhcn_title="赤色大地 (欧版 961121)"
         />
     </Game>
-    <Game name="Street Fighter III - New Generation">
+    <Game id="12251"
+        en_title="Street Fighter III - New Generation"
+        zhcn_title="街头霸王3.1 新纪元"
+        launchbox="https://gamesdb.launchbox-app.com/games/details/12251-street-fighter-iii-new-generation"
+    >
         <Rom crc32="1F8CC35D" bytes="38868517"
-            title="sfiii"
-            en="Street Fighter III - New Generation (USA 970204)"
-            zhcn="街头霸王3 新纪元(美版 970204)"
-            apps-work="Kodi-Win (FB Alpha 2012 CPS-3)|RetroArch-Wii (FB Alpha 2012 CPS-3)"
-            apps-not-work="RetroArch-Win (FinalBurn Neo)"
+            file_name="sfiii.zip"
+            en_title="Street Fighter III - New Generation (USA 970204)"
+            zhcn_title="街头霸王3.1 新纪元 (美版 970204)"
         />
         <Rom crc32="809A9658" bytes="38868497"
-            title="sfiii"
-            en="Street Fighter III - New Generation (Euro 970204)"
-            zhcn="街头霸王3 新纪元(欧版 970204)"
-            apps-work="Kodi-Win (FinalBurn Neo)|RetroArch-Win (FinalBurn Neo)"
-            apps-not-work="Kodi-Win (FB Alpha 2012 CPS-3)|RetroArch-Win (FB Alpha 2012 CPS-3)"
+            file_name="sfiii.zip"
+            en_title="Street Fighter III - New Generation (Euro 970204)"
+            zhcn_title="街头霸王3.1 新纪元 (欧版 970204)"
+        />
+        <Rom crc32="9C57FA04" bytes="132470"
+            file_name="sfiiin.zip"
+            parent_rom_file_name="sfiii.zip" parent_rom_crc32="809A9658"
+            en_title="Street Fighter III - New Generation (Asia 970204, NO CD, bios set 1)"
+            zhcn_title="街头霸王3.1 新纪元 (亚版 970204, 免CD, 第1套bios)"
         />
     </Game>
-    <Game name="Street Fighter III 2nd Impact - Giant Attack">
+    <Game id="39182"
+        en_title="Street Fighter III 2nd Impact - Giant Attack"
+        zhcn_title="街头霸王3.2 巨型打击"
+        launchbox="https://gamesdb.launchbox-app.com/games/details/39182-street-fighter-iii-2nd-impact-giant-attack"
+    >
         <Rom crc32="EF7FA548" bytes="43777198"
-            title="sfiii2"
-            en="Street Fighter III 2nd Impact - Giant Attack (USA 970930)"
-            zhcn="街头霸王3.2 巨型打击(美版 970930)"
-            apps-work="Kodi-Win (FB Alpha 2012 CPS-3)|Kodi-Win (FinalBurn Neo)|RetroArch-Wii (FB Alpha 2012 CPS-3)|RetroArch-Win (FB Alpha 2012 CPS-3)|RetroArch-Win (FinalBurn Neo)"
+            file_name="sfiii2.zip"
+            en_title="Street Fighter III 2nd Impact - Giant Attack (USA 970930)"
+            zhcn_title="街头霸王3.2 巨型打击 (美版 970930)"
         />
     </Game>
-    <Game name="Street Fighter III 3rd Strike - Fight for the Future">
+    <Game id="39183"
+        en_title="Street Fighter III 3rd Strike - Fight for the Future"
+        zhcn_title="街头霸王3.3 未来战斗"
+        launchbox="https://gamesdb.launchbox-app.com/games/details/39183-street-fighter-iii-3rd-strike-fight-for-the-future"
+    >
         <Rom crc32="36056B5E" bytes="70592155"
-            title="sfiii3"
-            en="Street Fighter III 3rd Strike - Fight for the Future (Euro 990608)"
-            zhcn="街头霸王3.3 未来战斗(欧版 990608)"
-            apps-work="Kodi-Win (FB Alpha 2012 CPS-3)|Kodi-Win (FinalBurn Neo)|RetroArch-Wii (FB Alpha 2012 CPS-3)|RetroArch-Win (FB Alpha 2012 CPS-3)|RetroArch-Win (FinalBurn Neo)"
+            file_name="sfiii3.zip"
+            en_title="Street Fighter III 3rd Strike - Fight for the Future (Euro 990608)"
+            zhcn_title="街头霸王3.3 未来战斗 (欧版 990608)"
+            core-work="FB Alpha 2012 CPS-3|FinalBurn Neo"
+        />
+        <Rom crc32="CF8E6FA9" bytes="70592249"
+            file_name="sfiii3ws.zip"
+            en_title="Street Fighter III 3rd Strike - Fight for the Future (Widescreen 20220908)"
+            zhcn_title="街头霸王3.3 未来战斗 (宽屏版 20220908)"
+            core-work="FinalBurn Neo"
         />
     </Game>
-</Game-List>
+</GameList>
