@@ -1,6 +1,5 @@
 # -- coding: UTF-8 --
 
-import os
 import xml.etree.ElementTree as ET
 
 from console_configs import ConsoleConfigs
@@ -23,8 +22,11 @@ class RomsXML:
         game_list_elem = ET.parse(xml_file_path).getroot()
 
         for game_elem in game_list_elem.findall("Game"):
-            game = Game(id=game_elem.get("id"), en_title=game_elem.get("en_title"))
-            game.zhcn_title = game_elem.get("zhcn_title")
+            game = Game(
+                id=game_elem.attrib["id"],
+                en_title=game_elem.attrib["en_title"],
+                zhcn_title=game_elem.get("zhcn_title"),
+            )
             GamesDB.instance().add_game(game)
 
             for rom_elem in game_elem.findall("Rom"):
@@ -34,11 +36,11 @@ class RomsXML:
                 )
                 rom = Rom(
                     game_id=game.id,
-                    crc32=rom_elem.get("crc32").rjust(8, "0"),
-                    bytes=rom_elem.get("bytes"),
-                    file_name=rom_elem.get("file_name"),
+                    crc32=rom_elem.attrib["crc32"].rjust(8, "0"),
+                    bytes=rom_elem.attrib["bytes"],
+                    file_name=rom_elem.attrib["file_name"],
                     parent_rom=parent_rom,
-                    en_title=rom_elem.get("en_title"),
+                    en_title=rom_elem.attrib["en_title"],
                     zhcn_title=game_elem.get("zhcn_title"),
                 )
                 RomsDB.instance().add_rom(rom)
@@ -46,10 +48,7 @@ class RomsXML:
 
     @staticmethod
     def load():
-        # 本函数执行的操作如下：
-        # 1. 读取 roms 文件夹里的各个 .xml 文件
-        # 2. 构建 GamesDB 和 RomsDB
-        repository_dir = Path(LocalConfigs.repository_directory())
+        repository_dir = LocalConfigs.repository_directory()
         if Helper.files_in_letter_folder():
             for letter in "#ABCDEFGHIJKLMNOPQRSTUVWXYZ":
                 xml_file_path = repository_dir.joinpath(f"roms\\{letter}\\{letter}.xml")

@@ -1,9 +1,5 @@
 # -- coding: UTF-8 --
 
-import os
-import shutil
-import zlib
-
 from game import Game
 from games_db import GamesDB
 from helper import Helper

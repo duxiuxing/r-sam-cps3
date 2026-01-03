@@ -29,26 +29,25 @@ class ConsoleConfigs:
             tree = ET.parse(xml_file_path)
             root = tree.getroot()
             self.ra_configs = RA_Configs(root.attrib["ra_configs_file"])
-            self.rom_extension = root.attrib["rom_extension"]
+            self.rom_file_extension = root.attrib["rom_file_extension"]
             self.wiiflow_plugin_name = root.attrib["wiiflow_plugin_name"]
             self.wii_ra_app_configs = None
             self.storage_device_code = ConsoleConfigs.STORAGE_SD
 
     @staticmethod
     def _instance():
-        # 获取单例实例
         if ConsoleConfigs.__instance is None:
             ConsoleConfigs()
         return ConsoleConfigs.__instance
 
     @staticmethod
-    def rom_extension():
+    def rom_file_extension():
         # ROM 文件的扩展名
-        return ConsoleConfigs._instance().rom_extension
+        return ConsoleConfigs._instance().rom_file_extension
 
     @staticmethod
-    def rom_extension_match(file_name):
-        pat = f"*{ConsoleConfigs.rom_extension()}"
+    def rom_file_extension_match(file_name):
+        pat = f"*{ConsoleConfigs.rom_file_extension()}"
         return fnmatch.fnmatch(file_name, pat)
 
     @staticmethod
@@ -100,9 +99,9 @@ class ConsoleConfigs:
 
 
 if __name__ == "__main__":
-    print(ConsoleConfigs.rom_extension())
+    print(ConsoleConfigs.rom_file_extension())
     file_name = "test.zip"
-    if ConsoleConfigs.rom_extension_match(file_name):
+    if ConsoleConfigs.rom_file_extension_match(file_name):
         print(f"{file_name} ROM 文件名匹配成功")
     else:
         print(f"{file_name} ROM 文件名不匹配")

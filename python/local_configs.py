@@ -3,6 +3,8 @@
 import os
 import xml.etree.ElementTree as ET
 
+from pathlib import Path
+
 
 class LocalConfigs:
     __instance = None
@@ -13,19 +15,19 @@ class LocalConfigs:
         else:
             LocalConfigs.__instance = self
 
-        self._repository_directory = os.getcwd()
+        self._repository_directory = Path(os.getcwd())
 
-        xml_file_path = os.path.join(self._repository_directory, "config\\local.xml")
-        if not os.path.exists(xml_file_path):
+        xml_file_path = self._repository_directory.joinpath("config\\local.xml")
+        if not xml_file_path.exists():
             print(f"【错误】无效文件 {xml_file_path}")
         else:
             tree = ET.parse(xml_file_path)
             root = tree.getroot()
-            self._seven_zip_exe_path = root.attrib["seven_zip_exe_path"]
+            self._seven_zip_exe_path = Path(root.attrib["seven_zip_exe_path"])
             index = root.attrib["root_directory_export_to_index"]
-            self._root_directory_export_to = root.attrib[
-                f"root_directory_export_to_{index}"
-            ]
+            self._root_directory_export_to = Path(
+                root.attrib[f"root_directory_export_to_{index}"]
+            )
 
     @staticmethod
     def _instance():
