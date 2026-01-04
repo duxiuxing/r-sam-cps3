@@ -7,32 +7,37 @@ class GamesDB:
     __instance = None
 
     @staticmethod
-    def instance():
+    def _instance():
         if GamesDB.__instance is None:
             GamesDB()
         return GamesDB.__instance
 
     def __init__(self):
         GamesDB.__instance = self
-        self.__id_to_game = {}
+        self._id_to_game = {}
 
-    def all_game_ids(self):
-        return self.__id_to_game.keys()
+    @staticmethod
+    def all_game_ids():
+        return GamesDB._instance()._id_to_game.keys()
 
-    def all_games(self):
-        return self.__id_to_game.values()
+    @staticmethod
+    def all_games():
+        return GamesDB._instance()._id_to_game.values()
 
-    def add_game(self, game: Game):
-        self.__id_to_game[game.id] = game
+    @staticmethod
+    def add_game(game: Game):
+        GamesDB._instance()._id_to_game[game.id] = game
 
-    def query_game(self, game_id=None, game_title=None):
+    @staticmethod
+    def query_game(game_id=None, game_title=None):
+        games_db = GamesDB._instance()
         if game_id is not None:
-            game = self.__id_to_game.get(game_id)
+            game = games_db._id_to_game.get(game_id)
             if game is not None:
                 return game
 
         if game_title is not None:
-            for game in self.all_games():
+            for game in games_db._id_to_game.values():
                 if game_title == game.en_title:
                     return game
                 if game_title == game.zhcn_title:

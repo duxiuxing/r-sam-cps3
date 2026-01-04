@@ -1,5 +1,6 @@
 # -- coding: UTF-8 --
 
+import os
 import xml.etree.ElementTree as ET
 
 from configparser import ConfigParser
@@ -16,11 +17,11 @@ from wiiflow_roms_db import WiiFlow_RomsDB
 class WiiFlowPluginsData:
     @staticmethod
     def load():
-        WiiFlowPluginsData.__parse_xml_file()
-        WiiFlowPluginsData.__parse_ini_file()
+        WiiFlowPluginsData._parse_xml_file()
+        WiiFlowPluginsData._parse_ini_file()
 
     @staticmethod
-    def __parse_xml_file():
+    def _parse_xml_file():
         plugin_name = ConsoleConfigs.wiiflow_plugin_name()
         xml_file_path = LocalConfigs.repository_directory().joinpath(
             f"wii\\wiiflow\\plugins_data\\{plugin_name}\\{plugin_name}.xml"
@@ -31,9 +32,9 @@ class WiiFlowPluginsData:
             return
 
         tree = ET.parse(xml_file_path)
-        root = tree.getroot()
+        root_elem = tree.getroot()
 
-        for game_elem in root.findall("game"):
+        for game_elem in root_elem.findall("game"):
             game_name = game_elem.attrib["name"]
             game_id = ""
             en_title = ""
@@ -80,10 +81,10 @@ class WiiFlowPluginsData:
                 date=date,
                 players=players,
             )
-            WiiFlow_GamesDB.instance().add_game(game)
+            WiiFlow_GamesDB.add_game(game)
 
     @staticmethod
-    def __parse_ini_file():
+    def _parse_ini_file():
         plugin_name = ConsoleConfigs.wiiflow_plugin_name()
         ini_file_path = LocalConfigs.repository_directory().joinpath(
             f"wii\\wiiflow\\plugins_data\\{plugin_name}\\{plugin_name}.ini"
@@ -112,3 +113,22 @@ class WiiFlowPluginsData:
 
 if __name__ == "__main__":
     WiiFlowPluginsData.load()
+
+    game_list_elem = ET.Element("GameList")
+
+    game_list = sorted(WiiFlow_GamesDB.all_games(), key=lambda x: x.name)
+    for game in game_list:
+        ET.SubElement(
+            game_list_elem,
+            "Game",
+            {"id": game.id, "en_title": game.en_title, "zhcn_title": game.zhcn_title},
+        )
+
+    plugin_name = ConsoleConfigs.wiiflow_plugin_name()
+    rom_xml_file_path = LocalConfigs.repository_directory().joinpath(
+        f"wii\\wiiflow\\plugins_data\\{plugin_name}\\roms.xml"
+    )
+
+    ET.ElementTree(game_list_elem).write(
+        rom_xml_file_path, encoding="utf-8", xml_declaration=True
+    )

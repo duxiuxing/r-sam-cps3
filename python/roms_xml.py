@@ -15,7 +15,7 @@ from roms_db import RomsDB
 
 class RomsXML:
     @staticmethod
-    def __parse(xml_file_path: Path):
+    def _parse(xml_file_path: Path):
         if not xml_file_path.exists():
             return
 
@@ -27,10 +27,10 @@ class RomsXML:
                 en_title=game_elem.attrib["en_title"],
                 zhcn_title=game_elem.get("zhcn_title"),
             )
-            GamesDB.instance().add_game(game)
+            GamesDB.add_game(game)
 
             for rom_elem in game_elem.findall("Rom"):
-                parent_rom = RomsDB.instance().query_rom(
+                parent_rom = RomsDB.query_rom(
                     rom_crc32=rom_elem.get("parent_rom_crc32"),
                     rom_file_name=rom_elem.get("parent_rom_file"),
                 )
@@ -43,7 +43,7 @@ class RomsXML:
                     en_title=rom_elem.attrib["en_title"],
                     zhcn_title=game_elem.get("zhcn_title"),
                 )
-                RomsDB.instance().add_rom(rom)
+                RomsDB.add_rom(rom)
                 game.rom_list.append(rom)
 
     @staticmethod
@@ -52,16 +52,16 @@ class RomsXML:
         if Helper.files_in_letter_folder():
             for letter in "#ABCDEFGHIJKLMNOPQRSTUVWXYZ":
                 xml_file_path = repository_dir.joinpath(f"roms\\{letter}\\{letter}.xml")
-                RomsXML.__parse(xml_file_path)
+                RomsXML._parse(xml_file_path)
         else:
             xml_file_path = repository_dir.joinpath("roms\\roms.xml")
-            RomsXML.__parse(xml_file_path)
+            RomsXML._parse(xml_file_path)
 
 
 if __name__ == "__main__":
     RomsXML.load()
 
-    for rom in RomsDB.instance().all_roms():
+    for rom in RomsDB.all_roms():
         rom_file_path = ResourceFileHelper.compute_rom_file_path(
             rom, include_crc32=True
         )

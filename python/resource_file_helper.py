@@ -12,7 +12,7 @@ from roms_db import RomsDB
 class ResourceFileHelper:
     @staticmethod
     def compute_rom_file_path(rom: Rom, include_crc32: bool):
-        game = GamesDB.instance().query_game(game_id=rom.game_id)
+        game = GamesDB.query_game(game_id=rom.game_id)
         repository_dir = Path(LocalConfigs.repository_directory())
 
         rom_file_parent_dir = None
@@ -33,7 +33,7 @@ class ResourceFileHelper:
     def compute_media_file_path(
         rom: Rom, folder_name: str, file_extension: str, use_game_en_title: bool
     ):
-        game = GamesDB.instance().get_game_by_id(rom.game_id)
+        game = GamesDB.get_game_by_id(rom.game_id)
         repository_dir = Path(LocalConfigs.repository_directory())
 
         media_file_parent_dir = None

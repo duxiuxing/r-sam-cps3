@@ -17,7 +17,7 @@ class WiiFlow_ResourceFileHelper:
     @staticmethod
     def compute_png_cover_file_path(rom: WiiFlow_Rom):
         plugin_name = ConsoleConfigs.wiiflow_plugin_name()
-        game = WiiFlow_GamesDB.instance().query_game(game_id=rom.game_id)
+        game = WiiFlow_GamesDB.query_game(game_id=rom.game_id)
         repository_dir = Path(LocalConfigs.repository_directory())
 
         if Helper.files_in_letter_folder():
@@ -35,7 +35,7 @@ class WiiFlow_ResourceFileHelper:
     @staticmethod
     def compute_wfc_cover_file_path(rom: WiiFlow_Rom):
         plugin_name = ConsoleConfigs.wiiflow_plugin_name()
-        game = WiiFlow_GamesDB.instance().query_game(game_id=rom.game_id)
+        game = WiiFlow_GamesDB.query_game(game_id=rom.game_id)
         repository_dir = Path(LocalConfigs.repository_directory())
 
         if Helper.files_in_letter_folder():
