@@ -3,6 +3,7 @@
 from local_configs import LocalConfigs
 from pathlib import Path
 from roms_xml import RomsXML
+from wii_ra_configs import WiiRA_Configs
 
 
 class Init_Global_Configs:
@@ -15,13 +16,27 @@ class Init_Global_Configs:
 
         LocalConfigs._retroarch_directory = Path("X:\\RetroArch-Win64")
         LocalConfigs._seven_zip_exe_path = Path("C:\\Program Files\\7-Zip\\7z.exe")
+
+        # WiiRA_Configs
+        WiiRA_Configs._core_name = "Arcade (FB Alpha 2012 CPS-3)"
+        WiiRA_Configs._core_file_name = Path("fbalpha2012_cps3_libretro_wii.dol")
+        WiiRA_Configs._core_info_file_name = Path("fbalpha2012_cps3_libretro.info")
+        WiiRA_Configs._db_name = Path("Capcom - CP System III.lpl")
+
         RomsXML()
 
 
 if __name__ == "__main__":
     Init_Global_Configs()
 
-    print(LocalConfigs.repository_directory())
-    print(LocalConfigs.export_to_directory())
-    print(LocalConfigs.retroarch_directory())
-    print(LocalConfigs.seven_zip_exe_path())
+    print("LocalConfigs:")
+    print(f"\trepository_directory = {LocalConfigs.repository_directory()}")
+    print(f"\texport_to_directory = {LocalConfigs.export_to_directory()}")
+    print(f"\tretroarch_directory = {LocalConfigs.retroarch_directory()}")
+    print(f"\tseven_zip_exe_path = {LocalConfigs.seven_zip_exe_path()}")
+
+    print("WiiRA_Configs:")
+    print(f"\tcore_name = {WiiRA_Configs.core_name()}")
+    print(f"\tcore_file_name = {WiiRA_Configs.core_file_name()}")
+    print(f"\tcore_info_file_name = {WiiRA_Configs.core_info_file_name()}")
+    print(f"\tdb_name = {WiiRA_Configs.db_name()}")
