@@ -12,8 +12,18 @@ from roms_db import RomsDB
 class ResourceFileHelper:
     @staticmethod
     def compute_rom_file_path(rom: Rom, include_crc32: bool):
+        """
+        获得 rom 文件在库里面的文件路径
+
+        Args:
+            rom (Rom): rom 文件对应的 Rom 对象
+            include_crc32 (bool): 路径中是否包含 crc32
+
+        Returns:
+            Path: rom 文件的路径
+        """
         game = GamesDB.query_game(game_id=rom.game_id)
-        repository_dir = Path(LocalConfigs.repository_directory())
+        repository_dir = LocalConfigs.repository_directory()
 
         rom_file_parent_dir = None
         if Helper.files_in_letter_folder():
@@ -30,11 +40,20 @@ class ResourceFileHelper:
             return rom_file_parent_dir.joinpath(rom.file_name)
 
     @staticmethod
-    def compute_media_file_path(
-        rom: Rom, folder_name: str, file_extension: str, use_game_en_title: bool
-    ):
+    def compute_rom_media_file_path(rom: Rom, folder_name: str, file_extension: str):
+        """
+        获得 rom 对应的媒体文件在库里面的文件路径
+
+        Args:
+            rom (Rom): rom 文件对应的 Rom 对象
+            folder_name (str): 媒体文件所在的文件夹名称
+            file_extension (str): 文件后缀名
+
+        Returns:
+            Path: 媒体文件的路径
+        """
         game = GamesDB.get_game_by_id(rom.game_id)
-        repository_dir = Path(LocalConfigs.repository_directory())
+        repository_dir = LocalConfigs.repository_directory()
 
         media_file_parent_dir = None
         if Helper.files_in_letter_folder():
@@ -47,7 +66,32 @@ class ResourceFileHelper:
         else:
             media_file_parent_dir = repository_dir.joinpath(f"media\\{folder_name}")
 
-        if use_game_en_title:
-            return media_file_parent_dir.joinpath(f"{game.en_title}{file_extension}")
+        return media_file_parent_dir.joinpath(f"{rom.file_name.stem}{file_extension}")
+
+    @staticmethod
+    def compute_game_media_file_path(game: Game, folder_name: str, file_extension: str):
+        """
+        获得游戏对应的媒体文件在库里面的文件路径
+
+        Args:
+            game (Game): 游戏对应的 Game 对象
+            folder_name (str): 媒体文件所在的文件夹名称
+            file_extension (str): 文件后缀名
+
+        Returns:
+            Path: 媒体文件的路径
+        """
+        repository_dir = LocalConfigs.repository_directory()
+
+        media_file_parent_dir = None
+        if Helper.files_in_letter_folder():
+            letter = game.en_title.upper()[0]
+            if letter not in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
+                letter = "#"
+            media_file_parent_dir = repository_dir.joinpath(
+                f"media\\{folder_name}\\{letter}"
+            )
         else:
-            return media_file_parent_dir.joinpath(f"{rom.file_title}{file_extension}")
+            media_file_parent_dir = repository_dir.joinpath(f"media\\{folder_name}")
+
+        return media_file_parent_dir.joinpath(f"{game.en_title}{file_extension}")

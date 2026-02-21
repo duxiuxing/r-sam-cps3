@@ -8,7 +8,6 @@ from games_db import GamesDB
 from helper import Helper
 from local_configs import LocalConfigs
 from pathlib import Path
-from resource_file_helper import ResourceFileHelper
 from rom import Rom
 from roms_db import RomsDB
 
@@ -46,8 +45,7 @@ class RomsXML:
                 RomsDB.add_rom(rom)
                 game.rom_list.append(rom)
 
-    @staticmethod
-    def load():
+    def __init__(self):
         repository_dir = LocalConfigs.repository_directory()
         if Helper.files_in_letter_folder():
             for letter in "#ABCDEFGHIJKLMNOPQRSTUVWXYZ":
@@ -56,28 +54,3 @@ class RomsXML:
         else:
             xml_file_path = repository_dir.joinpath("roms\\roms.xml")
             RomsXML._parse(xml_file_path)
-
-
-if __name__ == "__main__":
-    RomsXML.load()
-
-    for rom in RomsDB.all_roms():
-        rom_file_path = ResourceFileHelper.compute_rom_file_path(
-            rom, include_crc32=True
-        )
-        rom_file_exists = rom_file_path.exists()
-
-        if not rom_file_exists:
-            rom_file_path = ResourceFileHelper.compute_rom_file_path(
-                rom, include_crc32=False
-            )
-            rom_file_exists = rom_file_path.exists()
-
-        if rom_file_exists:
-            rom_crc32 = Helper.compute_crc32(rom_file_path)
-            if rom_crc32 != rom.crc32:
-                print(
-                    f"【错误】{rom.file_name} 的 CRC32 校验失败，实际值={rom_crc32}，预期值={rom.crc32}"
-                )
-        else:
-            print(f"【错误】缺失 ROM 文件 {rom_file_path}")
