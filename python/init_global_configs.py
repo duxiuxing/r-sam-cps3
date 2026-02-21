@@ -4,6 +4,8 @@ from local_configs import LocalConfigs
 from pathlib import Path
 from roms_xml import RomsXML
 from wii_ra_configs import WiiRA_Configs
+from wiiflow_configs import WiiFlow_Configs
+from wiiflow_plugins_data import WiiFlow_PluginsData
 
 
 class Init_Global_Configs:
@@ -25,6 +27,10 @@ class Init_Global_Configs:
         WiiRA_Configs._release_date = "2025-11-20 10:41"
         WiiRA_Configs._version = "1.22.2"
 
+        # WiiFlow_Configs
+        WiiFlow_Configs._plugin_name = "CPS3"
+
+        WiiFlow_PluginsData()
         RomsXML()
 
 
@@ -44,3 +50,6 @@ if __name__ == "__main__":
     print(f"\tdb_name = {WiiRA_Configs.db_name()}")
     print(f"\trelease_date = {WiiRA_Configs.release_date()}")
     print(f"\tversion = {WiiRA_Configs.version()}")
+
+    print("WiiFlow_Configs:")
+    print(f"\tplugin_name = {WiiFlow_Configs.plugin_name()}")
