@@ -27,3 +27,15 @@ class WiiRA_Configs:
     @staticmethod
     def db_name() -> Path:
         return WiiRA_Configs._db_name
+
+    _release_date = None
+
+    @staticmethod
+    def release_date() -> str:
+        return WiiRA_Configs._release_date
+
+    _version = None
+
+    @staticmethod
+    def version() -> str:
+        return WiiRA_Configs._version

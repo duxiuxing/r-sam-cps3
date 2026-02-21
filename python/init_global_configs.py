@@ -22,6 +22,8 @@ class Init_Global_Configs:
         WiiRA_Configs._core_file_name = Path("fbalpha2012_cps3_libretro_wii.dol")
         WiiRA_Configs._core_info_file_name = Path("fbalpha2012_cps3_libretro.info")
         WiiRA_Configs._db_name = Path("Capcom - CP System III.lpl")
+        WiiRA_Configs._release_date = "2025-11-20 10:41"
+        WiiRA_Configs._version = "1.22.2"
 
         RomsXML()
 
@@ -40,3 +42,5 @@ if __name__ == "__main__":
     print(f"\tcore_file_name = {WiiRA_Configs.core_file_name()}")
     print(f"\tcore_info_file_name = {WiiRA_Configs.core_info_file_name()}")
     print(f"\tdb_name = {WiiRA_Configs.db_name()}")
+    print(f"\trelease_date = {WiiRA_Configs.release_date()}")
+    print(f"\tversion = {WiiRA_Configs.version()}")
