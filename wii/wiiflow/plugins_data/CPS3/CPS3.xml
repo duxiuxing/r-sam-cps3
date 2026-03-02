@@ -9,8 +9,8 @@
 	</locale>
 	<locale lang="ZHCN">
 		<title>JOJO的奇妙冒险1</title>
-		<genre>格斗 / 对战</genre>
-		<synopsis>《JOJO 的 奇 妙 冒 险》是 日 本 漫 画 家 荒 木 飞 吕 彦 的 漫 画 作 品。1998 年，卡 普 空 在 CPS3 基 板 上 推 出 同 名 格 斗 游 戏《JOJO 的 奇 妙 冒 险》。游 戏 再 现 了 原 作 漫 画 第 三 卷 的 风 格，并 再 现 了 漫 画 的 场 景 和 情 节。游 戏 系 统 上，本 作 继 承 了 卡 普 空 一 向 的 严 谨 设 定，并 加 入 了《恶 魔 战 士》的 一 些 特 性。必 杀 技 都 是 卡 普 空 作 品 的 一 贯 使 用 方 式，很 容 易 让 新 手 上 手。超 必 杀 KO 对 手 时 还 会 以 漫 画 形 式 表 现 出 来。</synopsis>
+		<genre>格斗</genre>
+		<synopsis>《JOJO 的 奇 妙 冒 险》是 日 本 漫 画 家 荒 木 飞 吕 彦 的 漫 画 作 品。1998 年，卡 普 空 推 出 同 名 格 斗 街 机 游 戏《JOJO 的 奇 妙 冒 险》。游 戏 改 编 自 原 作 漫 画 第 三 卷《星 尘 斗 士》，首 次 将 漫 画 中 的“替 身”概 念 引 入 格 斗 游 戏。玩 家 可 以 随 时 召 唤 或 解 散 替 身，切 换 本 体 与 替 身 的 战 斗 模 式，开 创 了 独 特 的 双 线 作 战 玩 法，超 必 杀 KO 对 手 时 还 会 以 漫 画 形 式 表 现 出 来。</synopsis>
 	</locale>
 		<developer>Capcom</developer>
 		<publisher>Capcom</publisher>
@@ -30,8 +30,8 @@
 	</locale>
 	<locale lang="ZHCN">
 		<title>JOJO的奇妙冒险2 未来遗产</title>
-		<genre>格斗 / 对战</genre>
-		<synopsis>《JOJO 的 奇 妙 冒 险 未 来 遗 产》是 卡 普 空 推 出 的 一 款 格 斗 街 机 游 戏，前 作 为《JOJO 的 奇 妙 冒 险》，改 编 自 荒 木 飞 吕 彦 的 漫 画《JOJO 的 奇 妙 冒 险》。1999 年 卡 普 空 推 出 原 作 的 加 强 版，添 加 挑 战 模 式 以 及 新 角 色，细 节 有 所 改 动。</synopsis>
+		<genre>格斗</genre>
+		<synopsis>卡 普 空 于 1999 年 推 出 的 格 斗 街 机 游 戏《JOJO 的 奇 妙 冒 险 未 来 遗 产》，是 前 作《JOJO 的 奇 妙 冒 险》的“威 力 加 强 版”。它 在 保 留 核 心 玩 法 的 基 础 上，增 加 了 挑 战 模 式 以 及 新 角 色，并 大 幅 调 整 了 角 色 平 衡 性。游 戏 画 面 更 加 精 细，动 作 流 畅 度 极 高，完 美 还 原 了 漫 画 中 各 个 角 色 经 典 的“JOJO 立”姿 势。</synopsis>
 	</locale>
 		<developer>Capcom</developer>
 		<publisher>Capcom</publisher>
@@ -51,10 +51,8 @@
 	</locale>
 	<locale lang="ZHCN">
 		<title>赤色大地</title>
-		<genre>格斗 / 合作</genre>
-		<synopsis>《赤 色 大 地》，又 名《红 色 地 球》，是 1996 年 卡 普 空 在 CPS3 上 推 出 的 第 一 部 游 戏。这 是 一 款 极 具 创 意 的 格 斗 游 戏，它 的 舞 台 为 中 世 纪 剑 与 魔 法 的 世 界，每 名 角 色 都 富 有 特 色。系 统 上，它 融 合 角 色 扮 演 游 戏 的 升 级 元 素，在 一 回 合 结 束 后 会 恢 复 部 分 HP 之 余，还 会 增 加 经 验 值，当 经 验 值 到 达 一 定 水 平 就 能 获 得 新 的 必 杀 技。可 惜 的 是 当 年 还 没 有 用 上 记 忆 卡，只 是 用 密 码 去 记 录 能 力。密 码 模 式 允 许 玩 家 下 一 次 玩 游 戏 时 在 街 机 上 输 入 密 码，以 他 们 的 角 色 在 上 次 结 束 时 达 到 的 相 同 技 能 水 平 继 续 游 戏，角 色 可 以 根 据 已 达 到 的 技 能 等 级 获 得 新 的 能 力。
-
-故 事 发 生 在 1999 年 的 一 个 平 行 地 球，讲 述 了 四 位 英 雄 对 抗 巨 人 Scion 释 放 的 神 话 怪 兽 军 队，以 防 止 他 们 摧 毁 世 界 的 故 事。你 可 以 选 择 扮 演 狮 王 Leo、武 术 家 Mai -Ling、女 巫 Tessa 或 忍 者 Kenji，他 们 将 穿 越 全 球，击 败 铁 Scion。</synopsis>
+		<genre>格斗</genre>
+		<synopsis>《赤 色 大 地》是 卡 普 空 于 1996 年 推 出 的 格 斗 街 机 游 戏，也 是 CPS-3 基 板 的 首 发 作 品。它 最 大 的 特 色 是“格 斗 + RPG”的 混 血 玩 法：游 戏 没 有 杂 兵 战，玩 家 直 接 挑 战 八 个 巨 型 BOSS，通 过 战 斗 获 取 经 验 值 升 级，解 锁 新 技 能，甚 至 可 以 用 密 码 续 关 继 承 等 级。背 景 设 定 在 中 世 纪 魔 幻 世 界，四 位 主 角（半 狮 人、功 夫 少 女、忍 者、魔 女）对 抗 邪 恶 巫 师 瓦 尔 多 尔，画 面 华 丽 且 系 统 独 特，被 誉 为 格 斗 游 戏 中 的“异 色 杰 作”。</synopsis>
 	</locale>
 		<developer>Capcom</developer>
 		<publisher>Capcom</publisher>
@@ -74,8 +72,8 @@
 	</locale>
 	<locale lang="ZHCN">
 		<title>街头霸王3.1 新纪元</title>
-		<genre>格斗 / 对战</genre>
-		<synopsis></synopsis>
+		<genre>格斗</genre>
+		<synopsis>本 作 是《街 头 霸 王3》系 列 的 首 部 作 品，于 1997 年 发 售。它 最 大 的 特 点 是 角 色 阵 容 的“大 换 血”，除 了 隆 和 肯 外，其 余 角 色 全 部 为 新 面 孔。游 戏 引 入 了 革 命 性 的“格 挡”系 统，允 许 玩 家 通 过 前 推 摇 杆 来 化 解 对 手 的 攻 击，这 一 机 制 彻 底 改 变 了 格 斗 游 戏 的 攻 防 节 奏。</synopsis>
 	</locale>
 		<developer>Capcom</developer>
 		<publisher>Capcom</publisher>
@@ -97,8 +95,8 @@
 	</locale>
 	<locale lang="ZHCN">
 		<title>街头霸王3.2 巨型打击</title>
-		<genre>格斗 / 对战</genre>
-		<synopsis></synopsis>
+		<genre>格斗</genre>
+		<synopsis>本 作 在《新 纪 元》的 基 础 上 增 加 了 五 名 新 角 色，包 括 隐 藏 角 色 豪 鬼 和 大 巨 人 雨 果。同 时，游 戏 调 整 了 部 分 角 色 的 平 衡 性，并 增 加 了 新 的 超 必 杀 技 和“EX 必 杀 技”系 统，使 战 斗 更 具 深 度。</synopsis>
 	</locale>
 		<developer>Capcom</developer>
 		<publisher>Capcom</publisher>
@@ -118,8 +116,8 @@
 	</locale>
 	<locale lang="ZHCN">
 		<title>街头霸王3.3 未来战斗</title>
-		<genre>格斗 / 对战</genre>
-		<synopsis></synopsis>
+		<genre>格斗</genre>
+		<synopsis>本 作 是《街 头 霸 王3》系 列 的 的 最 终 版，也 是 公 认 的 系 列 巅 峰。这 次 新 增 加 的 五 名 角 色 中 最 引 人 注 目 的 便 是 初 代 女 性 格 斗 家 春 丽 的 回 归。春 丽 能 力 有 了 大 幅 度 提 高，造 型 也 更 加 华 丽，是 游 戏 中 最 大 的 亮 点。游 戏 对 平 衡 性 进 行 了 终 极 优 化，并 引 入 了“红 色 招 架”等 高 级 技 巧，其 流 畅 的 手 感、华 丽 的 画 面 和 极 高 的 竞 技 性 使 其 成 为 格 斗 游 戏 史 上 的 一 座 丰 碑。</synopsis>
 	</locale>
 		<developer>Capcom</developer>
 		<publisher>Capcom</publisher>

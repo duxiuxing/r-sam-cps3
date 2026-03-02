@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GameList description="roms 文件夹里所有的 CPS3 街机游戏">
+<GameList description="roms 文件夹里所有的 CPS3 街机游戏"
+    hfsplay="https://db.hfsplay.fr/systems/29543">
     <Game id="32138"
         en_title="JoJo's Bizarre Adventure - Heritage for the Future"
         zhcn_title="JOJO的奇妙冒险2 未来遗产"
+        hfsplay="https://db.hfsplay.fr/games/29544-jojos-bizarre-adventure-heritage-for-the"
         launchbox="https://gamesdb.launchbox-app.com/games/details/32138-jojos-bizarre-adventure-heritage-for-the-future"
     >
         <Rom crc32="03A8E3D2" bytes="54256796"
@@ -25,6 +27,7 @@
     <Game id="36950"
         en_title="JoJo's Venture"
         zhcn_title="JOJO的奇妙冒险1"
+        hfsplay="https://db.hfsplay.fr/games/29545-jojos-venture"
         launchbox="https://gamesdb.launchbox-app.com/games/details/36950-jojos-bizarre-adventure"
     >
         <Rom crc32="09565881" bytes="46008575"
@@ -47,6 +50,7 @@
     <Game id="7956"
         en_title="Red Earth"
         zhcn_title="赤色大地"
+        hfsplay="https://db.hfsplay.fr/games/29549-warzard-red-earth"
         launchbox="https://gamesdb.launchbox-app.com/games/details/7956-red-earth"
     >
         <Rom crc32="F357FAC2" bytes="38374386"
@@ -58,6 +62,7 @@
     <Game id="12251"
         en_title="Street Fighter III - New Generation"
         zhcn_title="街头霸王3.1 新纪元"
+        hfsplay="https://db.hfsplay.fr/games/29548-street-fighter-iii-1st-new-generation"
         launchbox="https://gamesdb.launchbox-app.com/games/details/12251-street-fighter-iii-new-generation"
     >
         <Rom crc32="1F8CC35D" bytes="38868517"
@@ -80,6 +85,7 @@
     <Game id="39182"
         en_title="Street Fighter III 2nd Impact - Giant Attack"
         zhcn_title="街头霸王3.2 巨型打击"
+        hfsplay="https://db.hfsplay.fr/games/29546-street-fighter-iii-2nd-impact-giant-atta"
         launchbox="https://gamesdb.launchbox-app.com/games/details/39182-street-fighter-iii-2nd-impact-giant-attack"
     >
         <Rom crc32="EF7FA548" bytes="43777198"
@@ -91,6 +97,7 @@
     <Game id="39183"
         en_title="Street Fighter III 3rd Strike - Fight for the Future"
         zhcn_title="街头霸王3.3 未来战斗"
+        hfsplay="https://db.hfsplay.fr/games/29547-street-fighter-iii-3rd-strike-fight-for-"
         launchbox="https://gamesdb.launchbox-app.com/games/details/39183-street-fighter-iii-3rd-strike-fight-for-the-future"
     >
         <Rom crc32="36056B5E" bytes="70592155"
